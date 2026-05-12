@@ -34,8 +34,8 @@ public abstract class Player : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             draw();
-            energy = 3;
         }
+        energy = 3;
     }
     public void draw()
     {

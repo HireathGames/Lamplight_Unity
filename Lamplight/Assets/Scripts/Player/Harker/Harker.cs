@@ -14,11 +14,6 @@ public class Harker : Player
         getDeck().Add(new BasicDefend("Parry", 'w'));
         getDeck().Add(new BasicDefend("Parry", 'w'));
         StartCombat();
-        foreach (Card c in getHand())
-        {
-            Debug.Log(c);
-        }
-        playCard(0);
     }
 
     // Update is called once per frame
