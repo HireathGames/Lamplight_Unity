@@ -207,9 +207,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 56495955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b683956c0201d8f4692fe61872c85085, type: 3}
+  m_Script: {fileID: 11500000, guid: 8aed793589cba4647b5175a2f00bb941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPos: {x: 0, y: 0, z: 0}
+  initialRot: {x: 0, y: 0, z: 0, w: 0}
+  initialSca: {x: 0, y: 0, z: 0}
 --- !u!4 &366215399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -786664319079378835, guid: 3dc55f7941ea6944f86c87fb5e4ed70e, type: 3}
@@ -5530,7 +5533,7 @@ MonoBehaviour:
   canvas: {fileID: 1167313501}
   player: {fileID: 2057925529}
   enemies: []
-  UIcard: {fileID: 56495955}
+  UIcard: {fileID: 56495959}
   UIcards: []
 --- !u!114 &2057925529 stripped
 MonoBehaviour:
