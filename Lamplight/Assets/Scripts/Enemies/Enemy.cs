@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public abstract class Enemy : MonoBehaviour
     public int getHealth() { return HP; }
     public int getMaxHealth() { return maxHP; }
     public float getSanity() { return sanity; }
+
     public void takeDamage(int healthDamage, float sanityDamage)
     {
         if ((healthDamage - armor) > 0)

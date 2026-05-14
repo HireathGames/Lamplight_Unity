@@ -4,11 +4,12 @@ using UnityEngine;
 
 public abstract class Card
 {
+    //Needs to be intergrated with the UI
     private string name;
     private int cost;
-    private bool xCost = false;
-    private bool banish = false;
-    private char type;
+    private bool xCost = false;//Consumes all energy then does an effect a number of time equal to the energy spent
+    private bool banish = false;//If true should be removed from play after being played.
+    private char type;//Elemental system, valid types are w, m, t, b and n. n is none.
     public Card(string n, int c, bool x, bool b, char t)
     {
         name = n;
@@ -17,6 +18,7 @@ public abstract class Card
         banish = b;
         type = t;
     }
+    //Energy spent and the player are arguments to make the effects easier to implement
     public abstract void play(int spentEnergy, Player player);
     public string getName() { return name; }
     public int getCost() { return cost; }
