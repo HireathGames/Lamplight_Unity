@@ -15,11 +15,16 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private bool isPlaying;
     public Camera camera;
     private CursorControl input;
+    private int activeIndex;
     private void Awake()
     {
         //Initializes key conponents
         input = new CursorControl();
         camera = Camera.main;
+    }
+    public void setActiveIndex(int ind)
+    {
+        activeIndex = ind;
     }
     //Don't really know how these work but they are importent
     private void OnEnable()
@@ -43,11 +48,18 @@ public class BattleManager : MonoBehaviour
                 {
                     if (hit.collider.GetComponent<Player>() != null)
                     {
-                        Debug.Log("Player");
+                        if (!hand[activeIndex].getIsAttack())
+                        {
+                            playCard(activeIndex);
+                        }
                     }
                     else if (hit.collider.GetComponent<Enemy>() != null)
                     {
-                        Debug.Log("Enemy");
+                        if (hand[activeIndex].getIsAttack())
+                        {
+                            player.focus = hit.collider.GetComponent<Enemy>();
+                            playCard(activeIndex);
+                        }
                     }
                 }
             }
@@ -63,20 +75,14 @@ public class BattleManager : MonoBehaviour
         //Some more initailization, plus spawning cards on a delay(For testing)
         input.Mouse.Click.performed += _ => endClick();//Lamda expression 
         enemies = new List<Enemy>(FindObjectsOfType<Enemy>());
-        Invoke("spawnCards", 1);
     }
-    public void spawnCards()
+    public void updateCardsInHand()
     {
-        //Spawns cards and sets positions. NOTE: This should pretty much be fully reworked (Except the position setting code)
-        //Try to attatch this to the draw
         for (int i = 0; i < hand.Count; i++)
         {
             Vector3 cardPosition = new Vector3(canvas.transform.position.x + ((i * 160) - (hand.Count * 70)), canvas.transform.position.y - 160, canvas.transform.position.z);
-            CardUI tempCard = Instantiate(UIcard, cardPosition, canvas.transform.rotation, canvas.transform);
-            tempCard.initialPos = cardPosition;
-            tempCard.initialSca = tempCard.transform.localScale;
-            tempCard.initialRot = tempCard.transform.rotation;
-            tempCard.manager = this;
+            UIcards[i].transform.position = cardPosition;
+            UIcards[i].setUpCard(cardPosition, UIcards[i].transform.rotation, UIcards[i].transform.localScale, hand[i], this, i);
         }
     }
     public void startCombat()
@@ -108,7 +114,10 @@ public class BattleManager : MonoBehaviour
         }
         Card drawn = deck[0];
         deck.RemoveAt(0);
+        CardUI tempCard = Instantiate(UIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
         hand.Add(drawn);
+        UIcards.Add(tempCard);
+        updateCardsInHand();
     }
     public void discardCard(int handPosition)
     {
@@ -116,6 +125,9 @@ public class BattleManager : MonoBehaviour
         {
             discard.Add(hand[handPosition]);
             hand.RemoveAt(handPosition);
+            Destroy(UIcards[handPosition].gameObject);
+            UIcards.RemoveAt(handPosition);
+            updateCardsInHand();
         }
     }
     private void shuffle(List<Card> into)
@@ -131,23 +143,29 @@ public class BattleManager : MonoBehaviour
     }
     public void playCard(int handPosition)
     {
-        if (hand[handPosition] != null)
+        if (hand[handPosition].getCost() <= player.getEnergy())
         {
-            if (hand[handPosition].getIsX())
+            if (hand[handPosition] != null)
             {
-                hand[handPosition].play(player.getEnergy(), player);
-                player.setEnergy(0);
+                if (hand[handPosition].getIsX())
+                {
+                    hand[handPosition].play(player.getEnergy(), player);
+                    player.setEnergy(0);
+                }
+                else
+                {
+                    hand[handPosition].play(hand[handPosition].getCost(), player);
+                    player.setEnergy(player.getEnergy() - hand[handPosition].getCost());
+                }
+                if (!hand[handPosition].getIsBanished())
+                {
+                    discard.Add(hand[handPosition]);
+                }
+                hand.RemoveAt(handPosition);
+                Destroy(UIcards[handPosition].gameObject);
+                UIcards.RemoveAt(handPosition);
+                updateCardsInHand();
             }
-            else
-            {
-                hand[handPosition].play(hand[handPosition].getCost(), player);
-                player.setEnergy(player.getEnergy() - hand[handPosition].getCost());
-            }
-            if (!hand[handPosition].getIsBanished())
-            {
-                discard.Add(hand[handPosition]);
-            }
-            hand.RemoveAt(handPosition);
         }
     }
 }

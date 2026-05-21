@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAttack : Card
+public class BasicDefend : Card
 {
     //overrides the constructor but still calls original constructor.
-    public BasicAttack(string n, char t) : base(n, 1, false, false, t){}
+    public BasicDefend(string n, char t, string a) : base(n, "Gain 5 armor.", 1, false, false, false, t, a) { }
     public override void play(int spentEnergy, Player player)
     {
-        player.focus.takeDamage(5, 0);
+        player.addArmor(5);
     }
 }
