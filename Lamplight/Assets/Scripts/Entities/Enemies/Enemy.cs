@@ -5,11 +5,24 @@ using UnityEngine.EventSystems;
 
 public abstract class Enemy : Entity
 {
-    private List<EnemyMove> moves = new List<EnemyMove>();
+    [SerializeField] private List<EnemyMove> moves = new List<EnemyMove>();
     [SerializeField] private int nextMove;
-    public void takeTurn()
+    private void Start()
     {
         nextMove = Random.Range(0, moves.Count);
-        moves[nextMove].performMove(this);
+    }
+    public void takeTurn(Player player)
+    {
+        moves[nextMove].performMove(this, player);
+        nextMove = Random.Range(0, moves.Count);
+        if (bleed > 0)
+        {
+            setHealth(getHealth() - bleed);
+            bleed--;
+        }
+    }
+    public void addMove(EnemyMove move)
+    {
+        moves.Add(move);
     }
 }

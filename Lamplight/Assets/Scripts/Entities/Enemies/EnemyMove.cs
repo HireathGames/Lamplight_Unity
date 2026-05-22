@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class EnemyMove
 {
-    public abstract void performMove(Enemy self);
+    public abstract void performMove(Enemy self, Player player);
 }

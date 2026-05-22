@@ -11,4 +11,9 @@ public class Shadow : Enemy
             healthBar.updateUI(this);
         }
     }
+    private void Awake()
+    {
+        addMove(new EnemyAttack(5));
+        addMove(new EnemyDefend(7));
+    }
 }

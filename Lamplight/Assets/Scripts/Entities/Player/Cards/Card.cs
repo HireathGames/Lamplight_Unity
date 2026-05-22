@@ -8,6 +8,7 @@ public abstract class Card
     //Needs to be intergrated with the UI
     private string name;
     private bool attack;
+    private int originalCost;
     private string discription;
     private Sprite cardArt;
     private int cost;
@@ -19,6 +20,7 @@ public abstract class Card
         name = n;
         discription = d;
         cost = c;
+        originalCost = c;
         attack = a;
         xCost = x;
         banish = b;
@@ -28,6 +30,10 @@ public abstract class Card
     //Energy spent and the player are arguments to make the effects easier to implement
     public abstract void play(int spentEnergy, Player player);
     public string getName() { return name; }
+    public void resetCost()
+    {
+        cost = originalCost;
+    }
     public string getDiscription() { return discription; }
     public int getCost() { return cost; }
     public Sprite getArt() { return cardArt; }

@@ -14,6 +14,8 @@ public class Harker : Player
         manager.getDeck().Add(new BasicDefend("Parry", 'w', "Deflect"));
         manager.getDeck().Add(new BasicDefend("Parry", 'w', "Deflect"));
         manager.getDeck().Add(new BasicDefend("Parry", 'w', "Deflect"));
+        manager.getDeck().Add(new Hunter());
+        manager.getDeck().Add(new Sacrement());
         initialize();
         if (healthBar != null)
         {
