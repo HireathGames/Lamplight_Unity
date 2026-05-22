@@ -17,7 +17,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new Hunter());
         deck.Add(new Sacrement());
-        manager.saveRun(new RunData(100, 100, 100, deck));
-        SceneManager.LoadScene("Level_1_Combat");
+        manager.saveRun(new RunData(100, 100, 100, deck, null));
+        SceneManager.LoadScene("Level_1_Map");
     }
 }

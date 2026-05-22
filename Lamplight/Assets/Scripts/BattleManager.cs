@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private CardUI UIcard;
     [SerializeField] private List<CardUI> UIcards;
     private List<Card> trueDeck;
+    private List<LevelPiece> encounters;
     [SerializeField] private List<Card> deck = new List<Card>();
     [SerializeField] private List<Card> discard = new List<Card>();
     [SerializeField] private List<Card> hand = new List<Card>();
@@ -107,21 +109,26 @@ public class BattleManager : MonoBehaviour
         {
             player.initialize(currentRun.HP, currentRun.maxHP, currentRun.sanity);
             trueDeck = currentRun.deck;
-            Debug.Log(currentRun.deck);
+            encounters = currentRun.nextEncounters;
         }
     }
     public void startCombat()
     {
         loadPlayerData();
-        shuffle(trueDeck);
+        List<Card> setUp = new List<Card>();
+        foreach (Card c in trueDeck)
+        {
+            setUp.Add(c);
+        }
+        shuffle(setUp);
         startTurn();
     }
     public void endCombat()
     {
         
-        RunData runData = new RunData(player.getHealth(), player.getMaxHealth(), player.getSanity(), deck);
-        Debug.Log(runData.deck);
+        RunData runData = new RunData(player.getHealth(), player.getMaxHealth(), player.getSanity(), trueDeck, encounters);
         dataManager.saveRun(runData);
+        SceneManager.LoadScene("Level_1_Map");
     }
     public void startTurn()
     {
@@ -139,6 +146,7 @@ public class BattleManager : MonoBehaviour
         {
             discardCard(0);
         }
+        //Make so it works even with enemies dying during their own turns
         foreach (Enemy e in enemies)
         {
             e.takeTurn(player);
