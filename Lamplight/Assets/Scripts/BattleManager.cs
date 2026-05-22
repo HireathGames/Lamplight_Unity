@@ -11,10 +11,12 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private CardUI UIcard;
     [SerializeField] private List<CardUI> UIcards;
+    private List<Card> trueDeck;
     [SerializeField] private List<Card> deck = new List<Card>();
     [SerializeField] private List<Card> discard = new List<Card>();
     [SerializeField] private List<Card> hand = new List<Card>();
     [SerializeField] private bool isPlaying;
+    private PersistentDataManager dataManager;
     public Camera camera;
     [SerializeField] private TMP_Text energy;
     private CursorControl input;
@@ -24,6 +26,7 @@ public class BattleManager : MonoBehaviour
         //Initializes key conponents
         input = new CursorControl();
         camera = Camera.main;
+        dataManager = new PersistentDataManager();
     }
     public void setActiveIndex(int ind)
     {
@@ -72,12 +75,20 @@ public class BattleManager : MonoBehaviour
     public bool getPlaying() { return isPlaying; }
     public void setPlaying(bool state) { isPlaying = state; }
     public List<Card> getHand() { return hand; }
+    public List<Enemy> getEnemies() { return enemies; }
     public List<Card> getDiscard() { return discard; }
     public void Start()
     {
         //Some more initailization, plus spawning cards on a delay(For testing)
         input.Mouse.Click.performed += _ => endClick();//Lamda expression 
         enemies = new List<Enemy>(FindObjectsOfType<Enemy>());
+    }
+    private void FixedUpdate()
+    {
+        if ((enemies != null) && (enemies.Count == 0))
+        {
+            endCombat();
+        }
     }
     public void updateCardsInHand()
     {
@@ -89,11 +100,28 @@ public class BattleManager : MonoBehaviour
         }
         energy.text = player.getEnergy().ToString();
     }
+    public void loadPlayerData()
+    {
+        RunData currentRun = dataManager.loadRun();
+        if (currentRun != null)
+        {
+            player.initialize(currentRun.HP, currentRun.maxHP, currentRun.sanity);
+            trueDeck = currentRun.deck;
+            Debug.Log(currentRun.deck);
+        }
+    }
     public void startCombat()
     {
-        List<Card> setUp = deck;
-        shuffle(setUp);
+        loadPlayerData();
+        shuffle(trueDeck);
         startTurn();
+    }
+    public void endCombat()
+    {
+        
+        RunData runData = new RunData(player.getHealth(), player.getMaxHealth(), player.getSanity(), deck);
+        Debug.Log(runData.deck);
+        dataManager.saveRun(runData);
     }
     public void startTurn()
     {

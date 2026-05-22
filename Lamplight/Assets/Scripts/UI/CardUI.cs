@@ -46,16 +46,19 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler
     }
     public void setUpCard(Vector3 initP, Quaternion initR, Vector3 initS, Card card, BattleManager bm, int ind)
     {
-        initialPos = initP;
-        initialRot = initR;
-        initialSca = initS;
-        this.card = card;
-        image.sprite = card.getArt();
-        cost.text = card.getCost().ToString();
-        name.text = card.getName().ToString();
-        disc.text = card.getDiscription().ToString();
-        manager = bm;
-        index = ind;
+        if (card != null)
+        {
+            initialPos = initP;
+            initialRot = initR;
+            initialSca = initS;
+            this.card = card;
+            image.sprite = card.getArt();
+            cost.text = card.getCost().ToString();
+            name.text = card.getName();
+            disc.text = card.getDiscription();
+            manager = bm;
+            index = ind;
+        }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

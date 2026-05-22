@@ -7,9 +7,11 @@ public abstract class Enemy : Entity
 {
     [SerializeField] private List<EnemyMove> moves = new List<EnemyMove>();
     [SerializeField] private int nextMove;
+    private BattleManager manager;
     private void Start()
     {
         nextMove = Random.Range(0, moves.Count);
+        manager = FindObjectOfType<BattleManager>();
     }
     public void takeTurn(Player player)
     {
@@ -20,9 +22,18 @@ public abstract class Enemy : Entity
             setHealth(getHealth() - bleed);
             bleed--;
         }
+        if (getHealth() <= 0)
+        {
+            die();
+        }
     }
     public void addMove(EnemyMove move)
     {
         moves.Add(move);
+    }
+    public override void die()
+    {
+        manager.getEnemies().Remove(this);
+        Destroy(gameObject);
     }
 }

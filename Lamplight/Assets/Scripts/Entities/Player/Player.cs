@@ -11,4 +11,8 @@ public abstract class Player : Entity
 
     public void setEnergy(int gain) { energy = gain; }
     public int getEnergy() { return energy; }
+    public override void die()
+    {
+        //Add stuff later
+    }
 }

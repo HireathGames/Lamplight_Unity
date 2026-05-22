@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     [SerializeField] private int HP = 100;
     [SerializeField] private int maxHP = 100;
@@ -21,6 +21,14 @@ public class Entity : MonoBehaviour
     public void setHealth(int health)
     {
         HP = health;
+    }
+    public void setMaxHealth(int max)
+    {
+        maxHP = max;
+    }
+    public void setSanity(float sane)
+    {
+        sanity = sane;
     }
     public int getArmor() { return armor; }
     public int getMaxHealth() { return maxHP; }
@@ -69,10 +77,15 @@ public class Entity : MonoBehaviour
             healthBar.updateUI(this);
         }
         mark = 0;
+        if (HP <= 0)
+        {
+            die();
+        }
     }
     public void attackEntity(Entity entity, int healthDamage, float sanityDamage)
     {
         float attackMulti = 1f + (0.2f * strength) - (0.25f * Mathf.Pow(weakness, 0.33f));
         entity.takeDamage((int) (healthDamage * attackMulti), sanityDamage);
     }
+    public abstract void die();
 }
