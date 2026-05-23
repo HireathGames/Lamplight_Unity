@@ -9,5 +9,6 @@ public class Hunter : Card
     {
         player.focus.mark += 3;
         player.focus.healthBar.updateUI(player.focus);
+        player.playAnimation(3);
     }
 }

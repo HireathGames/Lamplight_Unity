@@ -10,5 +10,6 @@ public class Sacrement : Card
         player.attackEntity(player.focus, 5, 0);
         player.focus.bleed += 4;
         player.focus.healthBar.updateUI(player.focus);
+        player.playAnimation(1);
     }
 }

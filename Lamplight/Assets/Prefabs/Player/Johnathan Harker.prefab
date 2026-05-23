@@ -293,10 +293,13 @@ MonoBehaviour:
   sanity: 100
   mark: 0
   bleed: 0
+  strength: 0
+  weakness: 0
   healthBar: {fileID: 1355388878616601333}
   energy: 0
   focus: {fileID: 0}
   manager: {fileID: 0}
+  actionDelay: 0
 --- !u!95 &3141133567162034202
 Animator:
   serializedVersion: 5
@@ -337,7 +340,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 3
   m_Height: 9.044676
   m_Direction: 1
   m_Center: {x: 0, y: -1.9623522, z: 0}

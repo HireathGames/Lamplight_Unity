@@ -8,5 +8,6 @@ public class BasicDefend : Card
     public override void play(int spentEnergy, Player player)
     {
         player.addArmor(5);
+        player.playAnimation(2);
     }
 }

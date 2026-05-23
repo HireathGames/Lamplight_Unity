@@ -74,6 +74,17 @@ public class BattleManager : MonoBehaviour
         }
     }
     public List<Card> getDeck() { return deck; }
+    public bool actionAvailable()
+    {
+        if (player.getDelay() <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public bool getPlaying() { return isPlaying; }
     public void setPlaying(bool state) { isPlaying = state; }
     public List<Card> getHand() { return hand; }
@@ -132,13 +143,18 @@ public class BattleManager : MonoBehaviour
     }
     public void startTurn()
     {
-        for (int i = 0; i < 5; i++)
+        if (hand.Count < 5)
         {
             draw();
+            player.setDelay(0.15f);
+            Invoke("startTurn", 0.15f);
         }
-        sanityRandomizer();
-        player.setEnergy(3);
-        updateCardsInHand();
+        else
+        {
+            sanityRandomizer();
+            player.setEnergy(3);
+            updateCardsInHand();
+        }
     }
     public void endTurn()
     {

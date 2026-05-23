@@ -17,6 +17,11 @@ public abstract class Entity : MonoBehaviour
     public int strength;
     public int weakness;
     public EntityHealthBar healthBar;
+    private Animator animator;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     public int getHealth() { return HP; }
     public void setHealth(int health)
     {
@@ -50,6 +55,18 @@ public abstract class Entity : MonoBehaviour
         {
             healthBar.updateUI(this);
         }
+    }
+    public virtual void playAnimation(int state)
+    {
+        if (animator != null)
+        {
+            animator.SetInteger("State", state);
+            Invoke("resetAnimation", 1);
+        }
+    }
+    private void resetAnimation()
+    {
+        animator.SetInteger("State", 0);
     }
     public void takeDamage(int healthDamage, float sanityDamage)
     {

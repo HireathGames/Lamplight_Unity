@@ -9,5 +9,6 @@ public class BasicAttack : Card
     public override void play(int spentEnergy, Player player)
     {
         player.attackEntity(player.focus, 5, 0);
+        player.playAnimation(1);
     }
 }
