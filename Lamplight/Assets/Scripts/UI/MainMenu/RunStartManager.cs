@@ -17,7 +17,13 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new Hunter());
         deck.Add(new Sacrement());
-        manager.saveRun(new RunData(100, 100, 100, deck, null));
+        List<Card> rewards = new List<Card>();
+        //rewards.Add(new Sadist());
+        //rewards.Add(new Panic());
+        rewards.Add(new LuckyCoin());
+        //rewards.Add(new Downpour());
+        rewards.Add(new Comedy());
+        manager.saveRun(new RunData(100, 100, 100, deck, rewards));
         SceneManager.LoadScene("Level_1_Map");
     }
 }

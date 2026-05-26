@@ -33,7 +33,6 @@ public abstract class Enemy : Entity
     }
     public override void die()
     {
-        manager.getEnemies().Remove(this);
         Destroy(gameObject);
     }
 }

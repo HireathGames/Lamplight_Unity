@@ -48,7 +48,7 @@ public abstract class Entity : MonoBehaviour
             healthBar.updateUI(this);
         }
     }
-    public void addArmor(int amount)
+    public virtual void addArmor(int amount)
     {
         armor += (int) (amount * armorMod);
         if (healthBar != null)
@@ -68,7 +68,7 @@ public abstract class Entity : MonoBehaviour
     {
         animator.SetInteger("State", 0);
     }
-    public void takeDamage(int healthDamage, float sanityDamage)
+    public virtual void takeDamage(int healthDamage, float sanityDamage)
     {
         healthDamage = (int)(healthDamage * (damageMod + (0.5f * mark)));
         if ((healthDamage - armor) > 0)
@@ -99,7 +99,7 @@ public abstract class Entity : MonoBehaviour
             die();
         }
     }
-    public void attackEntity(Entity entity, int healthDamage, float sanityDamage)
+    public virtual void attackEntity(Entity entity, int healthDamage, float sanityDamage)
     {
         float attackMulti = 1f + (0.2f * strength) - (0.25f * Mathf.Pow(weakness, 0.33f));
         entity.takeDamage((int) (healthDamage * attackMulti), sanityDamage);

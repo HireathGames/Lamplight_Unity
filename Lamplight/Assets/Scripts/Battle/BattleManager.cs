@@ -18,11 +18,15 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Card> discard = new List<Card>();
     [SerializeField] private List<Card> hand = new List<Card>();
     [SerializeField] private bool isPlaying;
+    [SerializeField] private GameObject battlePanel;
+    [SerializeField] private GameObject rewardsPanel;
     private PersistentDataManager dataManager;
+    private List<Card> rewards;
     public Camera camera;
     [SerializeField] private TMP_Text energy;
     private CursorControl input;
     private int activeIndex;
+    private bool combatOver = false;
     private void Awake()
     {
         //Initializes key conponents
@@ -45,7 +49,7 @@ public class BattleManager : MonoBehaviour
     }
     private void endClick ()
     {
-        if (isPlaying)
+        if (isPlaying && !combatOver)
         {
             //Fires a ray then checks if it hits an object and whether it was an enemy or the player
             Ray ray = camera.ScreenPointToRay(input.Mouse.Position.ReadValue<Vector2>());
@@ -56,7 +60,7 @@ public class BattleManager : MonoBehaviour
                 {
                     if (hit.collider.GetComponent<Player>() != null)
                     {
-                        if (!hand[activeIndex].getIsAttack())
+                        if ((hand[activeIndex] != null) && (!hand[activeIndex].getIsAttack()))
                         {
                             playCard(activeIndex);
                         }
@@ -93,25 +97,51 @@ public class BattleManager : MonoBehaviour
     public void Start()
     {
         //Some more initailization, plus spawning cards on a delay(For testing)
+        rewardsPanel.SetActive(false);
+        battlePanel.SetActive(true);
         input.Mouse.Click.performed += _ => endClick();//Lamda expression 
         enemies = new List<Enemy>(FindObjectsOfType<Enemy>());
     }
     private void FixedUpdate()
     {
-        if ((enemies != null) && (enemies.Count == 0))
+        if (combatOver)
+        {
+            if (isPlaying)
+            {
+                trueDeck.Add(hand[activeIndex]);
+                exitCombatScene();
+            }
+        }
+        else if ((enemies != null) && (enemies.Count == 0))
         {
             endCombat();
+        }
+        else
+        {
+            enemies.RemoveAll(item => item == null);
         }
     }
     public void updateCardsInHand()
     {
-        for (int i = 0; i < hand.Count; i++)
+        if (!combatOver)
         {
-            Vector3 cardPosition = new Vector3(canvas.transform.position.x + ((i * 160) - (hand.Count * 70)), canvas.transform.position.y - 160, canvas.transform.position.z);
-            UIcards[i].transform.position = cardPosition;
-            UIcards[i].setUpCard(cardPosition, UIcards[i].transform.rotation, UIcards[i].transform.localScale, hand[i], this, i);
+            for (int i = 0; i < hand.Count; i++)
+            {
+                Vector3 cardPosition = new Vector3(canvas.transform.position.x + ((i * 160) - (hand.Count * 70)), canvas.transform.position.y - 160, canvas.transform.position.z);
+                UIcards[i].transform.position = cardPosition;
+                UIcards[i].setUpCard(cardPosition, UIcards[i].transform.rotation, UIcards[i].transform.localScale, hand[i], this, i);
+            }
+            energy.text = player.getEnergy().ToString();
         }
-        energy.text = player.getEnergy().ToString();
+        else
+        {
+            for (int i = 0; i < hand.Count; i++)
+            {
+                Vector3 cardPosition = new Vector3(canvas.transform.position.x + ((i * 160) - (hand.Count * 55)), canvas.transform.position.y, canvas.transform.position.z);
+                UIcards[i].transform.position = cardPosition;
+                UIcards[i].setUpCard(cardPosition, UIcards[i].transform.rotation, UIcards[i].transform.localScale, hand[i], this, i);
+            }
+        }
     }
     public void loadPlayerData()
     {
@@ -120,6 +150,7 @@ public class BattleManager : MonoBehaviour
         {
             player.initialize(currentRun.HP, currentRun.maxHP, currentRun.sanity);
             trueDeck = currentRun.deck;
+            rewards = currentRun.rewardCards;
             encounters = currentRun.nextEncounters;
         }
     }
@@ -136,24 +167,46 @@ public class BattleManager : MonoBehaviour
     }
     public void endCombat()
     {
-        
-        RunData runData = new RunData(player.getHealth(), player.getMaxHealth(), player.getSanity(), trueDeck, encounters);
+        while (hand.Count > 0)
+        {
+            discardCard(0);
+        }
+        rewardsPanel.SetActive(true);
+        battlePanel.SetActive(false);
+        combatOver = true;
+        isPlaying = false;
+        for (int i = 0; i < 3; i++)
+        {
+            Card reward = rewards[Random.Range(0, rewards.Count)];
+            CardUI tempCard = Instantiate(UIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
+            hand.Add(reward);
+            UIcards.Add(tempCard);
+        }
+        updateCardsInHand();
+    }
+    public void exitCombatScene()
+    {
+        RunData runData = new RunData(player.getHealth(), player.getMaxHealth(), player.getSanity(), trueDeck, rewards, encounters);
         dataManager.saveRun(runData);
         SceneManager.LoadScene("Level_1_Map");
     }
     public void startTurn()
     {
-        if (hand.Count < 5)
+        if (!combatOver)
         {
-            draw();
-            player.setDelay(0.15f);
-            Invoke("startTurn", 0.15f);
-        }
-        else
-        {
-            sanityRandomizer();
-            player.setEnergy(3);
-            updateCardsInHand();
+            player.turnModUpdate();
+            if ((hand.Count < 5) && ((discard.Count != 0) || (deck.Count != 0)))
+            {
+                draw();
+                player.setDelay(0.15f);
+                Invoke("startTurn", 0.15f);
+            }
+            else
+            {
+                sanityRandomizer();
+                player.setEnergy(3);
+                updateCardsInHand();
+            }
         }
     }
     public void endTurn()
@@ -163,10 +216,14 @@ public class BattleManager : MonoBehaviour
             discardCard(0);
         }
         //Make so it works even with enemies dying during their own turns
-        foreach (Enemy e in enemies)
+        for (int i = 0; i < enemies.Count; i++)
         {
-            e.takeTurn(player);
+            if (enemies[i] != null)
+            {
+                enemies[i].takeTurn(player);
+            }
         }
+        Debug.Log(enemies.Contains(null));
         startTurn();
     }
     public void draw()

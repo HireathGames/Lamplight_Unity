@@ -6,6 +6,7 @@ public abstract class Player : Entity
 {
     [SerializeField] private int energy;
     [SerializeField] public Enemy focus;//The enemy attacks and debuffs should go onto
+    private List<CombatModifier> modifiers = new List<CombatModifier>();
     public BattleManager manager;
     private float actionDelay;
 
@@ -20,6 +21,41 @@ public abstract class Player : Entity
     public int getEnergy() { return energy; }
     public void setDelay(float delay) { actionDelay = delay; }
     public float getDelay() { return actionDelay; }
+    public void addModifier(CombatModifier mod)
+    {
+        modifiers.Add(mod);
+    }
+    public override void addArmor(int amount)
+    {
+        base.addArmor(amount);
+        foreach (CombatModifier mod in modifiers)
+        {
+            mod.playerDefended(this);
+        }
+    }
+    public override void attackEntity(Entity entity, int healthDamage, float sanityDamage)
+    {
+        base.attackEntity(entity, healthDamage, sanityDamage);
+        foreach (CombatModifier mod in modifiers)
+        {
+            mod.playerAttacked(this);
+        }
+    }
+    public override void takeDamage(int healthDamage, float sanityDamage)
+    {
+        base.takeDamage(healthDamage, sanityDamage);
+        foreach (CombatModifier mod in modifiers)
+        {
+            mod.playerTookDamage(this);
+        }
+    }
+    public void turnModUpdate()
+    {
+        foreach (CombatModifier mod in modifiers)
+        {
+            mod.playerTurnStart(this);
+        }
+    }
     public override void die()
     {
         //Add stuff later

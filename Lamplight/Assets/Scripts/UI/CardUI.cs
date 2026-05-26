@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler
+public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     private Vector3 initialPos;
     private Quaternion initialRot;
@@ -64,7 +64,14 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler
             image.sprite = card.getArt();
             cost.text = card.getCost().ToString();
             name.text = card.getName();
-            disc.text = card.getDiscription();
+            if (!card.getIsBanished())
+            {
+                disc.text = card.getDiscription();
+            }
+            else
+            {
+                disc.text = card.getDiscription() + "\n Banish";
+            }
             manager = bm;
             index = ind;
         }
@@ -73,12 +80,27 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler
     {
         //Grows the card when hovered
         if (manager.actionAvailable())
+        {
             transform.localScale = new Vector3(initialSca.x * 1.5f, initialSca.y * 1.5f, initialSca.z);
+            transform.SetAsLastSibling();
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (manager.actionAvailable())
+        {
             transform.localScale = initialSca;
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        manager.setPlaying(true);
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        manager.setPlaying(false);
     }
 }
