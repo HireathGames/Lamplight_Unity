@@ -15,5 +15,8 @@ public class Shadow : Enemy
     {
         addMove(new EnemyAttack(5));
         addMove(new EnemyDefend(7));
+        int startHealth = Random.Range(12, 16);
+        setHealth(startHealth);
+        setMaxHealth(startHealth);
     }
 }

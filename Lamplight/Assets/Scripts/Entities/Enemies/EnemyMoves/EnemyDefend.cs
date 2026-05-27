@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyDefend : EnemyMove
 {
     private int defence;
-    public EnemyDefend(int armor)
+    public EnemyDefend(int armor) : base("Block", 2)
     {
         defence = armor;
     }

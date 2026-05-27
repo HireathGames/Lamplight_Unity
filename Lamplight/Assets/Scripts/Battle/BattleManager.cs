@@ -8,12 +8,15 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
-    [SerializeField] private Player player;
+    private Player player;
     [SerializeField] private List<Enemy> enemies;
+    [SerializeField] private List<Player> players;
+    [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private List<Transform> enemySpawnPoints;
+    [SerializeField] private List<List<Enemy>> encounters = new List<List<Enemy>>();
+    [SerializeField] private List<Enemy> tempSolution;//I can't figure out how to do this properly so this is for testing
     [SerializeField] private CardUI UIcard;
     [SerializeField] private List<CardUI> UIcards;
-    private List<Card> trueDeck;
-    private List<LevelPiece> encounters;
     [SerializeField] private List<Card> deck = new List<Card>();
     [SerializeField] private List<Card> discard = new List<Card>();
     [SerializeField] private List<Card> hand = new List<Card>();
@@ -21,18 +24,30 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private GameObject battlePanel;
     [SerializeField] private GameObject rewardsPanel;
     private PersistentDataManager dataManager;
-    private List<Card> rewards;
+    private RunData run;
     public Camera camera;
     [SerializeField] private TMP_Text energy;
     private CursorControl input;
     private int activeIndex;
+    private bool combatStarted = false;
     private bool combatOver = false;
+    private int enemyCombatStep;
     private void Awake()
     {
         //Initializes key conponents
         input = new CursorControl();
         camera = Camera.main;
         dataManager = new PersistentDataManager();
+        List<Enemy> tempList = new List<Enemy>();
+        tempList.Add(tempSolution[0]);
+        tempList.Add(tempSolution[0]);
+        tempList.Add(tempSolution[0]);
+        encounters.Add(tempList);
+        List<Enemy> tempList1 = new List<Enemy>();
+        tempList1.Add(tempSolution[0]);
+        tempList1.Add(tempSolution[1]);
+        encounters.Add(tempList1);
+
     }
     public void setActiveIndex(int ind)
     {
@@ -100,7 +115,7 @@ public class BattleManager : MonoBehaviour
         rewardsPanel.SetActive(false);
         battlePanel.SetActive(true);
         input.Mouse.Click.performed += _ => endClick();//Lamda expression 
-        enemies = new List<Enemy>(FindObjectsOfType<Enemy>());
+        startCombat();
     }
     private void FixedUpdate()
     {
@@ -108,11 +123,11 @@ public class BattleManager : MonoBehaviour
         {
             if (isPlaying)
             {
-                trueDeck.Add(hand[activeIndex]);
+                run.deck.Add(hand[activeIndex]);
                 exitCombatScene();
             }
         }
-        else if ((enemies != null) && (enemies.Count == 0))
+        else if (((enemies != null) && (enemies.Count == 0)) && (combatStarted))
         {
             endCombat();
         }
@@ -143,22 +158,52 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
-    public void loadPlayerData()
+    private void initializeCombat()
     {
-        RunData currentRun = dataManager.loadRun();
-        if (currentRun != null)
+        run = dataManager.loadRun();
+        if (run != null)
         {
-            player.initialize(currentRun.HP, currentRun.maxHP, currentRun.sanity);
-            trueDeck = currentRun.deck;
-            rewards = currentRun.rewardCards;
-            encounters = currentRun.nextEncounters;
+            if (playerSpawnPoint != null)
+            {
+                Debug.Log(run.character);
+                if (run.character.Equals("VF"))
+                {
+                    player = Instantiate(players[1], playerSpawnPoint);
+                    player.initialize(run.HP, run.maxHP, run.sanity, this);
+                }
+                else if (run.character.Equals("HJ&EH"))
+                {
+                    player = Instantiate(players[2], playerSpawnPoint);
+                    player.initialize(run.HP, run.maxHP, run.sanity, this);
+                }
+                else if (run.character.Equals("DG"))
+                {
+                    player = Instantiate(players[3], playerSpawnPoint);
+                    player.initialize(run.HP, run.maxHP, run.sanity, this);
+                }
+                else
+                {
+                    player = Instantiate(players[0], playerSpawnPoint);
+                    player.initialize(run.HP, run.maxHP, run.sanity, this);
+                }
+            }
+            if (enemySpawnPoints != null && encounters != null)
+            {
+                int ran = Random.Range(0, encounters.Count);
+                for (int i = 0; i < encounters[ran].Count; i++)
+                {
+                    Enemy e = Instantiate(encounters[ran][i], enemySpawnPoints[i]);
+                    enemies.Add(e);
+                }
+            }
         }
+        combatStarted = true;
     }
     public void startCombat()
     {
-        loadPlayerData();
+        initializeCombat();
         List<Card> setUp = new List<Card>();
-        foreach (Card c in trueDeck)
+        foreach (Card c in run.deck)
         {
             setUp.Add(c);
         }
@@ -177,7 +222,7 @@ public class BattleManager : MonoBehaviour
         isPlaying = false;
         for (int i = 0; i < 3; i++)
         {
-            Card reward = rewards[Random.Range(0, rewards.Count)];
+            Card reward = run.rewardCards[Random.Range(0, run.rewardCards.Count)];
             CardUI tempCard = Instantiate(UIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
             hand.Add(reward);
             UIcards.Add(tempCard);
@@ -186,15 +231,13 @@ public class BattleManager : MonoBehaviour
     }
     public void exitCombatScene()
     {
-        RunData runData = new RunData(player.getHealth(), player.getMaxHealth(), player.getSanity(), trueDeck, rewards, encounters);
-        dataManager.saveRun(runData);
+        dataManager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
     public void startTurn()
     {
         if (!combatOver)
         {
-            player.turnModUpdate();
             if ((hand.Count < 5) && ((discard.Count != 0) || (deck.Count != 0)))
             {
                 draw();
@@ -204,6 +247,7 @@ public class BattleManager : MonoBehaviour
             else
             {
                 sanityRandomizer();
+                player.turnModUpdate();
                 player.setEnergy(3);
                 updateCardsInHand();
             }
@@ -215,16 +259,25 @@ public class BattleManager : MonoBehaviour
         {
             discardCard(0);
         }
-        //Make so it works even with enemies dying during their own turns
-        for (int i = 0; i < enemies.Count; i++)
+        enemyCombatStep = 0;
+        enemyTurnStep();
+    }
+    public void enemyTurnStep()
+    {
+        if (enemyCombatStep < enemies.Count)
         {
-            if (enemies[i] != null)
+            Debug.Log(enemies[enemyCombatStep] != null);
+            if (enemies[enemyCombatStep] != null)
             {
-                enemies[i].takeTurn(player);
+                enemies[enemyCombatStep].takeTurn(player);
             }
+            enemyCombatStep++;
+            Invoke("enemyTurnStep", 1);
         }
-        Debug.Log(enemies.Contains(null));
-        startTurn();
+        else
+        {
+            startTurn();
+        }
     }
     public void draw()
     {

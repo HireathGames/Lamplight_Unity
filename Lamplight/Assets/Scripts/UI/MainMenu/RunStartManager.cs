@@ -18,12 +18,35 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new Hunter());
         deck.Add(new Sacrement());
         List<Card> rewards = new List<Card>();
-        //rewards.Add(new Sadist());
-        //rewards.Add(new Panic());
+        rewards.Add(new Sadist());
+        rewards.Add(new Panic());
         rewards.Add(new LuckyCoin());
-        //rewards.Add(new Downpour());
+        rewards.Add(new Downpour());
         rewards.Add(new Comedy());
-        manager.saveRun(new RunData(100, 100, 100, deck, rewards));
+        rewards.Add(new Tragedy());
+        manager.saveRun(new RunData(100, 100, 100, deck, rewards, "JH"));
+        SceneManager.LoadScene("Level_1_Map");
+    }
+    public void startFrankensteinRun()
+    {
+        List<Card> deck = new List<Card>();
+        PersistentDataManager manager = new PersistentDataManager();
+        deck.Add(new BasicAttack("Saw", 't', "Saw"));
+        deck.Add(new BasicAttack("Saw", 't', "Saw"));
+        deck.Add(new BasicAttack("Saw", 't', "Saw"));
+        deck.Add(new BasicDefend("Avoid", 't', "Hide"));
+        deck.Add(new BasicDefend("Avoid", 't', "Hide"));
+        deck.Add(new BasicDefend("Avoid", 't', "Hide"));
+        deck.Add(new GraveRobber());
+        deck.Add(new Electrify());
+        List<Card> rewards = new List<Card>();
+        rewards.Add(new Sadist());
+        rewards.Add(new Panic());
+        rewards.Add(new LuckyCoin());
+        rewards.Add(new Downpour());
+        rewards.Add(new Comedy());
+        rewards.Add(new Tragedy());
+        manager.saveRun(new RunData(100, 100, 100, deck, rewards, "VF"));
         SceneManager.LoadScene("Level_1_Map");
     }
 }

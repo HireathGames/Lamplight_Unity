@@ -37,7 +37,7 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
             //Gets distance from the start and current position
             float distance = Mathf.Sqrt(Mathf.Pow((transform.position.x - initialPos.x), 2) + Mathf.Pow((transform.position.y - initialPos.y), 2));
             //Shrinks the card and tilts it towards the movement
-            transform.localScale = new Vector3((initialSca.x * 1.5f) / (1 + (distance / 250)), (initialSca.y * 1.5f) / (1 + (distance / 250)), initialSca.z);
+            transform.localScale = new Vector3((initialSca.x * 1.65f) / (1 + (distance / 150)), (initialSca.y * 1.65f) / (1 + (distance / 150)), initialSca.z);
             transform.rotation = new Quaternion(initialRot.x, initialRot.y, (initialPos.x - transform.position.x) / 800, initialRot.w);
         }
     }
@@ -62,7 +62,14 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
             initialSca = initS;
             this.card = card;
             image.sprite = card.getArt();
-            cost.text = card.getCost().ToString();
+            if (!card.getIsX())
+            {
+                cost.text = card.getCost().ToString();
+            } 
+            else
+            {
+                cost.text = "X";
+            }
             name.text = card.getName();
             if (!card.getIsBanished())
             {
@@ -71,6 +78,12 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
             else
             {
                 disc.text = card.getDiscription() + "\n Banish";
+            }
+            if (card.getType() == 't')
+            {
+                disc.color = new Color(355, 355, 355);
+                cost.color = new Color(355, 355, 355);
+                name.color = new Color(355, 355, 355);
             }
             manager = bm;
             index = ind;
@@ -81,7 +94,7 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
         //Grows the card when hovered
         if (manager.actionAvailable())
         {
-            transform.localScale = new Vector3(initialSca.x * 1.5f, initialSca.y * 1.5f, initialSca.z);
+            transform.localScale = new Vector3(initialSca.x * 1.65f, initialSca.y * 1.65f, initialSca.z);
             transform.SetAsLastSibling();
         }
     }
@@ -97,6 +110,7 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
     public void OnPointerDown(PointerEventData eventData)
     {
         manager.setPlaying(true);
+        manager.setActiveIndex(index);
     }
 
     public void OnPointerUp(PointerEventData eventData)

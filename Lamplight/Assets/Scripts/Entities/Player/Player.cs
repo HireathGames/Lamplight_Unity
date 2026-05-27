@@ -33,6 +33,11 @@ public abstract class Player : Entity
             mod.playerDefended(this);
         }
     }
+    public void initialize(int health = 100, int max = 100, float sane = 100, BattleManager battle = null)
+    {
+        base.initialize(health, max, sane);
+        manager = battle;
+    }
     public override void attackEntity(Entity entity, int healthDamage, float sanityDamage)
     {
         base.attackEntity(entity, healthDamage, sanityDamage);
@@ -54,6 +59,22 @@ public abstract class Player : Entity
         foreach (CombatModifier mod in modifiers)
         {
             mod.playerTurnStart(this);
+        }
+        if (regeneration > 0)
+        {
+            setHealth(getHealth() + regeneration);
+            regeneration--;
+            if (getHealth() > getMaxHealth())
+            {
+                setHealth(getMaxHealth());
+            }
+            healthBar.updateUI(this);
+        }
+        if (bleed > 0)
+        {
+            setHealth(getHealth() - bleed);
+            bleed--;
+            healthBar.updateUI(this);
         }
     }
     public override void die()

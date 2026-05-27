@@ -16,8 +16,9 @@ public abstract class Entity : MonoBehaviour
     public int bleed;
     public int strength;
     public int weakness;
+    public int regeneration;
     public EntityHealthBar healthBar;
-    private Animator animator;
+    [SerializeField] private Animator animator;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -38,7 +39,7 @@ public abstract class Entity : MonoBehaviour
     public int getArmor() { return armor; }
     public int getMaxHealth() { return maxHP; }
     public float getSanity() { return sanity; }
-    public void initialize(int health = 100, int max = 100, float sane = 100f) 
+    public virtual void initialize(int health = 100, int max = 100, float sane = 100f) 
     {
         HP = health;
         maxHP = max;

@@ -1061,8 +1061,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 5876430124611859352}
-  player: {fileID: 0}
   enemies: []
+  players:
+  - {fileID: 1381464523279054894, guid: 6f668ca4b84895b43af81c4c642bf028, type: 3}
+  - {fileID: 467764802914749802, guid: 90d3a4d578303e34eb073e8b5aeab78e, type: 3}
+  - {fileID: 1381464523279054894, guid: 6f668ca4b84895b43af81c4c642bf028, type: 3}
+  - {fileID: 1381464523279054894, guid: 6f668ca4b84895b43af81c4c642bf028, type: 3}
+  playerSpawnPoint: {fileID: 0}
+  enemySpawnPoints: []
+  tempSolution:
+  - {fileID: 7966423987660088623, guid: 7024e20bea0d7744db93d4e994629ccb, type: 3}
+  - {fileID: 222805358330001183, guid: 5d14ca56aa337004c82ebf3791c3f864, type: 3}
   UIcard: {fileID: 7575740921987056581, guid: 570fd75993600ef4d9a04b4634f30827, type: 3}
   UIcards: []
   isPlaying: 0
