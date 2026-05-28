@@ -19,4 +19,12 @@ public class Shadow : Enemy
         setHealth(startHealth);
         setMaxHealth(startHealth);
     }
+    public override void takeDamage(int healthDamage, float sanityDamage, char element)
+    {
+        base.takeDamage(healthDamage, sanityDamage, element);
+        if (element == 'm')
+        {
+            broken++;
+        }
+    }
 }

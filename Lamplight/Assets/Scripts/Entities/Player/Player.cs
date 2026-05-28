@@ -38,17 +38,17 @@ public abstract class Player : Entity
         base.initialize(health, max, sane);
         manager = battle;
     }
-    public override void attackEntity(Entity entity, int healthDamage, float sanityDamage)
+    public override void attackEntity(Entity entity, int healthDamage, float sanityDamage, char element)
     {
-        base.attackEntity(entity, healthDamage, sanityDamage);
+        base.attackEntity(entity, healthDamage, sanityDamage, element);
         foreach (CombatModifier mod in modifiers)
         {
             mod.playerAttacked(this);
         }
     }
-    public override void takeDamage(int healthDamage, float sanityDamage)
+    public override void takeDamage(int healthDamage, float sanityDamage, char element)
     {
-        base.takeDamage(healthDamage, sanityDamage);
+        base.takeDamage(healthDamage, sanityDamage, element);
         foreach (CombatModifier mod in modifiers)
         {
             mod.playerTookDamage(this);
@@ -77,10 +77,18 @@ public abstract class Player : Entity
             healthBar.updateUI(this);
         }
     }
+    public virtual void playCardModUpdate(Card c)
+    {
+        foreach (CombatModifier mod in modifiers)
+        {
+            mod.playedCard(this, c);
+        }
+    }
     public override void die()
     {
         //Add stuff later
     }
+
     public override void playAnimation(int state)
     {
         base.playAnimation(state);

@@ -9,7 +9,7 @@ public class Downpour : Card
     {
         foreach (Enemy e in player.manager.getEnemies())
         {
-            player.attackEntity(e, 5, 0);
+            player.attackEntity(e, 5, 0, getType());
         }
         player.playAnimation(3);
     }

@@ -9,7 +9,7 @@ public class Electrify : Card
     {
         foreach(Enemy e in player.manager.getEnemies())
         {
-            player.attackEntity(e, (3 * spentEnergy), (15 * spentEnergy));
+            player.attackEntity(e, (3 * spentEnergy), (15 * spentEnergy), getType());
         }
         player.playAnimation(3);
     }

@@ -341,6 +341,7 @@ public class BattleManager : MonoBehaviour
                 {
                     discard.Add(hand[handPosition]);
                 }
+                player.playCardModUpdate(hand[handPosition]);
                 hand.RemoveAt(handPosition);
                 Destroy(UIcards[handPosition].gameObject);
                 UIcards.RemoveAt(handPosition);

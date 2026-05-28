@@ -8,7 +8,7 @@ public class BasicAttack : Card
     public BasicAttack(string n, char t, string a) : base(n, "Deal 5 damage to an enemy.", 1, true, false, false, t, a) { }
     public override void play(int spentEnergy, Player player)
     {
-        player.attackEntity(player.focus, 5, 0);
+        player.attackEntity(player.focus, 5, 0, getType());
         player.playAnimation(1);
     }
 }

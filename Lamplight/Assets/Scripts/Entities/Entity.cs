@@ -17,13 +17,17 @@ public abstract class Entity : MonoBehaviour
     public int strength;
     public int weakness;
     public int regeneration;
+    public int broken;
+    public int mania;
     public EntityHealthBar healthBar;
     [SerializeField] private Animator animator;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
     public int getHealth() { return HP; }
+    public Animator getAnimator() { return animator; }
     public void setHealth(int health)
     {
         HP = health;
@@ -35,6 +39,14 @@ public abstract class Entity : MonoBehaviour
     public void setSanity(float sane)
     {
         sanity = sane;
+    }
+    public void setDamageMod(float mod)
+    {
+        damageMod = mod;
+    }
+    public void setArmorMod(float mod)
+    {
+        armorMod = mod;
     }
     public int getArmor() { return armor; }
     public int getMaxHealth() { return maxHP; }
@@ -51,7 +63,15 @@ public abstract class Entity : MonoBehaviour
     }
     public virtual void addArmor(int amount)
     {
-        armor += (int) (amount * armorMod);
+        if (broken == 0)
+        {
+            armor += (int)(amount * armorMod);
+        }
+        else
+        {
+            HP -= broken;
+            broken = 0;
+        }
         if (healthBar != null)
         {
             healthBar.updateUI(this);
@@ -69,7 +89,7 @@ public abstract class Entity : MonoBehaviour
     {
         animator.SetInteger("State", 0);
     }
-    public virtual void takeDamage(int healthDamage, float sanityDamage)
+    public virtual void takeDamage(int healthDamage, float sanityDamage, char element)
     {
         healthDamage = (int)(healthDamage * (damageMod + (0.5f * mark)));
         if ((healthDamage - armor) > 0)
@@ -100,10 +120,10 @@ public abstract class Entity : MonoBehaviour
             die();
         }
     }
-    public virtual void attackEntity(Entity entity, int healthDamage, float sanityDamage)
+    public virtual void attackEntity(Entity entity, int healthDamage, float sanityDamage, char element)
     {
         float attackMulti = 1f + (0.2f * strength) - (0.25f * Mathf.Pow(weakness, 0.33f));
-        entity.takeDamage((int) (healthDamage * attackMulti), sanityDamage);
+        entity.takeDamage((int) (healthDamage * attackMulti), sanityDamage, element);
     }
     public abstract void die();
 }

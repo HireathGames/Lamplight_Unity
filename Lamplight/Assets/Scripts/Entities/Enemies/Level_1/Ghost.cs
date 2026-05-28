@@ -19,4 +19,12 @@ public class Ghost : Enemy
         setHealth(startHealth);
         setMaxHealth(startHealth);
     }
+    public override void takeDamage(int healthDamage, float sanityDamage, char element)
+    {
+        base.takeDamage(healthDamage, sanityDamage, element);
+        if (element == 't')
+        {
+            setSanity(getSanity() - 5);
+        }
+    }
 }

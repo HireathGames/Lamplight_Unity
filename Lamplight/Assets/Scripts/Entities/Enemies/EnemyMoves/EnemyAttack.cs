@@ -33,6 +33,6 @@ public class EnemyAttack : EnemyMove
     }
     public override void performMove(Enemy self, Player player)
     {
-        self.attackEntity(player, healthDamage, sanityDamage);
+        self.attackEntity(player, healthDamage, sanityDamage, 'n');
     }
 }

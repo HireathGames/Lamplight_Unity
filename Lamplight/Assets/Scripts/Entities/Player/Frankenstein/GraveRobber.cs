@@ -7,7 +7,7 @@ public class GraveRobber : Card
     public GraveRobber() : base("Grave Robber", "Deal 12 damage to an enemy. If that enemy dies, gain 3 regeneration.", 2, true, false, false, 't', "Grave Robber") { }
     public override void play(int spentEnergy, Player player)
     {
-        player.attackEntity(player.focus, 12, 0);
+        player.attackEntity(player.focus, 12, 0, getType());
         if (player.focus.getHealth() <= 0)
         {
             player.regeneration += 3;
