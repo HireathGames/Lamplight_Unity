@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
@@ -14,6 +16,13 @@ public class MapManager : MonoBehaviour
     private CursorControl input;
     private PersistentDataManager dataManager;
     private RunData run;
+    [SerializeField] private List<EmptyCard> UIdeck = new List<EmptyCard>();
+    [SerializeField] private EmptyCard EmptyUIcard;
+    [SerializeField] private GameObject deckPanel;
+    [SerializeField] private GameObject mapPanel;
+    [SerializeField] private TMP_Text sorrows;
+    [SerializeField] private Canvas canvas;
+    private int scrollIndex;
     private void Awake()
     {
         camera = Camera.main;
@@ -34,6 +43,10 @@ public class MapManager : MonoBehaviour
     {
         futureLight.intensity = 0;
         input.Mouse.Click.started += _ => click();
+        if (sorrows != null)
+        {
+            sorrows.text = "$" + run.sorrows;
+        }
         for (int i = 0; i < choicesSpawnPositions.Count; i++)
         {
             LevelPiece actual;
@@ -55,6 +68,43 @@ public class MapManager : MonoBehaviour
                 actual.future.Add(futureEncounter);
             }
         }
+    }
+    public void showDeckUI()
+    {
+        deckPanel.SetActive(true);
+        mapPanel.SetActive(false);
+        for (int i = 0; i < run.deck.Count; i++)
+        {
+            Vector3 cardPosition = new Vector3(canvas.transform.position.x + (i * 120) - (400 + (840 * (i / 7))), canvas.transform.position.y + 200 - (200 * (i / 7)), canvas.transform.position.z);
+            EmptyCard tempCard = Instantiate(EmptyUIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
+            tempCard.transform.position = cardPosition;
+            tempCard.setUpCard(run.deck[i]);
+            UIdeck.Add(tempCard);
+        }
+    }
+    public void scroll(int direction)
+    {
+        if (UIdeck.Count != 0)
+        {
+            if (((direction + scrollIndex) >= 0) && ((direction + scrollIndex) <= UIdeck.Count / 7))
+            {
+                foreach (EmptyCard card in UIdeck)
+                {
+                    card.transform.position = new Vector3(card.transform.position.x, card.transform.position.y + (direction * 200), card.transform.position.z);
+                }
+                scrollIndex += direction;
+            }
+        }
+    }
+    public void HideDeckUI()
+    {
+        foreach (EmptyCard card in UIdeck)
+        {
+            Destroy(card.gameObject);
+        }
+        UIdeck.Clear();
+        deckPanel.SetActive(false);
+        mapPanel.SetActive(true);
     }
     private void click()
     {
@@ -79,7 +129,7 @@ public class MapManager : MonoBehaviour
         {
             if (hit.collider.GetComponent<LevelPiece>() != null) 
             {
-                if (futurePieces.Count == 0)
+                if ((futurePieces.Count == 0) && (!hit.collider.GetComponent<LevelPiece>().forShow))
                 {
                     showFuture(hit.collider.GetComponent<LevelPiece>().future);
                 }
@@ -98,14 +148,16 @@ public class MapManager : MonoBehaviour
             LevelPiece actual = Instantiate(future[i], futureSpawnPositions[i]);
             futurePieces.Add(actual);
         }
+        Debug.Log(futurePieces.Count);
     }
     public void hideFuture()
     {
         futureLight.intensity = 0;
-        for (int i = 0; i < futureSpawnPositions.Count; i++)
+        foreach (LevelPiece lp in futurePieces)
         {
-            Destroy(futurePieces[0]);
-            futurePieces.RemoveAt(0);
+            Destroy(lp.gameObject);
         }
+        futurePieces.Clear();
+        Debug.Log(futurePieces.Count);
     }
 }

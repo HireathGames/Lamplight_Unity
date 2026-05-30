@@ -16,22 +16,27 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<List<Enemy>> encounters = new List<List<Enemy>>();
     [SerializeField] private List<Enemy> tempSolution;//I can't figure out how to do this properly so this is for testing
     [SerializeField] private CardUI UIcard;
+    [SerializeField] private EmptyCard EmptyUIcard;
     [SerializeField] private List<CardUI> UIcards;
     [SerializeField] private List<Card> deck = new List<Card>();
     [SerializeField] private List<Card> discard = new List<Card>();
     [SerializeField] private List<Card> hand = new List<Card>();
+    [SerializeField] private List<EmptyCard> UIdeck = new List<EmptyCard>();
     [SerializeField] private bool isPlaying;
     [SerializeField] private GameObject battlePanel;
     [SerializeField] private GameObject rewardsPanel;
+    [SerializeField] private GameObject deckPanel;
     private PersistentDataManager dataManager;
     private RunData run;
     public Camera camera;
     [SerializeField] private TMP_Text energy;
+    [SerializeField] private TMP_Text sorrows;
     private CursorControl input;
     private int activeIndex;
     private bool combatStarted = false;
     private bool combatOver = false;
     private int enemyCombatStep;
+    private int scrollIndex;
     private void Awake()
     {
         //Initializes key conponents
@@ -104,6 +109,54 @@ public class BattleManager : MonoBehaviour
             return false;
         }
     }
+    public void showDeckUI()
+    {
+        if (actionAvailable() && ((!combatOver) && (enemies.Count != 0)))
+        {
+            deckPanel.SetActive(true);
+            battlePanel.SetActive(false);
+            for (int i = 0; i < run.deck.Count; i++)
+            {
+                Vector3 cardPosition = new Vector3(canvas.transform.position.x + (i * 120) - (400 + (840 * (i / 7))), canvas.transform.position.y + 200 - (200 * (i/7)), canvas.transform.position.z);
+                EmptyCard tempCard = Instantiate(EmptyUIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
+                tempCard.transform.position = cardPosition;
+                tempCard.setUpCard(run.deck[i]);
+                UIdeck.Add(tempCard);
+            }
+            foreach (CardUI card in UIcards)
+            {
+                card.gameObject.SetActive(false);
+            }
+        }
+    }
+    public void scroll(int direction)
+    {
+        if (UIdeck.Count != 0)
+        {
+            if (((direction + scrollIndex) >= 0) && ((direction + scrollIndex) <= UIdeck.Count/7))
+            {
+                foreach (EmptyCard card in UIdeck)
+                {
+                    card.transform.position = new Vector3(card.transform.position.x, card.transform.position.y + (direction * 200), card.transform.position.z);
+                }
+                scrollIndex += direction;
+            }
+        }
+    }
+    public void HideDeckUI()
+    {
+        foreach(EmptyCard card in UIdeck)
+        {
+            Destroy(card.gameObject);
+        }
+        UIdeck.Clear();
+        foreach (CardUI card in UIcards)
+        {
+            card.gameObject.SetActive(true);
+        }
+        deckPanel.SetActive(false);
+        battlePanel.SetActive(true);
+    }
     public bool getPlaying() { return isPlaying; }
     public void setPlaying(bool state) { isPlaying = state; }
     public List<Card> getHand() { return hand; }
@@ -113,6 +166,7 @@ public class BattleManager : MonoBehaviour
     {
         //Some more initailization, plus spawning cards on a delay(For testing)
         rewardsPanel.SetActive(false);
+        deckPanel.SetActive(false);
         battlePanel.SetActive(true);
         input.Mouse.Click.performed += _ => endClick();//Lamda expression 
         startCombat();
@@ -202,6 +256,10 @@ public class BattleManager : MonoBehaviour
     public void startCombat()
     {
         initializeCombat();
+        if (sorrows != null)
+        {
+            sorrows.text = "$" + run.sorrows;
+        }
         List<Card> setUp = new List<Card>();
         foreach (Card c in run.deck)
         {
@@ -227,6 +285,7 @@ public class BattleManager : MonoBehaviour
             hand.Add(reward);
             UIcards.Add(tempCard);
         }
+        run.sorrows += Random.Range(20, 41);
         updateCardsInHand();
     }
     public void exitCombatScene()

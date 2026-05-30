@@ -7,4 +7,5 @@ public class LevelPiece : MonoBehaviour
     public MapManager manager;
     public List<LevelPiece> future;
     public string level;
+    public bool forShow;
 }
