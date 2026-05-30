@@ -57,6 +57,7 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
     {
         if (card != null)
         {
+            card.loadArt();
             initialPos = initP;
             initialRot = initR;
             initialSca = initS;
@@ -96,6 +97,7 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
         {
             transform.localScale = new Vector3(initialSca.x * 1.65f, initialSca.y * 1.65f, initialSca.z);
             transform.SetAsLastSibling();
+            image.sprite = card.getAlt();
         }
     }
 
@@ -104,6 +106,7 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
         if (manager.actionAvailable())
         {
             transform.localScale = initialSca;
+            image.sprite = card.getArt();
         }
     }
 

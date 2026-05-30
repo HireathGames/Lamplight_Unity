@@ -51,7 +51,7 @@ public abstract class Player : Entity
         base.takeDamage(healthDamage, sanityDamage, element);
         foreach (CombatModifier mod in modifiers)
         {
-            mod.playerTookDamage(this);
+            mod.playerTookDamage(this, healthDamage);
         }
     }
     public void turnModUpdate()

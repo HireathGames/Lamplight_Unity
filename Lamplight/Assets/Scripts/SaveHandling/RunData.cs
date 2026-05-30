@@ -13,8 +13,9 @@ public class RunData
     public float sanity;
     [SerializeReference] public List<Card> deck;//[SerializeReference] needs to be here, it all breaks otherwise. Because it's abstract.
     [SerializeReference] public List<Card> rewardCards;
+    [SerializeReference] public List<Card> legendaryRewardCards;
     [SerializeReference] public List<LevelPiece> nextEncounters;
-    public RunData(int health, int max, float sane, List<Card> cards, List<Card> rewards, string cha, int money = 50, List<LevelPiece> encounters = null)
+    public RunData(int health, int max, float sane, List<Card> cards, List<Card> rewards, List<Card> legendaryRewards, string cha, int money = 50, List<LevelPiece> encounters = null)
     {
         maxHP = max;
         HP = health;
@@ -22,6 +23,7 @@ public class RunData
         deck = cards;
         character = cha;
         rewardCards = rewards;
+        legendaryRewardCards = legendaryRewards;
         sorrows = money;
         nextEncounters = encounters;
     }

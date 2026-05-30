@@ -50,6 +50,7 @@ public class RestCardUI : Drag, IPointerEnterHandler, IPointerExitHandler
             initialPos = initP;
             initialRot = initR;
             initialSca = initS;
+            card.loadArt();
             this.card = card;
             image.sprite = card.getArt();
             if (!card.getIsX())

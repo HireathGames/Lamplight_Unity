@@ -286,6 +286,9 @@ public class BattleManager : MonoBehaviour
             UIcards.Add(tempCard);
         }
         run.sorrows += Random.Range(20, 41);
+        run.HP = player.getHealth();
+        run.maxHP = player.getMaxHealth();
+        run.sanity = player.getSanity();
         updateCardsInHand();
     }
     public void exitCombatScene()

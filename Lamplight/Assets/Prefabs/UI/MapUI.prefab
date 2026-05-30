@@ -257,20 +257,23 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -826,6 +829,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -923,7 +927,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encounters:
   - {fileID: 2101768965761516843, guid: 99107f16aef6f9d4e9408724044d4081, type: 3}
+  - {fileID: 2101768965761516843, guid: 99107f16aef6f9d4e9408724044d4081, type: 3}
+  - {fileID: 2101768965761516843, guid: 99107f16aef6f9d4e9408724044d4081, type: 3}
   - {fileID: 2101768965761516843, guid: d8f285554bcb8ff4ca0b94d27f2999fd, type: 3}
+  - {fileID: 2101768965761516843, guid: 1f0710d4e5d08394596de0fdaa401720, type: 3}
+  - {fileID: 2101768965761516843, guid: 7f2e0c2afa042014c8cb8589f4dc0271, type: 3}
   futureLight: {fileID: 0}
   choicesSpawnPositions:
   - {fileID: 4118444647371214852}
@@ -1162,7 +1170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -12,7 +12,9 @@ public abstract class Card
     [SerializeField] private int originalCost;
     [SerializeField] private string discription;
     [SerializeField] private string artName;//Keeps track of the original file name of the sprite
-    [SerializeField] public Sprite cardArt;
+    [SerializeField] private Sprite cardArt;
+    [SerializeField] private string altArtName;//Keeps track of the original file name of the sprite
+    [SerializeField] private Sprite altCardArt;
     [SerializeField] private int cost;
     [SerializeField] private bool xCost = false;//Consumes all energy then does an effect a number of time equal to the energy spent
     [SerializeField] private bool banish = false;//If true should be removed from play after being played.
@@ -28,7 +30,25 @@ public abstract class Card
         banish = b;
         type = t;
         artName = art;
-        cardArt = Resources.Load<Sprite>("Sprites/Cards/" + art);//Put in the name of file as a string
+        altArtName = art;
+    }
+    public Card(string n, string d, int c, bool a, bool x, bool b, char t, string art, string alt)
+    {
+        name = n;
+        discription = d;
+        cost = c;
+        originalCost = c;
+        attack = a;
+        xCost = x;
+        banish = b;
+        type = t;
+        artName = art;
+        altArtName = alt;
+    }
+    public void loadArt()
+    {
+        cardArt = Resources.Load<Sprite>("Sprites/Cards/" + artName);//Put in the name of file as a string
+        altCardArt = Resources.Load<Sprite>("Sprites/Cards/" + altArtName);//Put in the name of file as a string
     }
     //Energy spent and the player are arguments to make the effects easier to implement
     public abstract void play(int spentEnergy, Player player);
@@ -41,6 +61,7 @@ public abstract class Card
     public string getDiscription() { return discription; }
     public int getCost() { return cost; }
     public Sprite getArt() { return cardArt; }
+    public Sprite getAlt() { return altCardArt; }
     public void setCost(int c) { cost = c; }
     public bool getIsX() { return xCost; }
     public bool getIsAttack() { return attack; }

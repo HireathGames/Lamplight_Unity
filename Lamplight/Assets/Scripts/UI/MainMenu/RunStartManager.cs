@@ -1,25 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
 using UnityEngine.SceneManagement;
 
 public class RunStartManager : MonoBehaviour
 {
-    private List<Card> rewards;
+    private PersistentDataManager manager;
+    private SaveFileData fileData;
+
     private void Start()
     {
-        rewards = new List<Card>();
-        rewards.Add(new Sadist());
-        rewards.Add(new Panic());
-        rewards.Add(new LuckyCoin());
-        rewards.Add(new Downpour());
-        rewards.Add(new Comedy());
-        rewards.Add(new Tragedy());
+        manager = new PersistentDataManager();
+        if (manager.saveFileExists())
+        {
+            fileData = manager.loadFile();
+        }
+    }
+    public void newFile()
+    {
+        fileData = new SaveFileData();
+        manager.saveFile(fileData);
     }
     public void startHarkerRun()
     {
         List<Card> deck = new List<Card>();
-        PersistentDataManager manager = new PersistentDataManager();
         deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
         deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
         deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
@@ -28,13 +34,13 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new Hunter());
         deck.Add(new Sacrement());
-        manager.saveRun(new RunData(100, 100, 100, deck, rewards, "JH"));
+        RunData run = new RunData(100, 100, 100, deck, fileData.basicRewards, fileData.basicLegendaryRewards, "JH");
+        manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
     public void startFrankensteinRun()
     {
         List<Card> deck = new List<Card>();
-        PersistentDataManager manager = new PersistentDataManager();
         deck.Add(new BasicAttack("Saw", 't', "Saw"));
         deck.Add(new BasicAttack("Saw", 't', "Saw"));
         deck.Add(new BasicAttack("Saw", 't', "Saw"));
@@ -43,13 +49,13 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Avoid", 't', "Hide"));
         deck.Add(new GraveRobber());
         deck.Add(new Electrify());
-        manager.saveRun(new RunData(100, 100, 100, deck, rewards, "VF"));
+        RunData run = new RunData(100, 100, 100, deck, fileData.basicRewards, fileData.basicLegendaryRewards, "VF");
+        manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
     public void startJekyllRun()
     {
         List<Card> deck = new List<Card>();
-        PersistentDataManager manager = new PersistentDataManager();
         deck.Add(new BasicAttack("Bludgeon", 'w', "Bludgeon"));
         deck.Add(new BasicAttack("Bludgeon", 'w', "Bludgeon"));
         deck.Add(new BasicAttack("Bludgeon", 'w', "Bludgeon"));
@@ -58,7 +64,8 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Poise", 'm', "Poise"));
         deck.Add(new Malice());
         deck.Add(new Shatter());
-        manager.saveRun(new RunData(100, 100, 100, deck, rewards, "HJ&EH"));
+        RunData run = new RunData(100, 100, 100, deck, fileData.basicRewards, fileData.basicLegendaryRewards, "HJ&EH");
+        manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
 }
