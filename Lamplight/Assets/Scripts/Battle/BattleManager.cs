@@ -9,11 +9,13 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
     private Player player;
+    [SerializeField] private bool eliteEncounter;
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<Player> players;
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private List<Transform> enemySpawnPoints;
     [SerializeField] private List<List<Enemy>> encounters = new List<List<Enemy>>();
+    [SerializeField] private List<List<Enemy>> eliteEncounters = new List<List<Enemy>>();
     [SerializeField] private List<Enemy> tempSolution;//I can't figure out how to do this properly so this is for testing
     [SerializeField] private CardUI UIcard;
     [SerializeField] private EmptyCard EmptyUIcard;
@@ -52,7 +54,10 @@ public class BattleManager : MonoBehaviour
         tempList1.Add(tempSolution[0]);
         tempList1.Add(tempSolution[1]);
         encounters.Add(tempList1);
-
+        List<Enemy> tempList2 = new List<Enemy>();
+        tempList2.Add(tempSolution[1]);
+        tempList2.Add(tempSolution[2]);
+        eliteEncounters.Add(tempList2);
     }
     public void setActiveIndex(int ind)
     {
@@ -241,13 +246,26 @@ public class BattleManager : MonoBehaviour
                     player.initialize(run.HP, run.maxHP, run.sanity, this);
                 }
             }
-            if (enemySpawnPoints != null && encounters != null)
+            if (enemySpawnPoints != null && (((encounters != null) && !eliteEncounter) || ((eliteEncounters != null) && eliteEncounter)))
             {
-                int ran = Random.Range(0, encounters.Count);
-                for (int i = 0; i < encounters[ran].Count; i++)
+                if (!eliteEncounter)
                 {
-                    Enemy e = Instantiate(encounters[ran][i], enemySpawnPoints[i]);
-                    enemies.Add(e);
+                    int ran = Random.Range(0, encounters.Count);
+                    for (int i = 0; i < encounters[ran].Count; i++)
+                    {
+                        Enemy e = Instantiate(encounters[ran][i], enemySpawnPoints[i]);
+                        enemies.Add(e);
+                    }
+                }
+                else
+                {
+                    int ran = Random.Range(0, eliteEncounters.Count);
+                    for (int i = 0; i < eliteEncounters[ran].Count; i++)
+                    {
+                        Debug.Log("Successful");
+                        Enemy e = Instantiate(eliteEncounters[ran][i], enemySpawnPoints[i]);
+                        enemies.Add(e);
+                    }
                 }
             }
         }
@@ -278,14 +296,37 @@ public class BattleManager : MonoBehaviour
         battlePanel.SetActive(false);
         combatOver = true;
         isPlaying = false;
-        for (int i = 0; i < 3; i++)
+        if (!eliteEncounter)
         {
-            Card reward = run.rewardCards[Random.Range(0, run.rewardCards.Count)];
-            CardUI tempCard = Instantiate(UIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
-            hand.Add(reward);
-            UIcards.Add(tempCard);
+            for (int i = 0; i < 3; i++)
+            {
+                Card reward = run.rewardCards[Random.Range(0, run.rewardCards.Count)];
+                CardUI tempCard = Instantiate(UIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
+                hand.Add(reward);
+                UIcards.Add(tempCard);
+            }
+            run.sorrows += Random.Range(20, 41);
         }
-        run.sorrows += Random.Range(20, 41);
+        else
+        {
+            List<Card> rewardCards = new List<Card>();
+            foreach (Card c in run.rewardCards)
+            {
+                rewardCards.Add(c);
+            }
+            foreach (Card c in run.legendaryRewardCards)
+            {
+                rewardCards.Add(c);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                Card reward = rewardCards[Random.Range(0, rewardCards.Count)];
+                CardUI tempCard = Instantiate(UIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
+                hand.Add(reward);
+                UIcards.Add(tempCard);
+            }
+            run.sorrows += Random.Range(60, 81);
+        }
         run.HP = player.getHealth();
         run.maxHP = player.getMaxHealth();
         run.sanity = player.getSanity();
@@ -293,7 +334,10 @@ public class BattleManager : MonoBehaviour
     }
     public void exitCombatScene()
     {
-        dataManager.saveRun(run);
+        if (run != null)
+        {
+            dataManager.saveRun(run);
+        }
         SceneManager.LoadScene("Level_1_Map");
     }
     public void startTurn()

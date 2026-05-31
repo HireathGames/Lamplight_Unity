@@ -13,6 +13,11 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private ShopCardUI shopCard;
     [SerializeField] private GameObject deckPanel;
     [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject textBox;
+    [SerializeField] private TMP_Text dialogue;
+    [SerializeField] private List<string> harkerLines;
+    [SerializeField] private List<string> frankensteinLines;
+    [SerializeField] private List<string> jekyllLines;
     [SerializeField] private TMP_Text sorrows;
     [SerializeField] private Canvas canvas;
     private List<ShopCardUI> cardsForSale = new List<ShopCardUI>();
@@ -42,6 +47,8 @@ public class ShopManager : MonoBehaviour
             }
         }
         updateCardPositions();
+        textBox.SetActive(false);
+        Invoke("showTextBox", 2);
     }
     public void updateCardPositions()
     {
@@ -78,6 +85,22 @@ public class ShopManager : MonoBehaviour
         foreach (ShopCardUI card in cardsForSale)
         {
             card.gameObject.SetActive(false);
+        }
+    }
+    public void showTextBox()
+    {
+        textBox.SetActive(true);
+        if (run.character.Equals("JH"))
+        {
+            dialogue.text = harkerLines[Random.Range(0, harkerLines.Count)];
+        }
+        else if (run.character.Equals("VF"))
+        {
+            dialogue.text = frankensteinLines[Random.Range(0, frankensteinLines.Count)];
+        }
+        else if (run.character.Equals("HJ&EH"))
+        {
+            dialogue.text = jekyllLines[Random.Range(0, jekyllLines.Count)];
         }
     }
     public void scroll(int direction)

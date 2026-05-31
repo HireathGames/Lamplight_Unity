@@ -13,7 +13,7 @@ public abstract class Enemy : Entity
     private void Start()
     {
         nextMove = moves[Random.Range(0, moves.Count)];
-        manager = FindObjectOfType<BattleManager>();
+        manager = FindAnyObjectByType<BattleManager>();
         if (moveIcon != null)
         {
             moveIcon.sprite = nextMove.moveIcon;
