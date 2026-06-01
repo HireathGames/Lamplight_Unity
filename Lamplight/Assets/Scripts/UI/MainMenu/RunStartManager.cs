@@ -68,4 +68,23 @@ public class RunStartManager : MonoBehaviour
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
+    public void startDorianRun()
+    {
+        List<Card> deck = new List<Card>();
+        deck.Add(new BasicAttack("Slash", 'b', "Slash"));
+        deck.Add(new BasicAttack("Slash", 'b', "Slash"));
+        deck.Add(new BasicAttack("Slash", 'b', "Slash"));
+        deck.Add(new BasicAttack("Slash", 'b', "Slash"));
+        deck.Add(new BasicAttack("Slash", 'b', "Slash"));
+        deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
+        deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
+        deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
+        deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
+        deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
+        deck.Add(new ManicMayham());
+        deck.Add(new Performance());
+        RunData run = new RunData(100, 100, 100, deck, fileData.basicRewards, fileData.basicLegendaryRewards, "DG");
+        manager.saveRun(run);
+        SceneManager.LoadScene("Level_1_Map");
+    }
 }

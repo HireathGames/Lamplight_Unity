@@ -377,6 +377,12 @@ MonoBehaviour:
     and chain? Apologies, apologies, I didn't mean to demean Hyde.
   - Welcome Mr. Hyde, it is always nice to have such famous customers. You make that
     Ripper fellow seem like a school boy.
+  dorianLines:
+  - Greetings, my detested apprentice. You know, out of all my life you are my greatest
+    regret. Just buy something.
+  - I hate you...
+  - Your lucky I am on a leash, or you would die where you stand, murderer.
+  - You turned your back on humanity years ago. You are no better than the Count.
   sorrows: {fileID: 461654075}
   canvas: {fileID: 1155561645}
 --- !u!1 &178999733
@@ -681,8 +687,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome Mr. Hyde, it is always nice to have such famous customers. You
-    make that Ripper fellow seem like a school boy.
+  m_text: Greetings, my detested apprentice. You know, out of all my life you are
+    my greatest regret. Just buy something.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b209d82fe88799438c31da0dd6cbae4, type: 2}
   m_sharedMaterial: {fileID: 5946561176377313474, guid: 4b209d82fe88799438c31da0dd6cbae4, type: 2}

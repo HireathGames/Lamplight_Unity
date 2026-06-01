@@ -32,6 +32,7 @@ public abstract class Player : Entity
         {
             mod.playerDefended(this);
         }
+        modifiers.RemoveAll(item => item.isDone());
     }
     public void initialize(int health = 100, int max = 100, float sane = 100, BattleManager battle = null)
     {
@@ -45,6 +46,7 @@ public abstract class Player : Entity
         {
             mod.playerAttacked(this);
         }
+        modifiers.RemoveAll(item => item.isDone());
     }
     public override void takeDamage(int healthDamage, float sanityDamage, char element)
     {
@@ -53,6 +55,7 @@ public abstract class Player : Entity
         {
             mod.playerTookDamage(this, healthDamage);
         }
+        modifiers.RemoveAll(item => item.isDone());
     }
     public void turnModUpdate()
     {
@@ -60,6 +63,7 @@ public abstract class Player : Entity
         {
             mod.playerTurnStart(this);
         }
+        modifiers.RemoveAll(item => item.isDone());
         if (regeneration > 0)
         {
             setHealth(getHealth() + regeneration);
@@ -83,6 +87,7 @@ public abstract class Player : Entity
         {
             mod.playedCard(this, c);
         }
+        modifiers.RemoveAll(item => item.isDone());
     }
     public override void die()
     {

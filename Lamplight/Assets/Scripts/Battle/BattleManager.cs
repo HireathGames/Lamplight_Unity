@@ -292,12 +292,24 @@ public class BattleManager : MonoBehaviour
         {
             discardCard(0);
         }
+        foreach (Card c in discard)
+        {
+            c.resetCost();
+        }
+        foreach (Card c in deck)
+        {
+            c.resetCost();
+        }
         rewardsPanel.SetActive(true);
         battlePanel.SetActive(false);
         combatOver = true;
         isPlaying = false;
         if (!eliteEncounter)
         {
+            foreach (Card c in run.rewardCards)
+            {
+                c.resetCost();
+            }
             for (int i = 0; i < 3; i++)
             {
                 Card reward = run.rewardCards[Random.Range(0, run.rewardCards.Count)];
@@ -312,10 +324,12 @@ public class BattleManager : MonoBehaviour
             List<Card> rewardCards = new List<Card>();
             foreach (Card c in run.rewardCards)
             {
+                c.resetCost();
                 rewardCards.Add(c);
             }
             foreach (Card c in run.legendaryRewardCards)
             {
+                c.resetCost();
                 rewardCards.Add(c);
             }
             for (int i = 0; i < 3; i++)
@@ -353,8 +367,8 @@ public class BattleManager : MonoBehaviour
             else
             {
                 sanityRandomizer();
+                player.setEnergy(3 + player.mania);
                 player.turnModUpdate();
-                player.setEnergy(3);
                 updateCardsInHand();
             }
         }
@@ -461,20 +475,26 @@ public class BattleManager : MonoBehaviour
         {
             c.resetCost();
         }
-        if (player.getSanity() > 0)
+        if (!combatOver)
         {
-            int randoms = (int) (100f - player.getSanity()) / 25;
-            for (int i = 0; i < randoms; i++)
+            if (player.getSanity() > 0)
             {
-                int pos = Random.Range(0, hand.Count);
-                hand[pos].setCost(Random.Range(1, 3));
+                int randoms = (int)(100f - player.getSanity()) / 25;
+                for (int i = 0; i < randoms; i++)
+                {
+                    int pos = Random.Range(0, hand.Count);
+                    if (!hand[pos].getIsX())
+                    {
+                        hand[pos].setCost(Random.Range(1, 3));
+                    }
+                }
             }
-        }
-        else
-        {
-            foreach (Card c in hand)
+            else
             {
-                c.setCost(Random.Range(0, 6));
+                foreach (Card c in hand)
+                {
+                    c.setCost(Random.Range(0, 6));
+                }
             }
         }
     }

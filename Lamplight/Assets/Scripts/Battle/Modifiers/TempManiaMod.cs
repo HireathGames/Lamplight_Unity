@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeterminationMod : CombatModifier
+public class TempManiaMod : CombatModifier
 {
-    private int health;
-    public override void playerTookDamage(Player player, int damage)
+    private int mania;
+
+    public TempManiaMod(int inMania)
     {
-        if (!isDone())
-        {
-            health += damage;
-        }
+        mania = inMania;
     }
     public override void playerTurnStart(Player player)
     {
         if (!isDone())
         {
-            player.setHealth(player.getHealth() + health);
+            player.mania -= mania;
             player.healthBar.updateUI(player);
             makeDone();
         }
+
     }
 }

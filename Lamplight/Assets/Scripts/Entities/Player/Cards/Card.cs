@@ -23,8 +23,8 @@ public abstract class Card
     {
         name = n;
         discription = d;
-        cost = c;
         originalCost = c;
+        cost = originalCost;
         attack = a;
         xCost = x;
         banish = b;
@@ -36,8 +36,8 @@ public abstract class Card
     {
         name = n;
         discription = d;
-        cost = c;
         originalCost = c;
+        cost = originalCost;
         attack = a;
         xCost = x;
         banish = b;
