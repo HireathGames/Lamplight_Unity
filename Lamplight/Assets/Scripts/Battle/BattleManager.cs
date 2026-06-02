@@ -73,14 +73,14 @@ public class BattleManager : MonoBehaviour
                 {
                     if (hit.collider.GetComponent<Player>() != null)
                     {
-                        if ((hand[activeIndex] != null) && (!hand[activeIndex].getIsAttack()))
+                        if (((activeIndex >= 0) && (activeIndex < hand.Count)) && (!hand[activeIndex].getIsAttack()))
                         {
                             playCard(activeIndex);
                         }
                     }
                     else if (hit.collider.GetComponent<Enemy>() != null)
                     {
-                        if (hand[activeIndex].getIsAttack())
+                        if (((activeIndex >= 0) && (activeIndex < hand.Count)) && hand[activeIndex].getIsAttack())
                         {
                             player.focus = hit.collider.GetComponent<Enemy>();
                             playCard(activeIndex);

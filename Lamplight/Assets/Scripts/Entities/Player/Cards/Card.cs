@@ -67,6 +67,7 @@ public abstract class Card
     public bool getIsAttack() { return attack; }
     public bool getIsBanished() { return banish; }
     public char getType() { return type; }
+    public void setDiscription(string dis) { discription = dis; }
     public override string ToString()
     {
         return name;

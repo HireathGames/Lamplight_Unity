@@ -38,7 +38,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new Hunter());
         deck.Add(new Sacrement());
-        RunData run = new RunData(100, 100, 100, deck, fileData.basicRewards, fileData.basicLegendaryRewards, "JH");
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.harkerRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.harkerLegendaryRewards), "JH");
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
@@ -57,7 +57,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Avoid", 't', "Hide"));
         deck.Add(new GraveRobber());
         deck.Add(new Electrify());
-        RunData run = new RunData(100, 100, 100, deck, fileData.basicRewards, fileData.basicLegendaryRewards, "VF");
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.frankensteinRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.frankensteinLegendaryRewards), "VF");
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
@@ -76,7 +76,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Poise", 'm', "Poise"));
         deck.Add(new Malice());
         deck.Add(new Shatter());
-        RunData run = new RunData(100, 100, 100, deck, fileData.basicRewards, fileData.basicLegendaryRewards, "HJ&EH");
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.jekyllRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.jekyllLegendaryRewards), "HJ&EH");
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
@@ -95,8 +95,27 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
         deck.Add(new ManicMayham());
         deck.Add(new Performance());
-        RunData run = new RunData(100, 100, 100, deck, fileData.basicRewards, fileData.basicLegendaryRewards, "DG");
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.dorianRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.dorianLegendaryRewards), "DG");
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
+    }
+    public List<Card> combineSetsOfCards(List<Card> cardsA, List<Card> cardsB)
+    {
+        List<Card> output = new List<Card>();
+        if (cardsA != null)
+        {
+            foreach (Card c in cardsA)
+            {
+                output.Add(c);
+            }
+        }
+        if (cardsB != null)
+        {
+            foreach (Card c in cardsB)
+            {
+                output.Add(c);
+            }
+        }
+        return (output);
     }
 }
