@@ -91,7 +91,10 @@ public abstract class Player : Entity
     }
     public override void die()
     {
-        //Add stuff later
+        manager.fading = true;
+        manager.Invoke("deathExit", 2);
+        base.playAnimation(-1);
+        actionDelay = 2;
     }
 
     public override void playAnimation(int state)

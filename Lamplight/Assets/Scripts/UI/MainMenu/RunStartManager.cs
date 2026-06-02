@@ -30,6 +30,10 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
         deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new Hunter());
@@ -45,6 +49,10 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicAttack("Saw", 't', "Saw"));
         deck.Add(new BasicAttack("Saw", 't', "Saw"));
         deck.Add(new BasicDefend("Avoid", 't', "Hide"));
+        deck.Add(new BasicAttack("Saw", 't', "Saw"));
+        deck.Add(new BasicDefend("Avoid", 't', "Hide"));
+        deck.Add(new BasicAttack("Saw", 't', "Saw"));
+        deck.Add(new BasicDefend("Avoid", 't', "Hide"));
         deck.Add(new BasicDefend("Avoid", 't', "Hide"));
         deck.Add(new BasicDefend("Avoid", 't', "Hide"));
         deck.Add(new GraveRobber());
@@ -58,6 +66,10 @@ public class RunStartManager : MonoBehaviour
         List<Card> deck = new List<Card>();
         deck.Add(new BasicAttack("Bludgeon", 'w', "Bludgeon"));
         deck.Add(new BasicAttack("Bludgeon", 'w', "Bludgeon"));
+        deck.Add(new BasicAttack("Bludgeon", 'w', "Bludgeon"));
+        deck.Add(new BasicDefend("Poise", 'm', "Poise"));
+        deck.Add(new BasicAttack("Bludgeon", 'w', "Bludgeon"));
+        deck.Add(new BasicDefend("Poise", 'm', "Poise"));
         deck.Add(new BasicAttack("Bludgeon", 'w', "Bludgeon"));
         deck.Add(new BasicDefend("Poise", 'm', "Poise"));
         deck.Add(new BasicDefend("Poise", 'm', "Poise"));

@@ -14,9 +14,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Player> players;
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private List<Transform> enemySpawnPoints;
-    [SerializeField] private List<List<Enemy>> encounters = new List<List<Enemy>>();
-    [SerializeField] private List<List<Enemy>> eliteEncounters = new List<List<Enemy>>();
-    [SerializeField] private List<Enemy> tempSolution;//I can't figure out how to do this properly so this is for testing
+    [SerializeField] private List<Encounter> encounters = new List<Encounter>();
     [SerializeField] private CardUI UIcard;
     [SerializeField] private EmptyCard EmptyUIcard;
     [SerializeField] private List<CardUI> UIcards;
@@ -39,25 +37,15 @@ public class BattleManager : MonoBehaviour
     private bool combatOver = false;
     private int enemyCombatStep;
     private int scrollIndex;
+    public Image fadeOut;
+    private float alpha;
+    public bool fading;
     private void Awake()
     {
         //Initializes key conponents
         input = new CursorControl();
         camera = Camera.main;
         dataManager = new PersistentDataManager();
-        List<Enemy> tempList = new List<Enemy>();
-        tempList.Add(tempSolution[0]);
-        tempList.Add(tempSolution[0]);
-        tempList.Add(tempSolution[0]);
-        encounters.Add(tempList);
-        List<Enemy> tempList1 = new List<Enemy>();
-        tempList1.Add(tempSolution[0]);
-        tempList1.Add(tempSolution[1]);
-        encounters.Add(tempList1);
-        List<Enemy> tempList2 = new List<Enemy>();
-        tempList2.Add(tempSolution[1]);
-        tempList2.Add(tempSolution[2]);
-        eliteEncounters.Add(tempList2);
     }
     public void setActiveIndex(int ind)
     {
@@ -180,7 +168,7 @@ public class BattleManager : MonoBehaviour
     {
         if (combatOver)
         {
-            if (isPlaying)
+            if (isPlaying && (activeIndex >= 0) && (activeIndex < hand.Count))
             {
                 run.deck.Add(hand[activeIndex]);
                 exitCombatScene();
@@ -193,6 +181,15 @@ public class BattleManager : MonoBehaviour
         else
         {
             enemies.RemoveAll(item => item == null);
+        }
+        if (player.getHealth() <= 0)
+        {
+            combatOver = true;
+        }
+        if (fading && fadeOut != null)
+        {
+            alpha += Time.fixedDeltaTime / 2;
+            fadeOut.color = new Color(0, 0, 0, alpha);
         }
     }
     public void updateCardsInHand()
@@ -246,27 +243,17 @@ public class BattleManager : MonoBehaviour
                     player.initialize(run.HP, run.maxHP, run.sanity, this);
                 }
             }
-            if (enemySpawnPoints != null && (((encounters != null) && !eliteEncounter) || ((eliteEncounters != null) && eliteEncounter)))
+            if (enemySpawnPoints != null && encounters.Count != 0)
             {
-                if (!eliteEncounter)
-                {
                     int ran = Random.Range(0, encounters.Count);
-                    for (int i = 0; i < encounters[ran].Count; i++)
+                    for (int i = 0; i < encounters[ran].enemies.Count; i++)
                     {
-                        Enemy e = Instantiate(encounters[ran][i], enemySpawnPoints[i]);
-                        enemies.Add(e);
+                        if (encounters[ran].enemies[i] != null)
+                        {
+                            Enemy e = Instantiate(encounters[ran].enemies[i], enemySpawnPoints[i]);
+                            enemies.Add(e);
+                        }
                     }
-                }
-                else
-                {
-                    int ran = Random.Range(0, eliteEncounters.Count);
-                    for (int i = 0; i < eliteEncounters[ran].Count; i++)
-                    {
-                        Debug.Log("Successful");
-                        Enemy e = Instantiate(eliteEncounters[ran][i], enemySpawnPoints[i]);
-                        enemies.Add(e);
-                    }
-                }
             }
         }
         combatStarted = true;
@@ -354,6 +341,14 @@ public class BattleManager : MonoBehaviour
         }
         SceneManager.LoadScene("Level_1_Map");
     }
+    public void deathExit()
+    {
+        if (run != null)
+        {
+            dataManager.saveRun(run);
+        }
+        SceneManager.LoadScene("Death");
+    }
     public void startTurn()
     {
         if (!combatOver)
@@ -375,12 +370,15 @@ public class BattleManager : MonoBehaviour
     }
     public void endTurn()
     {
-        while(hand.Count > 0)
+        if (actionAvailable() && !combatOver)
         {
-            discardCard(0);
+            while (hand.Count > 0)
+            {
+                discardCard(0);
+            }
+            enemyCombatStep = 0;
+            enemyTurnStep();
         }
-        enemyCombatStep = 0;
-        enemyTurnStep();
     }
     public void enemyTurnStep()
     {
@@ -392,6 +390,7 @@ public class BattleManager : MonoBehaviour
                 enemies[enemyCombatStep].takeTurn(player);
             }
             enemyCombatStep++;
+            player.setDelay(1);
             Invoke("enemyTurnStep", 1);
         }
         else

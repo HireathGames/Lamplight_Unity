@@ -36,6 +36,7 @@ RectTransform:
   - {fileID: 2681170123165485820}
   - {fileID: 6081815501941214299}
   - {fileID: 3758703172006228893}
+  - {fileID: 466533020181960912}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1541,7 +1542,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: -1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1882,7 +1883,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2160,10 +2161,7 @@ MonoBehaviour:
   - {fileID: 1291370274613372570, guid: f8a8618433a003d4a9b5767d280bc756, type: 3}
   playerSpawnPoint: {fileID: 0}
   enemySpawnPoints: []
-  tempSolution:
-  - {fileID: 7966423987660088623, guid: 7024e20bea0d7744db93d4e994629ccb, type: 3}
-  - {fileID: 222805358330001183, guid: 5d14ca56aa337004c82ebf3791c3f864, type: 3}
-  - {fileID: 7326987699185493159, guid: 96e1492fd1d3ca24db666fce1225c1da, type: 3}
+  encounters: []
   UIcard: {fileID: 7575740921987056581, guid: 570fd75993600ef4d9a04b4634f30827, type: 3}
   EmptyUIcard: {fileID: 5353659238691074865, guid: ce21ffaee05b111478adf7f617e91aad, type: 3}
   UIcards: []
@@ -2175,6 +2173,8 @@ MonoBehaviour:
   camera: {fileID: 0}
   energy: {fileID: 1653818166139308067}
   sorrows: {fileID: 6879669070144409681}
+  fadeOut: {fileID: 3076661848699329336}
+  fading: 0
 --- !u!1 &8700177694318429749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,6 +2312,81 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8723482178167923063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466533020181960912}
+  - component: {fileID: 2756305672792227073}
+  - component: {fileID: 3076661848699329336}
+  m_Layer: 5
+  m_Name: fadeout
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &466533020181960912
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723482178167923063}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20.993, y: 20.993, z: 20.993}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7656858523079661520}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2756305672792227073
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723482178167923063}
+  m_CullTransparentMesh: 1
+--- !u!114 &3076661848699329336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723482178167923063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8781601010646030088
 GameObject:
   m_ObjectHideFlags: 0
