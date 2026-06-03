@@ -38,7 +38,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new Hunter());
         deck.Add(new Sacrement());
-        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.harkerRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.harkerLegendaryRewards), "JH");
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.harkerRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.harkerLegendaryRewards), "JH", fileData.shopArtifacts);
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
@@ -57,7 +57,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Avoid", 't', "Hide"));
         deck.Add(new GraveRobber());
         deck.Add(new Electrify());
-        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.frankensteinRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.frankensteinLegendaryRewards), "VF");
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.frankensteinRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.frankensteinLegendaryRewards), "VF", fileData.shopArtifacts);
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
@@ -76,7 +76,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Poise", 'm', "Poise"));
         deck.Add(new Malice());
         deck.Add(new Shatter());
-        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.jekyllRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.jekyllLegendaryRewards), "HJ&EH");
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.jekyllRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.jekyllLegendaryRewards), "HJ&EH", fileData.shopArtifacts);
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
@@ -95,7 +95,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
         deck.Add(new ManicMayham());
         deck.Add(new Performance());
-        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.dorianRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.dorianLegendaryRewards), "DG");
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.dorianRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.dorianLegendaryRewards), "DG", fileData.shopArtifacts);
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }

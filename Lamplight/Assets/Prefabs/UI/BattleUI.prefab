@@ -2164,6 +2164,7 @@ MonoBehaviour:
   encounters: []
   UIcard: {fileID: 7575740921987056581, guid: 570fd75993600ef4d9a04b4634f30827, type: 3}
   EmptyUIcard: {fileID: 5353659238691074865, guid: ce21ffaee05b111478adf7f617e91aad, type: 3}
+  ArtifactIcon: {fileID: 5420117721246445822, guid: 12759b590503aab47976818964874993, type: 3}
   UIcards: []
   UIdeck: []
   isPlaying: 0

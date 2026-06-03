@@ -6,6 +6,7 @@ using UnityEngine;
 public class SaveFileData
 {
     public bool[] characterUnlocks = new bool[4];
+    [SerializeReference] public List<Artifact> shopArtifacts;
     [SerializeReference] public List<Card> basicRewards;
     [SerializeReference] public List<Card> basicLegendaryRewards;
     [SerializeReference] public List<Card> harkerRewards;
@@ -22,11 +23,16 @@ public class SaveFileData
         characterUnlocks[1] = false;
         characterUnlocks[2] = false;
         characterUnlocks[3] = false;
+        shopArtifacts = new List<Artifact>();
         basicRewards = new List<Card>();
         harkerRewards = new List<Card>();
         frankensteinRewards = new List<Card>();
         jekyllRewards = new List<Card>();
         dorianRewards = new List<Card>();
+        shopArtifacts.Add(new StarArtifact());
+        shopArtifacts.Add(new SunArtifact());
+        shopArtifacts.Add(new MoonArtifact());
+        shopArtifacts.Add(new BloodPactArtifact());
         basicRewards.Add(new Sadist());
         basicRewards.Add(new Panic());
         basicRewards.Add(new LuckyCoin());
@@ -49,10 +55,15 @@ public class SaveFileData
         harkerRewards.Add(new ForbiddenHunger());
         harkerLegendaryRewards.Add(new Hemorrhage());
         harkerLegendaryRewards.Add(new Judgment());
-        harkerLegendaryRewards.Add(new Judgment());
-        harkerLegendaryRewards.Add(new Judgment());
         frankensteinRewards.Add(new GraveRobber());
         frankensteinRewards.Add(new Electrify());
+        frankensteinRewards.Add(new MadScience());
+        frankensteinRewards.Add(new HauntingGlare());
+        frankensteinRewards.Add(new Botanist());
+        frankensteinRewards.Add(new ExpermentalSerum());
+        frankensteinRewards.Add(new Patchwork());
+        frankensteinLegendaryRewards.Add(new Necromancy());
+        frankensteinLegendaryRewards.Add(new Pyrophobia());
         jekyllRewards.Add(new Shatter());
         jekyllRewards.Add(new Malice());
         dorianRewards.Add(new Performance());

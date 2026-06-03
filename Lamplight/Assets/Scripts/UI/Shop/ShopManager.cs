@@ -8,6 +8,9 @@ public class ShopManager : MonoBehaviour
 {
     private PersistentDataManager dataManager;
     private RunData run;
+    private Artifact availableArtifact;
+    [SerializeField] private TextBoxOnHover artifactIcon;
+    [SerializeField] private TMP_Text artifactPrice;
     [SerializeField] private List<EmptyCard> UIdeck = new List<EmptyCard>();
     [SerializeField] private EmptyCard EmptyUIcard;
     [SerializeField] private ShopCardUI shopCard;
@@ -47,6 +50,17 @@ public class ShopManager : MonoBehaviour
                 cardsForSale.Add(tempCard);
             }
         }
+        if (run.shopArtifacts != null && run.shopArtifacts.Count != 0)
+        {
+            availableArtifact = run.shopArtifacts[Random.Range(0, run.shopArtifacts.Count)];
+            availableArtifact.randomizeCost();
+            artifactIcon.initializeTextBox(availableArtifact.getName(), availableArtifact.getDiscription(), availableArtifact.getArt());
+            artifactPrice.text = "$" + availableArtifact.getCost();
+        }
+        else
+        {
+            Destroy(artifactIcon.gameObject);
+        }
         updateCardPositions();
         textBox.SetActive(false);
         Invoke("showTextBox", 2);
@@ -58,6 +72,19 @@ public class ShopManager : MonoBehaviour
         {
             Vector3 cardPosition = new Vector3(canvas.transform.position.x + (i * 200) - 200, canvas.transform.position.y - 205, canvas.transform.position.z);
             cardsForSale[i].transform.position = cardPosition;
+        }
+    }
+    public void buyArtifact()
+    {
+        if (availableArtifact.getCost() <= run.sorrows)
+        {
+            run.sorrows -= availableArtifact.getCost();
+            run.heldArtifacts.Add(availableArtifact);
+            if (availableArtifact.isUnique())
+            {
+                run.shopArtifacts.Remove(availableArtifact);
+            }
+            Destroy(artifactIcon.gameObject);
         }
     }
     public void buyCard(ShopCardUI cardUI)

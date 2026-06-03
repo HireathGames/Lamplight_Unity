@@ -995,6 +995,10 @@ PrefabInstance:
       propertyPath: 'eliteEncounters.Array.data[1].enemies.Array.data[2]'
       value: 
       objectReference: {fileID: 7326987699185493159, guid: 96e1492fd1d3ca24db666fce1225c1da, type: 3}
+    - target: {fileID: 6879669070144409681, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
+      propertyPath: m_margin.z
+      value: 23.397217
+      objectReference: {fileID: 0}
     - target: {fileID: 7656858523079661520, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
       propertyPath: m_Pivot.x
       value: 0

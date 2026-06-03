@@ -268,7 +268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Let's Turn back the clock, shall we?
+  m_text: Let's turn back the clock, shall we?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b209d82fe88799438c31da0dd6cbae4, type: 2}
   m_sharedMaterial: {fileID: 5946561176377313474, guid: 4b209d82fe88799438c31da0dd6cbae4, type: 2}

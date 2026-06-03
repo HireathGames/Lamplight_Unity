@@ -50,20 +50,18 @@ public abstract class Player : Entity
     }
     public override void takeDamage(int healthDamage, float sanityDamage, char element)
     {
-        base.takeDamage(healthDamage, sanityDamage, element);
-        foreach (CombatModifier mod in modifiers)
+        if ((healthDamage - getArmor()) > 0)
         {
-            mod.playerTookDamage(this, healthDamage);
+            foreach (CombatModifier mod in modifiers)
+            {
+                mod.playerTookDamage(this, (healthDamage - getArmor()));
+            }
         }
+        base.takeDamage(healthDamage, sanityDamage, element);
         modifiers.RemoveAll(item => item.isDone());
     }
     public void turnModUpdate()
     {
-        foreach (CombatModifier mod in modifiers)
-        {
-            mod.playerTurnStart(this);
-        }
-        modifiers.RemoveAll(item => item.isDone());
         if (regeneration > 0)
         {
             setHealth(getHealth() + regeneration);
@@ -80,6 +78,11 @@ public abstract class Player : Entity
             bleed--;
             healthBar.updateUI(this);
         }
+        foreach (CombatModifier mod in modifiers)
+        {
+            mod.playerTurnStart(this);
+        }
+        modifiers.RemoveAll(item => item.isDone());
     }
     public virtual void playCardModUpdate(Card c)
     {

@@ -17,6 +17,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Encounter> encounters = new List<Encounter>();
     [SerializeField] private CardUI UIcard;
     [SerializeField] private EmptyCard EmptyUIcard;
+    [SerializeField] private TextBoxOnHover ArtifactIcon;
+    private List<TextBoxOnHover> ArtifactIcons = new List<TextBoxOnHover>();
     [SerializeField] private List<CardUI> UIcards;
     [SerializeField] private List<Card> deck = new List<Card>();
     [SerializeField] private List<Card> discard = new List<Card>();
@@ -120,6 +122,10 @@ public class BattleManager : MonoBehaviour
             {
                 card.gameObject.SetActive(false);
             }
+            foreach (TextBoxOnHover icon in ArtifactIcons)
+            {
+                icon.gameObject.SetActive(false);
+            }
         }
     }
     public void scroll(int direction)
@@ -146,6 +152,10 @@ public class BattleManager : MonoBehaviour
         foreach (CardUI card in UIcards)
         {
             card.gameObject.SetActive(true);
+        }
+        foreach (TextBoxOnHover icon in ArtifactIcons)
+        {
+            icon.gameObject.SetActive(true);
         }
         deckPanel.SetActive(false);
         battlePanel.SetActive(true);
@@ -221,7 +231,6 @@ public class BattleManager : MonoBehaviour
         {
             if (playerSpawnPoint != null)
             {
-                Debug.Log(run.character);
                 if (run.character.Equals("VF"))
                 {
                     player = Instantiate(players[1], playerSpawnPoint);
@@ -255,6 +264,16 @@ public class BattleManager : MonoBehaviour
                         }
                     }
             }
+            if (run.heldArtifacts != null && run.heldArtifacts.Count != 0)
+            {
+                for (int i = 0; i < run.heldArtifacts.Count; i++)
+                {
+                    TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x - 330 + (i * 50), canvas.transform.position.y + 280, canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
+                    icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
+                    player.addModifier(run.heldArtifacts[i].getEffect());
+                    ArtifactIcons.Add(icon);
+                }
+            }
         }
         combatStarted = true;
     }
@@ -286,6 +305,10 @@ public class BattleManager : MonoBehaviour
         foreach (Card c in deck)
         {
             c.resetCost();
+        }
+        foreach (TextBoxOnHover icon in ArtifactIcons)
+        {
+            icon.gameObject.SetActive(false);
         }
         rewardsPanel.SetActive(true);
         battlePanel.SetActive(false);
