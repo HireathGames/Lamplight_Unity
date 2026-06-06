@@ -300,11 +300,11 @@ public class BattleManager : MonoBehaviour
         }
         foreach (Card c in discard)
         {
-            c.resetCost();
+            c.resetCard();
         }
         foreach (Card c in deck)
         {
-            c.resetCost();
+            c.resetCard();
         }
         foreach (TextBoxOnHover icon in ArtifactIcons)
         {
@@ -318,7 +318,7 @@ public class BattleManager : MonoBehaviour
         {
             foreach (Card c in run.rewardCards)
             {
-                c.resetCost();
+                c.resetCard();
             }
             for (int i = 0; i < 3; i++)
             {
@@ -334,12 +334,12 @@ public class BattleManager : MonoBehaviour
             List<Card> rewardCards = new List<Card>();
             foreach (Card c in run.rewardCards)
             {
-                c.resetCost();
+                c.resetCard();
                 rewardCards.Add(c);
             }
             foreach (Card c in run.legendaryRewardCards)
             {
-                c.resetCost();
+                c.resetCard();
                 rewardCards.Add(c);
             }
             for (int i = 0; i < 3; i++)

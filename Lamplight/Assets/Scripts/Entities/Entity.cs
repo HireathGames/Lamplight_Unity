@@ -40,6 +40,10 @@ public abstract class Entity : MonoBehaviour
     {
         sanity = sane;
     }
+    public void setArmor(int block)
+    {
+        armor = block;
+    }
     public void setDamageMod(float mod)
     {
         damageMod = mod;

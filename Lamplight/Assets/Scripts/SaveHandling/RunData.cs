@@ -16,8 +16,9 @@ public class RunData
     [SerializeReference] public List<Card> legendaryRewardCards;
     [SerializeReference] public List<Artifact> heldArtifacts;
     [SerializeReference] public List<Artifact> shopArtifacts;
+    [SerializeReference] public List<Event> events;
     [SerializeReference] public List<LevelPiece> nextEncounters;
-    public RunData(int health, int max, float sane, List<Card> cards, List<Card> rewards, List<Card> legendaryRewards, string cha, List<Artifact> artifacts = null, int money = 50, List<LevelPiece> encounters = null)
+    public RunData(int health, int max, float sane, List<Card> cards, List<Card> rewards, List<Card> legendaryRewards, string cha, List<Artifact> artifacts = null, List<Event> events = null, int money = 50, List<LevelPiece> encounters = null)
     {
         maxHP = max;
         HP = health;
@@ -30,5 +31,6 @@ public class RunData
         shopArtifacts = artifacts;
         heldArtifacts = new List<Artifact>();
         nextEncounters = encounters;
+        this.events = events;
     }
 }

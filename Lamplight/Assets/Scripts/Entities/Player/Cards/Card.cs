@@ -11,6 +11,7 @@ public abstract class Card
     [SerializeField] private bool attack;
     [SerializeField] private int originalCost;
     [SerializeField] private string discription;
+    [SerializeField] private string originalDiscription;
     [SerializeField] private string artName;//Keeps track of the original file name of the sprite
     [SerializeField] private Sprite cardArt;
     [SerializeField] private string altArtName;//Keeps track of the original file name of the sprite
@@ -23,6 +24,7 @@ public abstract class Card
     {
         name = n;
         discription = d;
+        originalDiscription = d;
         originalCost = c;
         cost = originalCost;
         attack = a;
@@ -36,6 +38,7 @@ public abstract class Card
     {
         name = n;
         discription = d;
+        originalDiscription = d;
         originalCost = c;
         cost = originalCost;
         attack = a;
@@ -53,6 +56,11 @@ public abstract class Card
     //Energy spent and the player are arguments to make the effects easier to implement
     public abstract void play(int spentEnergy, Player player);
     public string getName() { return name; }
+    public void resetCard()
+    {
+        cost = originalCost;
+        discription = originalDiscription;
+    }
     public void resetCost()
     {
         cost = originalCost;

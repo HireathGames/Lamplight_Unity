@@ -19,6 +19,7 @@ public abstract class Player : Entity
     }
     public void setEnergy(int gain) { energy = gain; }
     public int getEnergy() { return energy; }
+    public List<CombatModifier> getModifiers() { return modifiers; }
     public void setDelay(float delay) { actionDelay = delay; }
     public float getDelay() { return actionDelay; }
     public void addModifier(CombatModifier mod)
@@ -62,6 +63,11 @@ public abstract class Player : Entity
     }
     public void turnModUpdate()
     {
+        if (getArmor() > 0)
+        {
+            setArmor(getArmor() / 2);
+            healthBar.updateUI(this);
+        }
         if (regeneration > 0)
         {
             setHealth(getHealth() + regeneration);

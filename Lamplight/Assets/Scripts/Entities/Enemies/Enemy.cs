@@ -21,6 +21,11 @@ public abstract class Enemy : Entity
     }
     public void takeTurn(Player player)
     {
+        if (getArmor() > 0)
+        {
+            setArmor(getArmor() / 2);
+            healthBar.updateUI(this);
+        }
         nextMove.performMove(this, player);
         playAnimation(nextMove.animationIndex);
         float skipChance = 0.5f + (getSanity() / 200f);

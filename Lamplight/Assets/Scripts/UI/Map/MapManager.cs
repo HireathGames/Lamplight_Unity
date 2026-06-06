@@ -114,10 +114,20 @@ public class MapManager : MonoBehaviour
         {
             if (hit.collider.GetComponent<LevelPiece>() != null)
             {
-                LevelPiece encounter = hit.collider.GetComponent<LevelPiece>();
-                run.nextEncounters = encounter.future;
-                dataManager.saveRun(run);
-                SceneManager.LoadScene(encounter.level);
+                if (hit.collider.GetComponent<MysteryPiece>() == null)
+                {
+                    LevelPiece encounter = hit.collider.GetComponent<LevelPiece>();
+                    run.nextEncounters = encounter.future;
+                    dataManager.saveRun(run);
+                    SceneManager.LoadScene(encounter.level);
+                }
+                else
+                {
+                    MysteryPiece encounter = hit.collider.GetComponent<MysteryPiece>();
+                    run.nextEncounters = encounter.future;
+                    dataManager.saveRun(run);
+                    SceneManager.LoadScene(encounter.getLevel(run));
+                }
             }
         }
     }

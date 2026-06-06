@@ -7,6 +7,9 @@ public class SaveFileData
 {
     public bool[] characterUnlocks = new bool[4];
     [SerializeReference] public List<Artifact> shopArtifacts;
+    [SerializeReference] public List<Event> level_1_Events;
+    [SerializeReference] public List<Event> level_2_Events;
+    [SerializeReference] public List<Event> level_3_Events;
     [SerializeReference] public List<Card> basicRewards;
     [SerializeReference] public List<Card> basicLegendaryRewards;
     [SerializeReference] public List<Card> harkerRewards;
@@ -23,6 +26,10 @@ public class SaveFileData
         characterUnlocks[1] = false;
         characterUnlocks[2] = false;
         characterUnlocks[3] = false;
+        level_1_Events = new List<Event>();
+        level_1_Events.Add(new StormyPathEvent());
+        level_1_Events.Add(new MysteryManEvent());
+        level_1_Events.Add(new MirrorManEvent());
         shopArtifacts = new List<Artifact>();
         basicRewards = new List<Card>();
         harkerRewards = new List<Card>();
@@ -66,6 +73,13 @@ public class SaveFileData
         frankensteinLegendaryRewards.Add(new Pyrophobia());
         jekyllRewards.Add(new Shatter());
         jekyllRewards.Add(new Malice());
+        jekyllRewards.Add(new Guilt());
+        jekyllRewards.Add(new Alive());
+        jekyllRewards.Add(new DisapearingAct());
+        jekyllRewards.Add(new Psychoanalyse());
+        jekyllRewards.Add(new VirtuousPresence());
+        jekyllLegendaryRewards.Add(new SinfulShadow());
+        jekyllLegendaryRewards.Add(new Murder());
         dorianRewards.Add(new Performance());
         dorianRewards.Add(new ManicMayham());
     }

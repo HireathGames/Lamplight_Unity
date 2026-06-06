@@ -49,6 +49,10 @@ public class JekyllAndHyde : Player
                 healthBar.updateUI(this);
                 transformed = true;
                 vice = 1;
+                foreach (CombatModifier modifier in getModifiers())
+                {
+                    modifier.jekyllHydeTransformation(this);
+                }
             }
             else
             {
@@ -65,6 +69,10 @@ public class JekyllAndHyde : Player
                 healthBar.updateUI(this);
                 transformed = false;
                 vice = 0;
+                foreach (CombatModifier modifier in getModifiers())
+                {
+                    modifier.jekyllHydeTransformation(this);
+                }
             }
             else
             {
