@@ -16,6 +16,10 @@ public class MapManager : MonoBehaviour
     private CursorControl input;
     private PersistentDataManager dataManager;
     private RunData run;
+    public TMP_Text health;
+    public TMP_Text sanity;
+    [SerializeField] private TextBoxOnHover ArtifactIcon;
+    private List<TextBoxOnHover> ArtifactIcons = new List<TextBoxOnHover>();
     [SerializeField] private List<EmptyCard> UIdeck = new List<EmptyCard>();
     [SerializeField] private EmptyCard EmptyUIcard;
     [SerializeField] private GameObject deckPanel;
@@ -68,6 +72,17 @@ public class MapManager : MonoBehaviour
                 actual.future.Add(futureEncounter);
             }
         }
+        if (run.heldArtifacts != null && run.heldArtifacts.Count != 0)
+        {
+            for (int i = 0; i < run.heldArtifacts.Count; i++)
+            {
+                TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (i * 55) - (330 + (660 * (i / 12))), canvas.transform.position.y + 280 - (110 * (i / 12)), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
+                icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
+                ArtifactIcons.Add(icon);
+            }
+        }
+        health.text = "Health:" + run.HP + "/" + run.maxHP;
+        sanity.text = "Sanity:" + run.sanity;
     }
     public void showDeckUI()
     {
@@ -80,6 +95,10 @@ public class MapManager : MonoBehaviour
             tempCard.transform.position = cardPosition;
             tempCard.setUpCard(run.deck[i]);
             UIdeck.Add(tempCard);
+        }
+        foreach (TextBoxOnHover icon in ArtifactIcons)
+        {
+            icon.gameObject.SetActive(false);
         }
     }
     public void scroll(int direction)
@@ -101,6 +120,10 @@ public class MapManager : MonoBehaviour
         foreach (EmptyCard card in UIdeck)
         {
             Destroy(card.gameObject);
+        }
+        foreach (TextBoxOnHover icon in ArtifactIcons)
+        {
+            icon.gameObject.SetActive(true);
         }
         UIdeck.Clear();
         deckPanel.SetActive(false);

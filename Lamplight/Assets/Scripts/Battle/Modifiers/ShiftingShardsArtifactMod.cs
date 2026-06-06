@@ -28,7 +28,8 @@ public class ShiftingShardsArtifactMod : CombatModifier
         }
         if (types[0] && types[1] && types[2] && types[3])
         {
-            player.regeneration += 4;
+            player.regeneration += 6;
+            player.healthBar.updateUI(player);
             makeDone();
         }
     }

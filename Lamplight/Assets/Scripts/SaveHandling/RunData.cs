@@ -11,6 +11,7 @@ public class RunData
     public int HP;
     public int sorrows;
     public float sanity;
+    public string currentScene;
     [SerializeReference] public List<Card> deck;//[SerializeReference] needs to be here, it all breaks otherwise. Because it's abstract.
     [SerializeReference] public List<Card> rewardCards;
     [SerializeReference] public List<Card> legendaryRewardCards;

@@ -9,11 +9,11 @@ public class Hallucination : Card
     {
         player.manager.draw();
         player.manager.draw();
-        if (player.manager.getHand()[player.manager.getHand().Count - 1].getIsX())
+        if (!player.manager.getHand()[player.manager.getHand().Count - 1].getIsX())
         {
             player.manager.getHand()[player.manager.getHand().Count - 1].setCost(Random.Range(0, 4));
         }
-        if (player.manager.getHand()[player.manager.getHand().Count - 2].getIsX())
+        if (!player.manager.getHand()[player.manager.getHand().Count - 2].getIsX())
         {
             player.manager.getHand()[player.manager.getHand().Count - 2].setCost(Random.Range(0, 4));
         }

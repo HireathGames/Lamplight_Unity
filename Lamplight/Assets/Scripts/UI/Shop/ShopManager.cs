@@ -26,6 +26,10 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Canvas canvas;
     private List<ShopCardUI> cardsForSale = new List<ShopCardUI>();
     private int scrollIndex;
+    public TMP_Text health;
+    public TMP_Text sanity;
+    [SerializeField] private TextBoxOnHover OwnedArtifactIcon;
+    private List<TextBoxOnHover> ArtifactIcons = new List<TextBoxOnHover>();
     private void Awake()
     {
         dataManager = new PersistentDataManager();
@@ -61,6 +65,17 @@ public class ShopManager : MonoBehaviour
         {
             Destroy(artifactIcon.gameObject);
         }
+        if (run.heldArtifacts != null && run.heldArtifacts.Count != 0)
+        {
+            for (int i = 0; i < run.heldArtifacts.Count; i++)
+            {
+                TextBoxOnHover icon = Instantiate(OwnedArtifactIcon, new Vector3(canvas.transform.position.x + (i * 55) - (330 + (660 * (i/12))), canvas.transform.position.y + 280 - (110 * (i/12)), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
+                icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
+                ArtifactIcons.Add(icon);
+            }
+        }
+        health.text = "Health:" + run.HP + "/" + run.maxHP;
+        sanity.text = "Sanity:" + run.sanity;
         updateCardPositions();
         textBox.SetActive(false);
         Invoke("showTextBox", 2);
@@ -110,10 +125,33 @@ public class ShopManager : MonoBehaviour
             tempCard.setUpCard(run.deck[i]);
             UIdeck.Add(tempCard);
         }
+        hideMain();
+    }
+    public void hideMain()
+    {
         foreach (ShopCardUI card in cardsForSale)
         {
             card.gameObject.SetActive(false);
         }
+        foreach (TextBoxOnHover icon in ArtifactIcons)
+        {
+            icon.gameObject.SetActive(false);
+        }
+        artifactIcon.gameObject.SetActive(false);
+        artifactPrice.gameObject.SetActive(false);
+    }
+    public void showMain()
+    {
+        foreach (ShopCardUI card in cardsForSale)
+        {
+            card.gameObject.SetActive(true);
+        }
+        foreach (TextBoxOnHover icon in ArtifactIcons)
+        {
+            icon.gameObject.SetActive(true);
+        }
+        artifactIcon.gameObject.SetActive(true);
+        artifactPrice.gameObject.SetActive(true);
     }
     public void showTextBox()
     {
@@ -155,13 +193,10 @@ public class ShopManager : MonoBehaviour
         {
             Destroy(card.gameObject);
         }
-        foreach (ShopCardUI card in cardsForSale)
-        {
-            card.gameObject.SetActive(true);
-        }
         UIdeck.Clear();
         deckPanel.SetActive(false);
         shopPanel.SetActive(true);
+        showMain();
     }
     public void exit()
     {
