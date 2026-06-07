@@ -10,6 +10,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Canvas canvas;
     private Player player;
     [SerializeField] private bool eliteEncounter;
+    [SerializeField] private bool boss;
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<Player> players;
     [SerializeField] private Transform playerSpawnPoint;
@@ -42,6 +43,7 @@ public class BattleManager : MonoBehaviour
     public Image fadeOut;
     private float alpha;
     public bool fading;
+    public string exitScene = "Level_1_Map";
     private void Awake()
     {
         //Initializes key conponents
@@ -252,8 +254,10 @@ public class BattleManager : MonoBehaviour
                     player.initialize(run.HP, run.maxHP, run.sanity, this);
                 }
             }
-            if (enemySpawnPoints != null && encounters.Count != 0)
+            if (!boss)
             {
+                if (enemySpawnPoints != null && encounters.Count != 0)
+                {
                     int ran = Random.Range(0, encounters.Count);
                     for (int i = 0; i < encounters[ran].enemies.Count; i++)
                     {
@@ -263,6 +267,13 @@ public class BattleManager : MonoBehaviour
                             enemies.Add(e);
                         }
                     }
+                }
+            }
+            else
+            {
+                eliteEncounter = true;
+                enemies = new List<Enemy>(FindObjectsByType<Enemy>());
+
             }
             if (run.heldArtifacts != null && run.heldArtifacts.Count != 0)
             {
@@ -360,9 +371,10 @@ public class BattleManager : MonoBehaviour
     {
         if (run != null)
         {
+            run.mapProgress = 0;
             dataManager.saveRun(run);
         }
-        SceneManager.LoadScene("Level_1_Map");
+        SceneManager.LoadScene(exitScene);
     }
     public void deathExit()
     {

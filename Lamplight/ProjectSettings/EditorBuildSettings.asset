@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Event.unity
     guid: 9e689ddb2bddb324f98e5c73c8210037
+  - enabled: 1
+    path: Assets/Scenes/Level_1/Level_1_Boss.unity
+    guid: d2b6c32761d6af449acdac84116de503
   m_configObjects: {}

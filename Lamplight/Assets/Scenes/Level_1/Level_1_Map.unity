@@ -20308,6 +20308,7 @@ MonoBehaviour:
   - {fileID: 7857955959865219235, guid: 64947bfcf74bcf543a08420f9c0479b5, type: 3}
   - {fileID: 7857955959865219235, guid: 64947bfcf74bcf543a08420f9c0479b5, type: 3}
   - {fileID: 2101768965761516843, guid: 99107f16aef6f9d4e9408724044d4081, type: 3}
+  bossPiece: {fileID: 2101768965761516843, guid: 24d6780c46253db44b19e22335a06291, type: 3}
   futureLight: {fileID: 1131696836}
   choicesSpawnPositions:
   - {fileID: 716584605}

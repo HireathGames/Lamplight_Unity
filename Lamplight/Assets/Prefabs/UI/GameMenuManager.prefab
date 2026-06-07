@@ -2915,7 +2915,8 @@ MonoBehaviour:
     but it is still importent. As sanity decreases, cards in your hand will randomize
     their costs, and when you reach 0 the randomization gets harsher. In addition,
     if your or anothers sanity is decreased past 0, that will be converted into health
-    damage. You get all sanity back at rest sites. '
+    damage. You get all sanity back at rest sites.Enemies have a chance to breakdown
+    when their sanity gets low, skipping their turn.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}

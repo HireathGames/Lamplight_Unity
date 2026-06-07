@@ -24,7 +24,7 @@ public class Ghost : Enemy
         base.takeDamage(healthDamage, sanityDamage, element);
         if (element == 't')
         {
-            setSanity(getSanity() - 5);
+            takeDamage(0, 5, 'n');
         }
     }
 }

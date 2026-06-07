@@ -10,6 +10,7 @@ public abstract class Enemy : Entity
     [SerializeField] private EnemyMove nextMove;
     [SerializeField] private Image moveIcon;
     private BattleManager manager;
+    private int breakDowns;
     private void Start()
     {
         nextMove = moves[Random.Range(0, moves.Count)];
@@ -19,7 +20,7 @@ public abstract class Enemy : Entity
             moveIcon.sprite = nextMove.moveIcon;
         }
     }
-    public void takeTurn(Player player)
+    public virtual void takeTurn(Player player)
     {
         if (getArmor() > 0)
         {
@@ -36,6 +37,7 @@ public abstract class Enemy : Entity
         else
         {
             nextMove = new EnemyInsanitySkip();
+            breakDowns++;
         }
         if (moveIcon != null)
         {
@@ -54,6 +56,26 @@ public abstract class Enemy : Entity
     public void addMove(EnemyMove move)
     {
         moves.Add(move);
+    }
+    public int getBreakdowns()
+    {
+        return breakDowns;
+    }
+    public EnemyMove getNextMove()
+    {
+        return nextMove;
+    }
+    public void setNextMove(EnemyMove move)
+    {
+        nextMove = move;
+        if (moveIcon != null)
+        {
+            moveIcon.sprite = nextMove.moveIcon;
+        }
+    }
+    public BattleManager getManager()
+    {
+        return manager;
     }
     public override void die()
     {

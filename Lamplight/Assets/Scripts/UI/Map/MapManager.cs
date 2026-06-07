@@ -9,6 +9,7 @@ public class MapManager : MonoBehaviour
 {
     public List<LevelPiece> encounters;
     private List<LevelPiece> futurePieces = new List<LevelPiece>();
+    public LevelPiece bossPiece;
     [SerializeField] private Light futureLight;
     [SerializeField] private List<Transform> choicesSpawnPositions;
     [SerializeField] private List<Transform> futureSpawnPositions;
@@ -62,15 +63,35 @@ public class MapManager : MonoBehaviour
             }
             else
             {
-                LevelPiece encounter = run.nextEncounters[i];
-                actual = Instantiate(encounter, choicesSpawnPositions[i]);
-                actual.manager = this;
+                if (run.nextEncounters[i] != null)
+                {
+                    LevelPiece encounter = run.nextEncounters[i];
+                    actual = Instantiate(encounter, choicesSpawnPositions[i]);
+                    actual.manager = this;
+                }
+                else
+                {
+                    actual = null;
+                }
             }
-            for (int j = 0; j < futureSpawnPositions.Count; j++)
+            if (actual != null)
             {
-                LevelPiece futureEncounter = encounters[Random.Range(0, encounters.Count)];
-                actual.future.Add(futureEncounter);
+                if (run.mapProgress < 9)
+                {
+                    for (int j = 0; j < futureSpawnPositions.Count; j++)
+                    {
+                        LevelPiece futureEncounter = encounters[Random.Range(0, encounters.Count)];
+                        actual.future.Add(futureEncounter);
+                    }
+                }
+                else
+                {
+                    actual.future.Add(null);
+                    actual.future.Add(bossPiece);
+                    actual.future.Add(null);
+                }
             }
+
         }
         if (run.heldArtifacts != null && run.heldArtifacts.Count != 0)
         {
@@ -141,6 +162,8 @@ public class MapManager : MonoBehaviour
                 {
                     LevelPiece encounter = hit.collider.GetComponent<LevelPiece>();
                     run.nextEncounters = encounter.future;
+                    run.mapProgress += 1;
+                    Debug.Log(run.mapProgress);
                     dataManager.saveRun(run);
                     SceneManager.LoadScene(encounter.level);
                 }
@@ -148,6 +171,8 @@ public class MapManager : MonoBehaviour
                 {
                     MysteryPiece encounter = hit.collider.GetComponent<MysteryPiece>();
                     run.nextEncounters = encounter.future;
+                    run.mapProgress += 1;
+                    Debug.Log(run.mapProgress);
                     dataManager.saveRun(run);
                     SceneManager.LoadScene(encounter.getLevel(run));
                 }
@@ -164,7 +189,10 @@ public class MapManager : MonoBehaviour
             {
                 if ((futurePieces.Count == 0) && (!hit.collider.GetComponent<LevelPiece>().forShow))
                 {
-                    showFuture(hit.collider.GetComponent<LevelPiece>().future);
+                    if (run.mapProgress <= 9)
+                    {
+                        showFuture(hit.collider.GetComponent<LevelPiece>().future);
+                    }
                 }
             }
             else if (futurePieces.Count != 0)
@@ -178,10 +206,12 @@ public class MapManager : MonoBehaviour
         futureLight.intensity = 2;
         for (int i = 0; i < futureSpawnPositions.Count; i++)
         {
-            LevelPiece actual = Instantiate(future[i], futureSpawnPositions[i]);
-            futurePieces.Add(actual);
+            if ((i < future.Count) && (future[i] != null))
+            {
+                LevelPiece actual = Instantiate(future[i], futureSpawnPositions[i]);
+                futurePieces.Add(actual);
+            }
         }
-        Debug.Log(futurePieces.Count);
     }
     public void hideFuture()
     {
@@ -191,6 +221,5 @@ public class MapManager : MonoBehaviour
             Destroy(lp.gameObject);
         }
         futurePieces.Clear();
-        Debug.Log(futurePieces.Count);
     }
 }
