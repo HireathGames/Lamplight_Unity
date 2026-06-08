@@ -97,7 +97,7 @@ public class MapManager : MonoBehaviour
         {
             for (int i = 0; i < run.heldArtifacts.Count; i++)
             {
-                TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (i * 55) - (330 + (660 * (i / 12))), canvas.transform.position.y + 280 - (110 * (i / 12)), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
+                TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (((i * 55) - (330 + (660 * (i / 12)))) * canvas.scaleFactor), canvas.transform.position.y + ((280 - (110 * (i / 12))) * canvas.scaleFactor), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
                 icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
                 ArtifactIcons.Add(icon);
             }
@@ -111,7 +111,7 @@ public class MapManager : MonoBehaviour
         mapPanel.SetActive(false);
         for (int i = 0; i < run.deck.Count; i++)
         {
-            Vector3 cardPosition = new Vector3(canvas.transform.position.x + (i * 120) - (400 + (840 * (i / 7))), canvas.transform.position.y + 200 - (200 * (i / 7)), canvas.transform.position.z);
+            Vector3 cardPosition = new Vector3(canvas.transform.position.x + (((i * 120) - (400 + (840 * (i / 7)))) * canvas.scaleFactor), canvas.transform.position.y + ((200 - (200 * (i / 7))) * canvas.scaleFactor), canvas.transform.position.z);
             EmptyCard tempCard = Instantiate(EmptyUIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
             tempCard.transform.position = cardPosition;
             tempCard.setUpCard(run.deck[i]);

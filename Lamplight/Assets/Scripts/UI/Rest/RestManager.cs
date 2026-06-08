@@ -99,7 +99,7 @@ public class RestManager : MonoBehaviour
         animator.SetBool("State", true);
         for (int i = 0; i < run.deck.Count; i++)
         {
-            Vector3 cardPosition = new Vector3(canvas.transform.position.x + (i * 120) + (500 * (i / 2)) - (425 + (1480 * (i / 4))), canvas.transform.position.y + 200 - (200 * (i / 4)), canvas.transform.position.z);
+            Vector3 cardPosition = new Vector3(canvas.transform.position.x + (((i * 120) + (500 * (i / 2)) - (425 + (1480 * (i / 4)))) * canvas.scaleFactor), canvas.transform.position.y + ((200 - (200 * (i / 4))) * canvas.scaleFactor), canvas.transform.position.z);
             RestCardUI tempCard = Instantiate(restCard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
             tempCard.transform.position = cardPosition;
             tempCard.setUpCard(cardPosition, tempCard.transform.rotation, tempCard.transform.localScale, run.deck[i], this, i);

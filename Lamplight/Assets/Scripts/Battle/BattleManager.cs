@@ -114,7 +114,7 @@ public class BattleManager : MonoBehaviour
             battlePanel.SetActive(false);
             for (int i = 0; i < run.deck.Count; i++)
             {
-                Vector3 cardPosition = new Vector3(canvas.transform.position.x + (i * 120) - (400 + (840 * (i / 7))), canvas.transform.position.y + 200 - (200 * (i/7)), canvas.transform.position.z);
+                Vector3 cardPosition = new Vector3(canvas.transform.position.x + (((i * 120) - (400 + (840 * (i / 7)))) * canvas.scaleFactor), canvas.transform.position.y + ((200 - (200 * (i/7))) * canvas.scaleFactor), canvas.transform.position.z);
                 EmptyCard tempCard = Instantiate(EmptyUIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
                 tempCard.transform.position = cardPosition;
                 tempCard.setUpCard(run.deck[i]);
@@ -210,7 +210,7 @@ public class BattleManager : MonoBehaviour
         {
             for (int i = 0; i < hand.Count; i++)
             {
-                Vector3 cardPosition = new Vector3(canvas.transform.position.x + ((i * 160) - (hand.Count * 70)), canvas.transform.position.y - 160, canvas.transform.position.z);
+                Vector3 cardPosition = new Vector3(canvas.transform.position.x + (((i * 160) - (hand.Count * 70)) * canvas.scaleFactor), canvas.transform.position.y - (160 * canvas.scaleFactor), canvas.transform.position.z);
                 UIcards[i].transform.position = cardPosition;
                 UIcards[i].setUpCard(cardPosition, UIcards[i].transform.rotation, UIcards[i].transform.localScale, hand[i], this, i);
             }
@@ -220,7 +220,7 @@ public class BattleManager : MonoBehaviour
         {
             for (int i = 0; i < hand.Count; i++)
             {
-                Vector3 cardPosition = new Vector3(canvas.transform.position.x + ((i * 160) - (hand.Count * 55)), canvas.transform.position.y, canvas.transform.position.z);
+                Vector3 cardPosition = new Vector3(canvas.transform.position.x + (((i * 160) - (hand.Count * 55)) * canvas.scaleFactor), canvas.transform.position.y, canvas.transform.position.z);
                 UIcards[i].transform.position = cardPosition;
                 UIcards[i].setUpCard(cardPosition, UIcards[i].transform.rotation, UIcards[i].transform.localScale, hand[i], this, i);
             }
@@ -279,7 +279,7 @@ public class BattleManager : MonoBehaviour
             {
                 for (int i = 0; i < run.heldArtifacts.Count; i++)
                 {
-                    TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (i * 55) - (330 + (660 * (i / 12))), canvas.transform.position.y + 280 - (110 * (i / 12)), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
+                    TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (((i * 55) - (330 + (660 * (i / 12)))) * canvas.scaleFactor), canvas.transform.position.y + ((280 - (110 * (i / 12))) * canvas.scaleFactor), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
                     icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
                     player.addModifier(run.heldArtifacts[i].getEffect());
                     ArtifactIcons.Add(icon);
