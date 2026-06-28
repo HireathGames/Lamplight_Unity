@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   future: []
-  level: Shop
+  levels:
+  - Shop
   forShow: 0
 --- !u!136 &4323527134164777874
 CapsuleCollider:

@@ -71,12 +71,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MysteryPiece
   manager: {fileID: 0}
   future: []
-  level: Event
-  forShow: 0
-  alternateDestinations:
-  - Level_1_Combat
+  levels:
+  - Event
   - Level_1_Elite
+  - Level_1_RestSite
   - Shop
+  forShow: 0
 --- !u!1001 &5162995926615656246
 PrefabInstance:
   m_ObjectHideFlags: 0

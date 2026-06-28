@@ -166,7 +166,7 @@ public class MapManager : MonoBehaviour
                     run.mapProgress += 1;
                     Debug.Log(run.mapProgress);
                     dataManager.saveRun(run);
-                    SceneManager.LoadScene(encounter.level);
+                    SceneManager.LoadScene(encounter.getLevel(run));
                 }
                 else
                 {

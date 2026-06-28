@@ -48,7 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   future: []
-  level: Level_1_Combat
+  levels:
+  - Level_1_Combat
+  forShow: 0
 --- !u!136 &4323527134164777874
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -121,7 +123,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1439730007547781893, guid: 070b74d22a68532408b54380a03c3330, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 44e00e1c9adc4094b96e5820679b59a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 070b74d22a68532408b54380a03c3330, type: 3}
