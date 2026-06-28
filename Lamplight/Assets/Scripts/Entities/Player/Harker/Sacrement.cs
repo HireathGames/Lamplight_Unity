@@ -12,4 +12,8 @@ public class Sacrement : Card
         player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 7) + " damage to an enemy, then apply 4 bleed.");
+    }
 }

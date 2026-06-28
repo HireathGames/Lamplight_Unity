@@ -11,4 +11,8 @@ public class BasicAttack : Card
         player.attackEntity(player.focus, 5, 0, getType());
         player.playAnimation(1);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 5) +" damage to an enemy.");
+    }
 }

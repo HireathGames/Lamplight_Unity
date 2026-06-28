@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EllainBuffDefendMove : EnemyMove
 {
-    public EllainBuffDefendMove() : base("BlockBuff", 1) { }
+    public EllainBuffDefendMove() : base("BlockBuff", 2) { }
     public override void performMove(Enemy self, Player player)
     {
         self.addArmor(10);

@@ -13,4 +13,8 @@ public class Downpour : Card
         }
         player.playAnimation(3);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 5) + " damage to all enemies.");
+    }
 }

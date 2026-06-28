@@ -11,4 +11,8 @@ public class LuckyCoin : Card
         player.manager.draw();
         player.playAnimation(1);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 1) + "-" + modifiedDamage(entity, 4) + " damage then draw a card.");
+    }
 }

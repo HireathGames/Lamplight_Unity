@@ -12,4 +12,8 @@ public class BleedingHeart : Card
         player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 5) + " damage to an enemy, then apply 2 bleed.");
+    }
 }

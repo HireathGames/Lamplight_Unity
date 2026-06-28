@@ -46,12 +46,27 @@ public abstract class Entity : MonoBehaviour
     }
     public void setDamageMod(float mod)
     {
-        damageMod = mod;
+        if (mod > 0)
+        {
+            damageMod = mod;
+        }
+        else
+        {
+            damageMod = 0;
+        }
     }
     public void setArmorMod(float mod)
     {
-        armorMod = mod;
+        if (mod > 0)
+        {
+            armorMod = mod;
+        }
+        else
+        {
+            armorMod = 0;
+        }
     }
+    public float getArmorMod() { return armorMod; }
     public int getArmor() { return armor; }
     public int getMaxHealth() { return maxHP; }
     public float getSanity() { return sanity; }

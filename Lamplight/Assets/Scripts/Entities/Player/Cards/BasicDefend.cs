@@ -10,4 +10,8 @@ public class BasicDefend : Card
         player.addArmor(5);
         player.playAnimation(2);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Gain " + modifiedArmor(entity, 5) + " armor.");
+    }
 }

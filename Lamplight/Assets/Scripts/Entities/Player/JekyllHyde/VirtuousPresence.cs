@@ -14,4 +14,8 @@ public class VirtuousPresence : Card
         player.manager.getDeck().Insert(ran, new SinDebuff());
         player.playAnimation(2);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Gain " + modifiedArmor(entity, 7) + " armor and apply 7 broken to an enemy, shuffle a Sin into you deck.");
+    }
 }

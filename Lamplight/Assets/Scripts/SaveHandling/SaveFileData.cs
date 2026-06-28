@@ -81,6 +81,9 @@ public class SaveFileData
         jekyllLegendaryRewards.Add(new SinfulShadow());
         jekyllLegendaryRewards.Add(new Murder());
         dorianRewards.Add(new Performance());
-        dorianRewards.Add(new ManicMayham());
+        dorianRewards.Add(new TheTower());
+        dorianRewards.Add(new PowerTome());
+        dorianRewards.Add(new Enlightenment());
+        dorianLegendaryRewards.Add(new Faustian());
     }
 }

@@ -48,6 +48,7 @@ public class MapManager : MonoBehaviour
     {
         futureLight.intensity = 0;
         input.Mouse.Click.started += _ => click();
+        Debug.Log(run.mapProgress);
         if (sorrows != null)
         {
             sorrows.text = "$" + run.sorrows;

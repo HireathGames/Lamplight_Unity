@@ -18,4 +18,8 @@ public class GraveRobber : Card
         }
         player.playAnimation(1);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 12) + " damage to an enemy. If that enemy dies, gain 3 regeneration.");
+    }
 }

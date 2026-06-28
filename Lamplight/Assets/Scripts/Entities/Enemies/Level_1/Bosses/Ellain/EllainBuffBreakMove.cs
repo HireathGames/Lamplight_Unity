@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EllainBuffBreakMove : EnemyMove
 {
-    public EllainBuffBreakMove() : base("Debuff", 1) { }
+    public EllainBuffBreakMove() : base("Debuff", 2) { }
     public override void performMove(Enemy self, Player player)
     {
         player.broken += 3;

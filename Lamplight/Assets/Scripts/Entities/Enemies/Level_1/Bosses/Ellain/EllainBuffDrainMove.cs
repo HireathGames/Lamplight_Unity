@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EllainBuffDrainMove : EnemyMove
 {
-    public EllainBuffDrainMove() : base("AttackBuff", 1) { }
+    public EllainBuffDrainMove() : base("AttackBuff", 2) { }
     public override void performMove(Enemy self, Player player)
     {
         self.attackEntity(player, 0, 20, 'm');

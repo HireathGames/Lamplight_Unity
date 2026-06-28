@@ -15,10 +15,20 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
     [SerializeField] private TMP_Text cost;
     [SerializeField] private TMP_Text name;
     [SerializeField] private TMP_Text disc;
+    [SerializeField] private Image insanityFilter;
     private int index;
+    private float randomizeColor;
     private Card card;
 
-    
+    private void Update()
+    {
+        if (card.getRandomized())
+        {
+            randomizeColor += Time.deltaTime;
+            insanityFilter.color = new Color(0, 0, 0, Mathf.Abs(Mathf.Sin(randomizeColor * 1.15f) * 0.85f));
+            cost.color = new Color(Mathf.Abs(Mathf.Cos(randomizeColor * 1.325f)), Mathf.Abs(Mathf.Cos(randomizeColor * 1.325f)), Mathf.Abs(Mathf.Cos(randomizeColor * 1.325f)));
+        }
+    }
     public override void OnBeginDrag(PointerEventData eventData)
     {
         if (manager.actionAvailable())

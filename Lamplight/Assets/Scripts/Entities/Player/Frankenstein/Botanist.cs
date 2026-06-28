@@ -10,4 +10,8 @@ public class Botanist : Card
         player.attackEntity(player.focus, 2 + (player.regeneration * 3), 0, getType());
         player.playAnimation(1);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + (2 + (entity.regeneration * 3)) + "damage, this card deals 3 additional damage for each regeneration you have.");
+    }
 }

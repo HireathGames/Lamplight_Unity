@@ -11,6 +11,10 @@ public class Electrify : Card
         {
             player.attackEntity(e, (3 * spentEnergy), (15 * spentEnergy), getType());
         }
-        player.playAnimation(3);
+        player.playAnimation(4);
+    }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 3) + "X damage to all enemies and reduce their sanity by 15X.");
     }
 }

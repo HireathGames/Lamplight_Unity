@@ -15,7 +15,10 @@ public class Hemorrhage : Card
             e.healthBar.updateUI(e);
         }
         amount *= 2;
-        setDiscription("Gain 10 armor and apply " + amount + " bleed to all enemies. After playing double the bleed added by this card.");
         player.playAnimation(3);
+    }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Gain " + modifiedArmor(entity, 5) + " armor and apply " + amount + " bleed to all enemies. After playing double the bleed added by this card.");
     }
 }

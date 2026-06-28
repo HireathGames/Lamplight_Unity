@@ -11,6 +11,10 @@ public class Performance : Card
         player.mania++;
         player.addModifier(new TempManiaMod(1));
         player.healthBar.updateUI(player);
-        player.playAnimation(2);
+        player.playAnimation(3);
+    }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Gain " + modifiedArmor(entity, 8) + " armor and 1 temporary mania.");
     }
 }

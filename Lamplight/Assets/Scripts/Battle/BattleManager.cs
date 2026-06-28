@@ -212,6 +212,7 @@ public class BattleManager : MonoBehaviour
             {
                 Vector3 cardPosition = new Vector3(canvas.transform.position.x + (((i * 160) - (hand.Count * 70)) * canvas.scaleFactor), canvas.transform.position.y - (160 * canvas.scaleFactor), canvas.transform.position.z);
                 UIcards[i].transform.position = cardPosition;
+                hand[i].updateDiscription(player);
                 UIcards[i].setUpCard(cardPosition, UIcards[i].transform.rotation, UIcards[i].transform.localScale, hand[i], this, i);
             }
             energy.text = player.getEnergy().ToString();
@@ -371,7 +372,10 @@ public class BattleManager : MonoBehaviour
     {
         if (run != null)
         {
-            run.mapProgress = 0;
+            if (boss)
+            {
+                run.mapProgress = 0;
+            }
             dataManager.saveRun(run);
         }
         SceneManager.LoadScene(exitScene);
@@ -409,6 +413,7 @@ public class BattleManager : MonoBehaviour
         {
             while (hand.Count > 0)
             {
+                hand[0].retainedEffect(player);
                 discardCard(0);
             }
             enemyCombatStep = 0;
@@ -520,6 +525,7 @@ public class BattleManager : MonoBehaviour
                     if (!hand[pos].getIsX())
                     {
                         hand[pos].setCost(Random.Range(1, 3));
+                        hand[pos].randomize();
                     }
                 }
             }
@@ -528,6 +534,7 @@ public class BattleManager : MonoBehaviour
                 foreach (Card c in hand)
                 {
                     c.setCost(Random.Range(0, 6));
+                    c.randomize();
                 }
             }
         }

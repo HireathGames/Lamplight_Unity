@@ -20,6 +20,7 @@ public abstract class Card
     [SerializeField] private bool xCost = false;//Consumes all energy then does an effect a number of time equal to the energy spent
     [SerializeField] private bool banish = false;//If true should be removed from play after being played.
     [SerializeField] private char type;//Elemental system, valid types are w, m, t, b and n. n is none.
+    private bool randomized;
     public Card(string n, string d, int c, bool a, bool x, bool b, char t, string art)
     {
         name = n;
@@ -65,6 +66,8 @@ public abstract class Card
     {
         cost = originalCost;
     }
+    public bool getRandomized() { return randomized; }
+    public void randomize() { randomized = true; }
     public string getArtName () { return artName; }
     public string getDiscription() { return discription; }
     public int getCost() { return cost; }
@@ -76,6 +79,27 @@ public abstract class Card
     public bool getIsBanished() { return banish; }
     public char getType() { return type; }
     public void setDiscription(string dis) { discription = dis; }
+    public virtual void updateDiscription(Entity entity) { discription = originalDiscription; }
+    public int modifiedDamage(Entity entity, int damage)
+    {
+        int output = damage;
+        float multi = 1f + (0.2f * entity.strength) - (0.25f * Mathf.Pow(entity.weakness, 0.33f));
+        output = (int) (damage * multi);
+        return output;
+    }
+    public int modifiedArmor(Entity entity, int armor)
+    {
+        if (entity.broken > 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return ((int)(entity.getArmorMod() * armor));
+        }
+
+    }
+    public virtual void retainedEffect(Player player) { }
     public override string ToString()
     {
         return name;

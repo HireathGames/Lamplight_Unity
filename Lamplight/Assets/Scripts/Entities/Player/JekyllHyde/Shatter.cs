@@ -12,4 +12,8 @@ public class Shatter : Card
         player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 8) + " damage to an enemy, then apply 5 broken.");
+    }
 }

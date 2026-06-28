@@ -14,4 +14,8 @@ public class Tracker : Card
         player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
+    public override void updateDiscription(Entity entity)
+    {
+        setDiscription("Deal " + modifiedDamage(entity, 3) + " damage to an enemy, it doesn't loose mark when taking this damage.");
+    }
 }
