@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_1/Level_1_Boss_Ellain.unity
     guid: d2b6c32761d6af449acdac84116de503
+  - enabled: 1
+    path: Assets/Scenes/Level_1/Level_1_Boss_Renfield.unity
+    guid: 9f82d0302416eef44aafdff162a1f984
   m_configObjects: {}

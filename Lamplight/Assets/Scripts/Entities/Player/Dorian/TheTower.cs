@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TheTower : Card
 {
-    public TheTower() : base("XVI The Tower", "Deal 2-4X damage X times.", 0, true, true, false, 'b', "The Tower") { }
+    public TheTower() : base("XVI The Tower", "Deal 2-4X damage to an enemy X times.", 0, true, true, false, 'b', "The Tower") { }
     public override void play(int spentEnergy, Player player)
     {
         for (int i = 0; i < spentEnergy; i++)

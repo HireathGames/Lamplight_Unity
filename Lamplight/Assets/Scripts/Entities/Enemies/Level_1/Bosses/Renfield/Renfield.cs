@@ -6,7 +6,7 @@ public class Renfield : Enemy
     private void Awake()
     {
         addMove(new EnemyGainStrength(3, 15, 2));
-        addMove(new EnemyAddBleed(5));
+        addMove(new EnemyAddBleed(5, 2));
         addMove(new EnemyAttack(15));
         addMove(new EnemyAttack(10, 15, "AttackDebuff"));
         int startHealth = Random.Range(200, 230);

@@ -9,6 +9,7 @@ public abstract class Player : Entity
     private List<CombatModifier> modifiers = new List<CombatModifier>();
     public BattleManager manager;
     private float actionDelay;
+    private int cardsPlayed;
 
     private void Update()
     {
@@ -97,6 +98,17 @@ public abstract class Player : Entity
             mod.playedCard(this, c);
         }
         modifiers.RemoveAll(item => item.isDone());
+        cardsPlayed++;
+    }
+    public virtual void endTurnModUpdate()
+    {
+        //I don't know why this specifically needs to be a for loop, but it does.
+        for (int i = 0; i < modifiers.Count; i++)
+        {
+            modifiers[i].playerTurnEnd(this);
+        }
+        modifiers.RemoveAll(item => item.isDone());
+        cardsPlayed = 0;
     }
     public override void die()
     {
@@ -111,5 +123,5 @@ public abstract class Player : Entity
         base.playAnimation(state);
         actionDelay = 1;
     }
-
+    public int getPlayedCardsNumber() { return cardsPlayed; }
 }

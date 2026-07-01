@@ -19,7 +19,12 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
     private int index;
     private float randomizeColor;
     private Card card;
-
+    private void Awake()
+    {
+        randomizeColor = 0;
+        insanityFilter.color = new Color(0, 0, 0, 0);
+        cost.color = new Color(0, 0, 0);
+    }
     private void Update()
     {
         if (card.getRandomized())

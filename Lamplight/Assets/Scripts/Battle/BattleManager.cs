@@ -417,6 +417,7 @@ public class BattleManager : MonoBehaviour
                 discardCard(0);
             }
             enemyCombatStep = 0;
+            player.endTurnModUpdate();
             enemyTurnStep();
         }
     }

@@ -12,10 +12,12 @@ public class Hallucination : Card
         if (!player.manager.getHand()[player.manager.getHand().Count - 1].getIsX())
         {
             player.manager.getHand()[player.manager.getHand().Count - 1].setCost(Random.Range(0, 4));
+            player.manager.getHand()[player.manager.getHand().Count - 1].randomize();
         }
         if (!player.manager.getHand()[player.manager.getHand().Count - 2].getIsX())
         {
             player.manager.getHand()[player.manager.getHand().Count - 2].setCost(Random.Range(0, 4));
+            player.manager.getHand()[player.manager.getHand().Count - 2].randomize();
         }
         player.playAnimation(3);
     }

@@ -49,7 +49,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   future: []
   levels:
-  - Level_1_Rest
+  - Level_1_RestSite
   forShow: 0
 --- !u!136 &4323527134164777874
 CapsuleCollider:

@@ -61,10 +61,12 @@ public abstract class Card
     {
         cost = originalCost;
         discription = originalDiscription;
+        randomized = false;
     }
     public void resetCost()
     {
         cost = originalCost;
+        randomized = false;
     }
     public bool getRandomized() { return randomized; }
     public void randomize() { randomized = true; }
@@ -74,6 +76,7 @@ public abstract class Card
     public Sprite getArt() { return cardArt; }
     public Sprite getAlt() { return altCardArt; }
     public void setCost(int c) { cost = c; }
+    public void setOriginalCost(int c) { originalCost = c; }
     public bool getIsX() { return xCost; }
     public bool getIsAttack() { return attack; }
     public bool getIsBanished() { return banish; }
@@ -98,6 +101,10 @@ public abstract class Card
             return ((int)(entity.getArmorMod() * armor));
         }
 
+    }
+    public Card copyCard()
+    {
+        return (Card) MemberwiseClone();
     }
     public virtual void retainedEffect(Player player) { }
     public override string ToString()

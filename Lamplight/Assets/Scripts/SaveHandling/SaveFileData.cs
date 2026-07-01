@@ -84,6 +84,8 @@ public class SaveFileData
         dorianRewards.Add(new TheTower());
         dorianRewards.Add(new PowerTome());
         dorianRewards.Add(new Enlightenment());
+        dorianRewards.Add(new TheLovers());
+        dorianRewards.Add(new HangedMan());
         dorianLegendaryRewards.Add(new Faustian());
     }
 }

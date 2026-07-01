@@ -12,6 +12,6 @@ public class Botanist : Card
     }
     public override void updateDiscription(Entity entity)
     {
-        setDiscription("Deal " + (2 + (entity.regeneration * 3)) + "damage, this card deals 3 additional damage for each regeneration you have.");
+        setDiscription("Deal " + (2 + (entity.regeneration * 3)) + " damage, this card deals 3 additional damage for each regeneration you have.");
     }
 }
