@@ -94,9 +94,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
         deck.Add(new BasicDefend("Dodge", 'b', "Dodge"));
         deck.Add(new TheTower());
-        deck.Add(new HangedMan());
-        deck.Add(new HangedMan());
-        deck.Add(new HangedMan());
+        deck.Add(new TheLovers());
         deck.Add(new Performance());
         RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.dorianRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.dorianLegendaryRewards), "DG", fileData.shopArtifacts, fileData.level_1_Events);
         manager.saveRun(run);
