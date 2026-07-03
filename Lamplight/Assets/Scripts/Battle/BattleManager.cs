@@ -280,7 +280,7 @@ public class BattleManager : MonoBehaviour
             {
                 for (int i = 0; i < run.heldArtifacts.Count; i++)
                 {
-                    TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (((i * 55) - (330 + (660 * (i / 12)))) * canvas.scaleFactor), canvas.transform.position.y + ((280 - (110 * (i / 12))) * canvas.scaleFactor), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
+                    TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (((i * 55) - (330 + (660 * (i / 12)))) * canvas.scaleFactor), canvas.transform.position.y + ((265 - (110 * (i / 12))) * canvas.scaleFactor), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
                     icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
                     player.addModifier(run.heldArtifacts[i].getEffect());
                     ArtifactIcons.Add(icon);
@@ -441,23 +441,26 @@ public class BattleManager : MonoBehaviour
     }
     public void draw()
     {
-        if (deck.Count == 0)
+        if (hand.Count <= 7)
         {
-            if (discard.Count != 0)
+            if (deck.Count == 0)
             {
-                shuffle(discard);
+                if (discard.Count != 0)
+                {
+                    shuffle(discard);
+                }
+                else
+                {
+                    return;
+                }
             }
-            else
-            {
-                return;
-            }
+            Card drawn = deck[0];
+            deck.RemoveAt(0);
+            CardUI tempCard = Instantiate(UIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
+            hand.Add(drawn);
+            UIcards.Add(tempCard);
+            updateCardsInHand();
         }
-        Card drawn = deck[0];
-        deck.RemoveAt(0);
-        CardUI tempCard = Instantiate(UIcard, canvas.transform.position, canvas.transform.rotation, canvas.transform);
-        hand.Add(drawn);
-        UIcards.Add(tempCard);
-        updateCardsInHand();
     }
     public void discardCard(int handPosition)
     {

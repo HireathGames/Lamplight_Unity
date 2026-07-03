@@ -98,7 +98,7 @@ public class MapManager : MonoBehaviour
         {
             for (int i = 0; i < run.heldArtifacts.Count; i++)
             {
-                TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (((i * 55) - (330 + (660 * (i / 12)))) * canvas.scaleFactor), canvas.transform.position.y + ((280 - (110 * (i / 12))) * canvas.scaleFactor), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
+                TextBoxOnHover icon = Instantiate(ArtifactIcon, new Vector3(canvas.transform.position.x + (((i * 55) - (330 + (660 * (i / 12)))) * canvas.scaleFactor), canvas.transform.position.y + ((265 - (110 * (i / 12))) * canvas.scaleFactor), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
                 icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
                 ArtifactIcons.Add(icon);
             }

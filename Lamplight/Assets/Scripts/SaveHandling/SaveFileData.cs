@@ -30,6 +30,7 @@ public class SaveFileData
         level_1_Events.Add(new StormyPathEvent());
         level_1_Events.Add(new MysteryManEvent());
         level_1_Events.Add(new MirrorManEvent());
+        level_1_Events.Add(new CursedTomeEvent());
         shopArtifacts = new List<Artifact>();
         basicRewards = new List<Card>();
         harkerRewards = new List<Card>();
@@ -46,6 +47,8 @@ public class SaveFileData
         basicRewards.Add(new Downpour());
         basicRewards.Add(new Comedy());
         basicRewards.Add(new Tragedy());
+        basicRewards.Add(new Smite());
+        basicRewards.Add(new Masochist());
         basicLegendaryRewards = new List<Card>();
         harkerLegendaryRewards = new List<Card>();
         frankensteinLegendaryRewards = new List<Card>();
@@ -86,6 +89,13 @@ public class SaveFileData
         dorianRewards.Add(new Enlightenment());
         dorianRewards.Add(new TheLovers());
         dorianRewards.Add(new HangedMan());
+        dorianRewards.Add(new TheHermit());
+        dorianRewards.Add(new TheMagician());
+        dorianRewards.Add(new TheHermit());
+        dorianRewards.Add(new TheDevil());
+        dorianRewards.Add(new Manifest());
         dorianLegendaryRewards.Add(new Faustian());
+        dorianLegendaryRewards.Add(new Chronomancer());
+        dorianLegendaryRewards.Add(new PrinceCharming());
     }
 }
