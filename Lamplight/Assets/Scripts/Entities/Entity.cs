@@ -129,11 +129,11 @@ public abstract class Entity : MonoBehaviour
             HP -= (int)((sanityDamage - sanity))/5;
             sanity = 0;
         }
+        mark = 0;
         if (healthBar != null)
         {
             healthBar.updateUI(this);
         }
-        mark = 0;
         if (HP <= 0)
         {
             die();

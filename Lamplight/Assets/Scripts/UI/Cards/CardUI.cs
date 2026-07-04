@@ -18,6 +18,7 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
     [SerializeField] private Image insanityFilter;
     private int index;
     private float randomizeColor;
+    private Color normalTextColor = new Color(0, 0, 0);
     private Card card;
     private void Awake()
     {
@@ -32,6 +33,13 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
             randomizeColor += Time.deltaTime;
             insanityFilter.color = new Color(0, 0, 0, Mathf.Abs(Mathf.Sin(randomizeColor * 1.15f) * 0.85f));
             cost.color = new Color(Mathf.Abs(Mathf.Cos(randomizeColor * 1.325f)), Mathf.Abs(Mathf.Cos(randomizeColor * 1.325f)), Mathf.Abs(Mathf.Cos(randomizeColor * 1.325f)));
+        }
+        else
+        {
+            insanityFilter.color = new Color(0, 0, 0, 0);
+            cost.color = normalTextColor;
+            name.color = normalTextColor;
+            disc.color = normalTextColor;
         }
     }
     public override void OnBeginDrag(PointerEventData eventData)
@@ -97,9 +105,7 @@ public class CardUI : Drag, IPointerEnterHandler, IPointerExitHandler, IPointerD
             }
             if (card.getType() == 't')
             {
-                disc.color = new Color(355, 355, 355);
-                cost.color = new Color(355, 355, 355);
-                name.color = new Color(355, 355, 355);
+                normalTextColor = new Color(355, 355, 355);
             }
             manager = bm;
             index = ind;

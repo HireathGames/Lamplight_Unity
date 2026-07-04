@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Bobby : Enemy
+{
+    private void Update()
+    {
+        if (healthBar != null)
+        {
+            healthBar.updateUI(this);
+        }
+    }
+    private void Awake()
+    {
+        addMove(new EnemyAttack(10));
+        addMove(new EnemyDefend(10));
+        addMove(new EnemyAddMark(1, 2));
+        int startHealth = Random.Range(30, 45);
+        setHealth(startHealth);
+        setMaxHealth(startHealth);
+    }
+    public override void takeDamage(int healthDamage, float sanityDamage, char element)
+    {
+        base.takeDamage(healthDamage, sanityDamage, element);
+        if (element == 't')
+        {
+            mark++;
+        }
+    }
+}
