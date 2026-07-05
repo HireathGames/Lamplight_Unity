@@ -31,6 +31,7 @@ public class SaveFileData
         level_1_Events.Add(new MysteryManEvent());
         level_1_Events.Add(new MirrorManEvent());
         level_1_Events.Add(new CursedTomeEvent());
+        level_1_Events.Add(new BloodChurchEvent());
         shopArtifacts = new List<Artifact>();
         basicRewards = new List<Card>();
         harkerRewards = new List<Card>();

@@ -110,6 +110,15 @@ public abstract class Player : Entity
         modifiers.RemoveAll(item => item.isDone());
         cardsPlayed = 0;
     }
+    public virtual void endCombatModUpdate()
+    {
+        //I don't know why this specifically needs to be a for loop, but it does.
+        for (int i = 0; i < modifiers.Count; i++)
+        {
+            modifiers[i].playerCombatEnd(this);
+        }
+        modifiers.RemoveAll(item => item.isDone());
+    }
     public override void die()
     {
         manager.fading = true;

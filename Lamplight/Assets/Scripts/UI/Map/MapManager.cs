@@ -27,6 +27,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] private GameObject mapPanel;
     [SerializeField] private TMP_Text sorrows;
     [SerializeField] private Canvas canvas;
+    public TMP_Text introductionText;
+    private float introductionAlpha;
     private int scrollIndex;
     private void Awake()
     {
@@ -34,6 +36,17 @@ public class MapManager : MonoBehaviour
         dataManager = new PersistentDataManager();
         run = dataManager.loadRun();
         input = new CursorControl();
+        run.currentScene = SceneManager.GetActiveScene().name;
+        run.nextScene = SceneManager.GetActiveScene().name;
+        if (run.mapProgress == 0)
+        {
+            introductionAlpha = 3;
+        }
+        else
+        {
+            introductionAlpha = 0;
+            introductionText.color = new Color(255, 0, 0, introductionAlpha);
+        }
     }
     //Don't really know how these work but they are importent
     private void OnEnable()
@@ -153,53 +166,64 @@ public class MapManager : MonoBehaviour
     }
     private void click()
     {
-        Ray ray = camera.ScreenPointToRay(input.Mouse.Position.ReadValue<Vector2>());
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (introductionAlpha <= 0)
         {
-            if (hit.collider.GetComponent<LevelPiece>() != null)
+            Ray ray = camera.ScreenPointToRay(input.Mouse.Position.ReadValue<Vector2>());
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.GetComponent<MysteryPiece>() == null)
+                if (hit.collider.GetComponent<LevelPiece>() != null)
                 {
-                    LevelPiece encounter = hit.collider.GetComponent<LevelPiece>();
-                    run.nextEncounters = encounter.future;
-                    run.mapProgress += 1;
-                    Debug.Log(run.mapProgress);
-                    dataManager.saveRun(run);
-                    SceneManager.LoadScene(encounter.getLevel(run));
-                }
-                else
-                {
-                    MysteryPiece encounter = hit.collider.GetComponent<MysteryPiece>();
-                    run.nextEncounters = encounter.future;
-                    run.mapProgress += 1;
-                    Debug.Log(run.mapProgress);
-                    dataManager.saveRun(run);
-                    SceneManager.LoadScene(encounter.getLevel(run));
+                    if (hit.collider.GetComponent<MysteryPiece>() == null)
+                    {
+                        LevelPiece encounter = hit.collider.GetComponent<LevelPiece>();
+                        run.nextEncounters = encounter.future;
+                        run.mapProgress += 1;
+                        Debug.Log(run.mapProgress);
+                        dataManager.saveRun(run);
+                        SceneManager.LoadScene(encounter.getLevel(run));
+                    }
+                    else
+                    {
+                        MysteryPiece encounter = hit.collider.GetComponent<MysteryPiece>();
+                        run.nextEncounters = encounter.future;
+                        run.mapProgress += 1;
+                        Debug.Log(run.mapProgress);
+                        dataManager.saveRun(run);
+                        SceneManager.LoadScene(encounter.getLevel(run));
+                    }
                 }
             }
         }
     }
     private void Update()
     {
-        Ray ray = camera.ScreenPointToRay(input.Mouse.Position.ReadValue<Vector2>());
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (introductionAlpha <= 0)
         {
-            if (hit.collider.GetComponent<LevelPiece>() != null) 
+            Ray ray = camera.ScreenPointToRay(input.Mouse.Position.ReadValue<Vector2>());
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                if ((futurePieces.Count == 0) && (!hit.collider.GetComponent<LevelPiece>().forShow))
+                if (hit.collider.GetComponent<LevelPiece>() != null)
                 {
-                    if (run.mapProgress <= 9)
+                    if ((futurePieces.Count == 0) && (!hit.collider.GetComponent<LevelPiece>().forShow))
                     {
-                        showFuture(hit.collider.GetComponent<LevelPiece>().future);
+                        if (run.mapProgress <= 9)
+                        {
+                            showFuture(hit.collider.GetComponent<LevelPiece>().future);
+                        }
                     }
                 }
+                else if (futurePieces.Count != 0)
+                {
+                    hideFuture();
+                }
             }
-            else if (futurePieces.Count != 0)
-            {
-                hideFuture();
-            }
+        }
+        else
+        {
+            introductionAlpha -= Time.deltaTime;
+            introductionText.color = new Color(255, 0, 0, introductionAlpha);
         }
     }
     public void showFuture(List<LevelPiece> future)

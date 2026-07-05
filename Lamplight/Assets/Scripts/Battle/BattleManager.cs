@@ -55,6 +55,7 @@ public class BattleManager : MonoBehaviour
     {
         activeIndex = ind;
     }
+    public RunData getRun() { return run; }
     //Don't really know how these work but they are importent
     private void OnEnable()
     {
@@ -196,7 +197,14 @@ public class BattleManager : MonoBehaviour
         }
         if (player.getHealth() <= 0)
         {
-            combatOver = true;
+            if (!fading)
+            {
+                player.die();
+            }
+            else
+            {
+                combatOver = true;
+            }
         }
         if (fading && fadeOut != null)
         {
@@ -366,6 +374,7 @@ public class BattleManager : MonoBehaviour
         run.HP = player.getHealth();
         run.maxHP = player.getMaxHealth();
         run.sanity = player.getSanity();
+        player.endCombatModUpdate();
         updateCardsInHand();
     }
     public void exitCombatScene()

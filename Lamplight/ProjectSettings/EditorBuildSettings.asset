@@ -35,4 +35,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_1/Level_1_Boss_Renfield.unity
     guid: 9f82d0302416eef44aafdff162a1f984
+  - enabled: 1
+    path: Assets/Scenes/Level_2/Level_2_Combat.unity
+    guid: b643e48be2987174ab89a20a09b87ff5
+  - enabled: 1
+    path: Assets/Scenes/Level_2/Level_2_Map.unity
+    guid: 68127ee015b8ff3468b5512f4273cdfe
+  - enabled: 1
+    path: Assets/Scenes/Level_2/Level_2_RestSite.unity
+    guid: 742d1a00e4d8df149b6eef9a26157467
+  - enabled: 1
+    path: Assets/Scenes/Level_2/Level_2_Elite.unity
+    guid: 78a8bdf45d9345b488dd6d8690a357a9
   m_configObjects: {}

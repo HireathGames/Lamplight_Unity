@@ -9,7 +9,6 @@ public class EventManager : MonoBehaviour
     private PersistentDataManager manager = new PersistentDataManager();
     private RunData run;
     private Event currentEvent;
-    public string level = "Level_1_Map";
     public TMP_Text discription;
     public TMP_Text option1;
     public TMP_Text option2;
@@ -96,6 +95,6 @@ public class EventManager : MonoBehaviour
     public void leave()
     {
         manager.saveRun(run);
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(run.nextScene);
     }
 }

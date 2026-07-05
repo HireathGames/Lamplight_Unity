@@ -15,7 +15,7 @@ public class Bobby : Enemy
     {
         addMove(new EnemyAttack(10));
         addMove(new EnemyDefend(10));
-        addMove(new EnemyAddMark(1, 2));
+        addMove(new EnemyAddMark(1, 3));
         int startHealth = Random.Range(30, 45);
         setHealth(startHealth);
         setMaxHealth(startHealth);
@@ -25,7 +25,7 @@ public class Bobby : Enemy
         base.takeDamage(healthDamage, sanityDamage, element);
         if (element == 't')
         {
-            mark++;
+            bleed++;
         }
     }
 }

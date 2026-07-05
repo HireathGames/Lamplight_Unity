@@ -6,7 +6,7 @@ public class EnemyDefendAndDrain : EnemyMove
 {
     private int defence;
     private float drain;
-    public EnemyDefendAndDrain(int armor, float sanityDamage) : base("DebuffBlock", 2)
+    public EnemyDefendAndDrain(int armor, float sanityDamage) : base("BlockDebuff", 2)
     {
         defence = armor;
         drain = sanityDamage;

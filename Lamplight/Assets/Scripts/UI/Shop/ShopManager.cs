@@ -201,6 +201,6 @@ public class ShopManager : MonoBehaviour
     public void exit()
     {
         dataManager.saveRun(run);
-        SceneManager.LoadScene("Level_1_Map");
+        SceneManager.LoadScene(run.nextScene);
     }
 }

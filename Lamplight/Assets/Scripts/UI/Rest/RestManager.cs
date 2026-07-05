@@ -24,6 +24,7 @@ public class RestManager : MonoBehaviour
     private List<RestCardUI> UIdeck = new List<RestCardUI>();
     public bool draging;
     public int activeCard;
+    [SerializeField] private string exitScene = "Level_1_Map";
     
     private void Awake()
     {
@@ -134,6 +135,6 @@ public class RestManager : MonoBehaviour
     private void exit()
     {
         dataManager.saveRun(run);
-        SceneManager.LoadScene("Level_1_Map");
+        SceneManager.LoadScene(exitScene);
     }
 }
