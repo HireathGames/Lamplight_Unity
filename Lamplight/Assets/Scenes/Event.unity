@@ -1393,7 +1393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334137c7c23fa2146a3926984b4875bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventManager
-  level: Level_1_Map
   discription: {fileID: 1164180267}
   option1: {fileID: 117627176}
   option2: {fileID: 331014345}

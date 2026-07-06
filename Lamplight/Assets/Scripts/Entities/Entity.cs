@@ -115,6 +115,7 @@ public abstract class Entity : MonoBehaviour
         {
             HP -= (healthDamage - armor);
             armor = 0;
+            mark = 0;
         }
         else
         {
@@ -129,7 +130,6 @@ public abstract class Entity : MonoBehaviour
             HP -= (int)((sanityDamage - sanity))/5;
             sanity = 0;
         }
-        mark = 0;
         if (healthBar != null)
         {
             healthBar.updateUI(this);

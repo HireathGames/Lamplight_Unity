@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MirrorManEvent : Event
 {
-    public MirrorManEvent() : base("You decide to take refuge in a cabin, all seems well until you see a standing mirror leaning against the wall. You see a figure in it, that isn’t you, it’s shifting and warping. It hurts you to look at but something pulls you in, at this point you can’t force yourself to look away. ", new string[3], new string[3], "HJ&EH", "MirrorMan")
+    public MirrorManEvent() : base("You decide to take refuge in a cabin, all seems well until you see a standing mirror leaning against the wall. You see a figure in it, that isn’t you, it’s shifting and warping. It hurts you to look at but something pulls you in, at this point you can’t force yourself to look away. ", new string[3], new string[3], "HJ&EH", "MirrorMan", false)
     {
         getOptions()[0] = "Look Deeper";
         getOptions()[1] = "Smash it!";

@@ -6,12 +6,12 @@ using UnityEngine;
 [System.Serializable]
 public abstract class Artifact
 {
-    private string spriteFile;
-    private string name;
-    private string discription;
-    private int cost;
-    private bool unique;
-    private CombatModifier effect;
+    [SerializeField] private string spriteFile;
+    [SerializeField] private string name;
+    [SerializeField] private string discription;
+    [SerializeField] private int cost;
+    [SerializeField] private bool unique;
+    [SerializeReference] private CombatModifier effect;
     public Artifact(string name, string disc, int cost, CombatModifier effect, string art, bool unique = true)
     {
         this.name = name;
@@ -29,7 +29,12 @@ public abstract class Artifact
     public string getName() { return name; }
     public string getDiscription() { return discription; }
     public int getCost() { return cost; }
+
     public void randomizeCost() { cost += Random.Range(-cost / 10, cost / 10); }
     public CombatModifier getEffect() { return effect; }
+    public override string ToString()
+    {
+        return name;
+    }
 
 }

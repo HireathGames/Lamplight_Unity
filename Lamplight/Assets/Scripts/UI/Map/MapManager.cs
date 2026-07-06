@@ -98,11 +98,15 @@ public class MapManager : MonoBehaviour
                         actual.future.Add(futureEncounter);
                     }
                 }
-                else
+                else if (run.mapProgress == 9)
                 {
                     actual.future.Add(null);
                     actual.future.Add(bossPiece);
                     actual.future.Add(null);
+                }
+                else
+                {
+                    actual.future = null;
                 }
             }
 

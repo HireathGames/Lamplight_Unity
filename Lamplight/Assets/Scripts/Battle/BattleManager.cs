@@ -384,6 +384,23 @@ public class BattleManager : MonoBehaviour
             if (boss)
             {
                 run.mapProgress = 0;
+                run.progessionLevel++;
+                SaveFileData file = dataManager.loadFile();
+                run.events.RemoveAll(item => item.getLevelSpecific());
+                if (run.progessionLevel == 2)
+                {
+                    foreach (Event even in file.level_2_Events)
+                    {
+                        run.events.Add(even);
+                    }
+                }
+                else if (run.progessionLevel == 3)
+                {
+                    foreach (Event even in file.level_3_Events)
+                    {
+                        run.events.Add(even);
+                    }
+                }
             }
             dataManager.saveRun(run);
         }

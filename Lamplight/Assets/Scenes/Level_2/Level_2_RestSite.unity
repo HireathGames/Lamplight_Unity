@@ -12449,6 +12449,10 @@ PrefabInstance:
       propertyPath: exitScene
       value: Level_2_Map
       objectReference: {fileID: 0}
+    - target: {fileID: 4384414205495298342, guid: 4d2d75d3760cd59498df11948c2bb502, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 22.999756
+      objectReference: {fileID: 0}
     - target: {fileID: 6272665041723723687, guid: 4d2d75d3760cd59498df11948c2bb502, type: 3}
       propertyPath: m_Name
       value: RestUI

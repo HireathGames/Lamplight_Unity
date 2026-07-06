@@ -65,15 +65,7 @@ public class ShopManager : MonoBehaviour
         {
             Destroy(artifactIcon.gameObject);
         }
-        if (run.heldArtifacts != null && run.heldArtifacts.Count != 0)
-        {
-            for (int i = 0; i < run.heldArtifacts.Count; i++)
-            {
-                TextBoxOnHover icon = Instantiate(OwnedArtifactIcon, new Vector3(canvas.transform.position.x + (((i * 55) - (330 + (660 * (i / 12)))) * canvas.scaleFactor), canvas.transform.position.y + ((280 - (110 * (i / 12))) * canvas.scaleFactor), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
-                icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
-                ArtifactIcons.Add(icon);
-            }
-        }
+        updateArtifactPosition();
         health.text = "Health:" + run.HP + "/" + run.maxHP;
         sanity.text = "Sanity:" + run.sanity;
         updateCardPositions();
@@ -89,6 +81,22 @@ public class ShopManager : MonoBehaviour
             cardsForSale[i].transform.position = cardPosition;
         }
     }
+    public void updateArtifactPosition()
+    {
+        sorrows.text = "$" + run.sorrows.ToString();
+        if (run.heldArtifacts != null && run.heldArtifacts.Count != 0)
+        {
+            for (int i = 0; i < run.heldArtifacts.Count; i++)
+            {
+                if (ArtifactIcons.Count <= i)
+                {
+                    TextBoxOnHover icon = Instantiate(OwnedArtifactIcon, new Vector3(canvas.transform.position.x + (((i * 55) - (330 + (660 * (i / 12)))) * canvas.scaleFactor), canvas.transform.position.y + ((265 - (110 * (i / 12))) * canvas.scaleFactor), canvas.transform.position.z), canvas.transform.rotation, canvas.transform);
+                    icon.initializeTextBox(run.heldArtifacts[i].getName(), run.heldArtifacts[i].getDiscription(), run.heldArtifacts[i].getArt());
+                    ArtifactIcons.Add(icon);
+                }
+            }
+        }
+    }
     public void buyArtifact()
     {
         if (availableArtifact.getCost() <= run.sorrows)
@@ -100,6 +108,7 @@ public class ShopManager : MonoBehaviour
                 run.shopArtifacts.Remove(availableArtifact);
             }
             Destroy(artifactIcon.gameObject);
+            updateArtifactPosition();
         }
     }
     public void buyCard(ShopCardUI cardUI)
@@ -137,8 +146,11 @@ public class ShopManager : MonoBehaviour
         {
             icon.gameObject.SetActive(false);
         }
-        artifactIcon.gameObject.SetActive(false);
-        artifactPrice.gameObject.SetActive(false);
+        if (artifactIcon != null)
+        {
+            artifactIcon.gameObject.SetActive(false);
+            artifactPrice.gameObject.SetActive(false);
+        }
     }
     public void showMain()
     {
@@ -150,8 +162,11 @@ public class ShopManager : MonoBehaviour
         {
             icon.gameObject.SetActive(true);
         }
-        artifactIcon.gameObject.SetActive(true);
-        artifactPrice.gameObject.SetActive(true);
+        if (artifactIcon != null)
+        {
+            artifactIcon.gameObject.SetActive(true);
+            artifactPrice.gameObject.SetActive(true);
+        }
     }
     public void showTextBox()
     {

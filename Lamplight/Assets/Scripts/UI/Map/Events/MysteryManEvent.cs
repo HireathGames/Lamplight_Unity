@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MysteryManEvent : Event
 {
-    public MysteryManEvent() : base("While walking along the path a cloaked figure approaches you, you sense no malice from it. It holds out a box, offering it to you expectantly.", new string[3], new string[3], "VF", "MysteryMan")
+    public MysteryManEvent() : base("While walking along the path a cloaked figure approaches you, you sense no malice from it. It holds out a box, offering it to you expectantly.", new string[3], new string[3], "VF", "MysteryMan", false)
     {
         getOptions()[0] = "Accept";
         getOptions()[1] = "Refuse";

@@ -76,6 +76,7 @@ public abstract class Card
     public Sprite getArt() { return cardArt; }
     public Sprite getAlt() { return altCardArt; }
     public void setCost(int c) { cost = c; }
+    public void setBanished(bool ban) { banish = ban; }
     public void setOriginalCost(int c) { originalCost = c; }
     public bool getIsX() { return xCost; }
     public bool getIsAttack() { return attack; }

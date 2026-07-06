@@ -14,6 +14,7 @@ public class RunData
     public string currentScene;
     public string nextScene;
     public int mapProgress;
+    public int progessionLevel;
     [SerializeReference] public List<Card> deck;//[SerializeReference] needs to be here, it all breaks otherwise. Because it's abstract.
     [SerializeReference] public List<Card> rewardCards;
     [SerializeReference] public List<Card> legendaryRewardCards;
@@ -34,6 +35,7 @@ public class RunData
         shopArtifacts = artifacts;
         heldArtifacts = new List<Artifact>();
         nextEncounters = encounters;
+        progessionLevel = 1;
         this.events = events;
     }
 }

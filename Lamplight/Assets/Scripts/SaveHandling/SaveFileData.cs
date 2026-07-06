@@ -27,11 +27,17 @@ public class SaveFileData
         characterUnlocks[2] = false;
         characterUnlocks[3] = false;
         level_1_Events = new List<Event>();
+        level_2_Events = new List<Event>();
+        level_3_Events = new List<Event>();
         level_1_Events.Add(new StormyPathEvent());
         level_1_Events.Add(new MysteryManEvent());
         level_1_Events.Add(new MirrorManEvent());
         level_1_Events.Add(new CursedTomeEvent());
         level_1_Events.Add(new BloodChurchEvent());
+        level_1_Events.Add(new TheftEvent());
+        level_2_Events.Add(new WholeWorldsStageEvent());
+        level_2_Events.Add(new PitAndPendulumEvent());
+        level_2_Events.Add(new RedDeathParadeEvent());
         shopArtifacts = new List<Artifact>();
         basicRewards = new List<Card>();
         harkerRewards = new List<Card>();
@@ -42,6 +48,7 @@ public class SaveFileData
         shopArtifacts.Add(new SunArtifact());
         shopArtifacts.Add(new MoonArtifact());
         shopArtifacts.Add(new BloodPactArtifact());
+        shopArtifacts.Add(new AbsintheArtifact());
         basicRewards.Add(new Sadist());
         basicRewards.Add(new Panic());
         basicRewards.Add(new LuckyCoin());
