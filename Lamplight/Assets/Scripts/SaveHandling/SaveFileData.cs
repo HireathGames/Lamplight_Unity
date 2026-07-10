@@ -71,6 +71,8 @@ public class SaveFileData
         harkerRewards.Add(new BleedingHeart());
         harkerRewards.Add(new Tracker());
         harkerRewards.Add(new ForbiddenHunger());
+        harkerRewards.Add(new PaperTrail());
+        harkerLegendaryRewards.Add(new Stake());
         harkerLegendaryRewards.Add(new Hemorrhage());
         harkerLegendaryRewards.Add(new Judgment());
         frankensteinRewards.Add(new GraveRobber());

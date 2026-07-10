@@ -13,12 +13,16 @@ public abstract class Enemy : Entity
     private int breakDowns;
     private void Start()
     {
-        nextMove = moves[Random.Range(0, moves.Count)];
+        nextMove = generateNextMove();
         manager = FindAnyObjectByType<BattleManager>();
         if (moveIcon != null)
         {
             moveIcon.sprite = nextMove.moveIcon;
         }
+    }
+    public virtual EnemyMove generateNextMove()
+    {
+        return moves[Random.Range(0, moves.Count)];
     }
     public virtual void takeTurn(Player player)
     {
@@ -32,7 +36,7 @@ public abstract class Enemy : Entity
         float skipChance = 0.5f + (getSanity() / 200f);
         if (Random.Range(0f, 1f) < skipChance)  
         {
-            nextMove = moves[Random.Range(0, moves.Count)];
+            nextMove = generateNextMove();
         }
         else
         {
@@ -76,6 +80,10 @@ public abstract class Enemy : Entity
     public BattleManager getManager()
     {
         return manager;
+    }
+    public List<EnemyMove> GetMoves()
+    {
+        return moves;
     }
     public override void die()
     {

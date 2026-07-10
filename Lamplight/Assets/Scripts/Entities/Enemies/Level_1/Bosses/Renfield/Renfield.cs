@@ -6,7 +6,7 @@ public class Renfield : Enemy
     private void Awake()
     {
         addMove(new EnemyGainStrength(3, 15, 2));
-        addMove(new EnemyAddBleed(5, 2));
+        addMove(new EnemyAddBleed(3, 2));
         addMove(new EnemyAttack(15));
         addMove(new EnemyAttack(10, 15, "AttackDebuff"));
         int startHealth = Random.Range(200, 230);
@@ -19,6 +19,12 @@ public class Renfield : Enemy
         {
             healthBar.updateUI(this);
         }
+    }
+    public override EnemyMove generateNextMove()
+    {
+        List<EnemyMove> withoutLast = new(GetMoves());
+        withoutLast.Remove(getNextMove());
+        return withoutLast[Random.Range(0, withoutLast.Count)];
     }
     public override void takeTurn(Player player)
     {

@@ -538,6 +538,11 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
+    public void updateTextUI()
+    {
+        sorrows.text = run.sorrows.ToString();
+        energy.text = player.getEnergy().ToString();
+    }
     public void sanityRandomizer()
     {
         foreach (Card c in hand)

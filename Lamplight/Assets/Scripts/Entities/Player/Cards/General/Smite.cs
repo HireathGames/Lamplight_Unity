@@ -10,6 +10,7 @@ public class Smite : Card
         player.strength += 1;
         player.addModifier(new TempStrengthMod(1));
         player.attackEntity(player.focus, 6, 0, getType());
+        player.healthBar.updateUI(player);
         player.playAnimation(1);
     }
     public override void updateDiscription(Entity entity)

@@ -19,6 +19,17 @@ public class Ellain : Enemy
             setNextMove(new EllainSummonMove());
         }
     }
+    public override EnemyMove generateNextMove()
+    {
+        if (summons.Count == 0)
+        {
+            return (new EllainSummonMove());
+        }
+        else
+        {
+            return base.generateNextMove();
+        }
+    }
     private void Awake()
     {
         addMove(new EllainBuffDefendMove());
