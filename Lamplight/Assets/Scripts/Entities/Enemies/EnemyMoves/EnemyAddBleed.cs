@@ -18,4 +18,8 @@ public class EnemyAddBleed : EnemyMove
         player.bleed += bleed;
         player.healthBar.updateUI(player);
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return bleed.ToString();
+    }
 }

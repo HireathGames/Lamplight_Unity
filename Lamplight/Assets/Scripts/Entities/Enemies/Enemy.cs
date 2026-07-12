@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 
 public abstract class Enemy : Entity
@@ -9,15 +10,17 @@ public abstract class Enemy : Entity
     [SerializeField] private List<EnemyMove> moves = new List<EnemyMove>();
     [SerializeField] private EnemyMove nextMove;
     [SerializeField] private Image moveIcon;
+    [SerializeField] private TMP_Text moveText;
     private BattleManager manager;
     private int breakDowns;
     private void Start()
     {
         nextMove = generateNextMove();
         manager = FindAnyObjectByType<BattleManager>();
-        if (moveIcon != null)
+        if (moveIcon != null && moveText != null)
         {
             moveIcon.sprite = nextMove.moveIcon;
+            moveText.text = nextMove.getMoveText(this, FindAnyObjectByType<Player>());
         }
     }
     public virtual EnemyMove generateNextMove()
@@ -43,9 +46,10 @@ public abstract class Enemy : Entity
             nextMove = new EnemyInsanitySkip();
             breakDowns++;
         }
-        if (moveIcon != null)
+        if (moveIcon != null && moveText != null)
         {
             moveIcon.sprite = nextMove.moveIcon;
+            moveText.text = nextMove.getMoveText(this, player);
         }
         if (bleed > 0)
         {

@@ -9859,6 +9859,7 @@ MonoBehaviour:
   healthBar: {fileID: 8464597501833248872}
   animator: {fileID: 72867038678440045}
   moveIcon: {fileID: 42244095736234853}
+  moveText: {fileID: 3283674702329316195}
 --- !u!1001 &767920576551245487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10120,6 +10121,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3283674702329316195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3463600897322756605, guid: 0457276fba10db6468f7401991de6122, type: 3}
+  m_PrefabInstance: {fileID: 2125938804473932446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8464597501833248872 stripped

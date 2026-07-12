@@ -30,7 +30,7 @@ public class Renfield : Enemy
     {
         if (getNextMove() is EnemyInsanitySkip)
         {
-            strength += 5;
+            strength += 3;
         }
         base.takeTurn(player);
     }

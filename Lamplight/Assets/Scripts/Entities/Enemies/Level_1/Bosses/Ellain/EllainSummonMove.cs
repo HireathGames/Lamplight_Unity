@@ -7,4 +7,8 @@ public class EllainSummonMove : EnemyMove
     {
         self.GetComponent<Ellain>().summon();
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return "???";
+    }
 }

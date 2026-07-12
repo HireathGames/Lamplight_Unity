@@ -57,6 +57,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -180,10 +181,13 @@ MonoBehaviour:
   bleed: 0
   strength: 0
   weakness: 0
+  regeneration: 0
+  broken: 0
+  mania: 0
   healthBar: {fileID: 8464597501833248872}
   animator: {fileID: 6073670651772590328}
-  nextMove: 0
   moveIcon: {fileID: 42244095736234853}
+  moveText: {fileID: 3283674702329316195}
 --- !u!1001 &2125938804473932446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,6 +328,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3283674702329316195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3463600897322756605, guid: 0457276fba10db6468f7401991de6122, type: 3}
+  m_PrefabInstance: {fileID: 2125938804473932446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8464597501833248872 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7563954456443562742, guid: 0457276fba10db6468f7401991de6122, type: 3}
@@ -405,7 +420,7 @@ PrefabInstance:
       value: Shadow
       objectReference: {fileID: 0}
     - target: {fileID: 8417361359673230750, guid: 06d06643b3059a4458cf80ebcf3a1904, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: fae123fe02fca6d4d9c5192b5b487427, type: 2}
     m_RemovedComponents: []
@@ -428,7 +443,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &6073670651772590328
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -442,6 +457,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

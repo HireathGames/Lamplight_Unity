@@ -35,4 +35,15 @@ public class EnemyAttack : EnemyMove
     {
         self.attackEntity(player, healthDamage, sanityDamage, 'n');
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        if (healthDamage > sanityDamage)
+        {
+            return self.damageAgainst(player, healthDamage).ToString();
+        }
+        else
+        {
+            return sanityDamage.ToString();
+        }
+    }
 }

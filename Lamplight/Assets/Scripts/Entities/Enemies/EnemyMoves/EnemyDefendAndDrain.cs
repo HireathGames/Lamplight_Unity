@@ -21,4 +21,22 @@ public class EnemyDefendAndDrain : EnemyMove
         self.addArmor(defence);
         self.attackEntity(player, 0, drain, 't');
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        if (defence > drain)
+        {
+            if (self.broken == 0)
+            {
+                return defence.ToString();
+            }
+            else
+            {
+                return 0.ToString();
+            }
+        }
+        else
+        {
+            return drain.ToString();
+        }
+    }
 }

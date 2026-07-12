@@ -18,4 +18,8 @@ public abstract class EnemyMove
         animationIndex = anim;
     }
     public abstract void performMove(Enemy self, Player player);
+    public virtual string getMoveText(Enemy self, Player player)
+    {
+        return "";
+    }
 }

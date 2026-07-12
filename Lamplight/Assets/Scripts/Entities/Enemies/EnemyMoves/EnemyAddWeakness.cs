@@ -18,4 +18,8 @@ public class EnemyAddWeakness : EnemyMove
         player.weakness += weakness;
         player.healthBar.updateUI(player);
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return weakness.ToString();
+    }
 }

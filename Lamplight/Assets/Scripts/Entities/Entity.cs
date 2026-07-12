@@ -55,6 +55,13 @@ public abstract class Entity : MonoBehaviour
             damageMod = 0;
         }
     }
+    public int damageAgainst(Entity attacked, int inDamage)
+    {
+        int output;
+        float multi = 1f + (0.2f * strength) - (0.25f * Mathf.Pow(weakness, 0.33f));
+        output = (int)(inDamage * (multi + (0.5f * attacked.mark)));
+        return output;
+    }
     public void setArmorMod(float mod)
     {
         if (mod > 0)
@@ -107,6 +114,13 @@ public abstract class Entity : MonoBehaviour
     private void resetAnimation()
     {
         animator.SetInteger("State", 0);
+    }
+    public void setAnimatorVariableInt(string var, int value)
+    {
+        if (animator != null)
+        {
+            animator.SetInteger(var, value);
+        }
     }
     public virtual void takeDamage(int healthDamage, float sanityDamage, char element)
     {

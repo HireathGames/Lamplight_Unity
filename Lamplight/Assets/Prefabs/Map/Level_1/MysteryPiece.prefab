@@ -73,6 +73,7 @@ MonoBehaviour:
   future: []
   levels:
   - Event
+  - Level_1_Combat
   - Level_1_Elite
   - Level_1_RestSite
   - Shop

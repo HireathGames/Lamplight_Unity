@@ -18,4 +18,8 @@ public class EnemyAddMark : EnemyMove
         player.mark += marked;
         player.healthBar.updateUI(player);
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return marked.ToString();
+    }
 }

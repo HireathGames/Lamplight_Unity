@@ -18,17 +18,21 @@ public class MysteryPiece : LevelPiece
                 return levels[1];
             }
         }
-        else if (ran < 0.85f)
+        else if (ran < 0.75f)
         {
             return levels[1];
         }
-        else if (ran < 0.95f)
+        else if (ran < 0.85f)
         {
             return levels[2];
         }
-        else
+        else if (ran < 0.95f)
         {
             return levels[3];
+        }
+        else
+        {
+            return levels[4];
         }
 
     }

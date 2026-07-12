@@ -17,4 +17,8 @@ public class EnemyHeal : EnemyMove
             self.setHealth(self.getMaxHealth());
         }
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return health.ToString();
+    }
 }

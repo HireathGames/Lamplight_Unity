@@ -18,4 +18,8 @@ public class EnemyAddBroken : EnemyMove
         player.broken += broken;
         player.healthBar.updateUI(player);
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return broken.ToString();
+    }
 }

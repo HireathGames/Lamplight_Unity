@@ -28,4 +28,8 @@ public class EnemyGiveAllStrength : EnemyMove
         }
         self.healthBar.updateUI(self);
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return strength.ToString();
+    }
 }

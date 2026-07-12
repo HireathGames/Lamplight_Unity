@@ -33,6 +33,7 @@ public class BattleManager : MonoBehaviour
     private RunData run;
     public Camera camera;
     [SerializeField] private TMP_Text energy;
+    [SerializeField] private TMP_Text cardsLeft;
     [SerializeField] private TMP_Text sorrows;
     private CursorControl input;
     private int activeIndex;
@@ -224,6 +225,7 @@ public class BattleManager : MonoBehaviour
                 UIcards[i].setUpCard(cardPosition, UIcards[i].transform.rotation, UIcards[i].transform.localScale, hand[i], this, i);
             }
             energy.text = player.getEnergy().ToString();
+            cardsLeft.text = deck.Count.ToString();
         }
         else
         {
@@ -384,6 +386,7 @@ public class BattleManager : MonoBehaviour
             if (boss)
             {
                 run.mapProgress = 0;
+                run.sorrows += 200;
                 run.progessionLevel++;
                 SaveFileData file = dataManager.loadFile();
                 run.events.RemoveAll(item => item.getLevelSpecific());
@@ -401,6 +404,8 @@ public class BattleManager : MonoBehaviour
                         run.events.Add(even);
                     }
                 }
+                run.HP = run.maxHP;
+                run.sanity = 100;
             }
             dataManager.saveRun(run);
         }
@@ -467,7 +472,7 @@ public class BattleManager : MonoBehaviour
     }
     public void draw()
     {
-        if (hand.Count <= 7)
+        if (hand.Count < 7)
         {
             if (deck.Count == 0)
             {

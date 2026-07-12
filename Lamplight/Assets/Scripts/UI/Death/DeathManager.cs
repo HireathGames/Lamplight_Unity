@@ -11,6 +11,9 @@ public class DeathManager : MonoBehaviour
     private float alpha;
     private float speed = -1;
     private bool reversing;
+    private PersistentDataManager manager;
+    private RunData run;
+    private SaveFileData saveFile;
     // Update is called once per frame
     void Update()
     {
@@ -24,16 +27,29 @@ public class DeathManager : MonoBehaviour
             fadeOut.color = new Color(255, 255, 255, alpha);
         }
     }
+    private void Start()
+    {
+        manager = new PersistentDataManager();
+        run = manager.loadRun();
+        saveFile = manager.loadFile();
+    }
     public void loadOut()
     {
         if (!reversing)
         {
             reversing = true;
+            unlockChecks();
             Invoke("exit", 1.25f);
         }
     }
+    public void unlockChecks ()
+    {
+
+    }
     public void exit()
     {
+        manager.saveRun(null);
+        manager.saveFile(saveFile);
         SceneManager.LoadScene("MainMenu");
     }
 }

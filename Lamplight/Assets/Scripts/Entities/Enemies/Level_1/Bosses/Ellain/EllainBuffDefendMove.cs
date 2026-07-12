@@ -14,4 +14,8 @@ public class EllainBuffDefendMove : EnemyMove
             e.strength++;
         }
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return "10";
+    }
 }

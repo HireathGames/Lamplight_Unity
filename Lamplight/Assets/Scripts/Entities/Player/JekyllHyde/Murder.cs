@@ -5,7 +5,7 @@ using UnityEngine;
 public class Murder : Card
 {
     private int damage = 5;
-    public Murder() : base("Murder, Murder!", "Deal 5 damage, increase this cards damage by you current strength.", 2, true, false, false, 't', "Murder", "MurderAlt") 
+    public Murder() : base("Murder, Murder!", "Deal 5 damage, increase this cards damage by your current strength for the rest of combat.", 2, true, false, false, 't', "Murder", "MurderAlt") 
     {
     }
     public override void play(int spentEnergy, Player player)
@@ -18,6 +18,6 @@ public class Murder : Card
     }
     public override void updateDiscription(Entity entity)
     {
-        setDiscription("Deal " + modifiedDamage(entity, damage) + " damage, increase this cards damage by you current strength.");
+        setDiscription("Deal " + modifiedDamage(entity, damage) + " damage, increase this cards damage by your current strength for the rest of combat.");
     }
 }

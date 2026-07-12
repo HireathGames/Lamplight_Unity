@@ -12,4 +12,8 @@ public class EnemyInsanitySkip : EnemyMove
     {
         
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return "???";
+    }
 }

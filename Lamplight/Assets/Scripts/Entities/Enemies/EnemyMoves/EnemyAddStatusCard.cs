@@ -24,4 +24,8 @@ public class EnemyAddStatusCard : EnemyMove
         }
         player.healthBar.updateUI(player);
     }
+    public override string getMoveText(Enemy self, Player player)
+    {
+        return copies.ToString();
+    }
 }
