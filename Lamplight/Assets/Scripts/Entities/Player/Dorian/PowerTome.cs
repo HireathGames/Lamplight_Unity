@@ -10,7 +10,6 @@ public class PowerTome : Card
         player.strength += 3;
         int ran = Random.Range(0, player.manager.getDeck().Count);
         player.manager.getDeck().Insert(ran, new Delirium());
-        player.healthBar.updateUI(player);
         player.playAnimation(4);
     }
 }

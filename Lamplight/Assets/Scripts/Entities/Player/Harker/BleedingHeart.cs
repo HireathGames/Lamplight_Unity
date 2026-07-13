@@ -9,7 +9,6 @@ public class BleedingHeart : Card
     {
         player.attackEntity(player.focus, 5, 0, getType());
         player.focus.bleed += 2;
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
     public override void updateDiscription(Entity entity)

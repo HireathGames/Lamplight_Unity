@@ -8,7 +8,6 @@ public class TheDevilMod : CombatModifier
         if (card is Delirium)
         {
             player.strength++;
-            player.healthBar.updateUI(player);
         }
     }
 }

@@ -9,10 +9,6 @@ public class Ellain : Enemy
     [SerializeField] private Enemy summonPrefab;
     private void Update()
     {
-        if (healthBar != null)
-        {
-            healthBar.updateUI(this);
-        }
         summons.RemoveAll(item => item == null);
         if (summons.Count == 0 && !(getNextMove() is EnemyInsanitySkip))
         {
@@ -56,7 +52,6 @@ public class Ellain : Enemy
             foreach (Enemy e in summons)
             {
                 e.weakness++;
-                e.healthBar.updateUI(e);
             }
         }
     }

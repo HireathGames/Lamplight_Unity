@@ -9,7 +9,6 @@ public class VirtuousPresence : Card
     {
         player.addArmor(7);
         player.focus.broken += 7;
-        player.focus.healthBar.updateUI(player.focus);
         int ran = Random.Range(0, player.manager.getDeck().Count);
         player.manager.getDeck().Insert(ran, new SinDebuff());
         player.playAnimation(2);

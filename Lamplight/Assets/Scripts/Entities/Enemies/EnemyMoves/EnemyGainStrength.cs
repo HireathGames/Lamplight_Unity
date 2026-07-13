@@ -23,7 +23,6 @@ public class EnemyGainStrength : EnemyMove
     {
         self.strength += strength;
         self.addArmor(block);
-        self.healthBar.updateUI(self);
     }
     public override string getMoveText(Enemy self, Player player)
     {

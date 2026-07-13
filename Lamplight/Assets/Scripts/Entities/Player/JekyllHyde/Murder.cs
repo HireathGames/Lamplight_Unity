@@ -13,7 +13,6 @@ public class Murder : Card
         player.attackEntity(player.focus, damage, 0, getType());
         damage += player.strength;
         setDiscription("Deal " + damage +" damage, increase this cards damage by you current strength.");
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
     public override void updateDiscription(Entity entity)

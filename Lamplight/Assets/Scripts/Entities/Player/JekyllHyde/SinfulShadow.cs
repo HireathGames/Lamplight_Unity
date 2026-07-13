@@ -10,7 +10,6 @@ public class SinfulShadow : Card
         player.addArmor(player.focus.broken);
         player.focus.takeDamage(player.focus.broken, 0, 'm');
         player.focus.broken = 0;
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(3);
     }
 }

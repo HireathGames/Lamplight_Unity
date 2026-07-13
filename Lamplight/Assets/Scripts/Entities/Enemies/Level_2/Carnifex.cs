@@ -8,10 +8,7 @@ public class Carnifex : Enemy
     private int scaling = 2;
     private void Update()
     {
-        if (healthBar != null)
-        {
-            healthBar.updateUI(this);
-        }
+
     }
     private void Awake()
     {

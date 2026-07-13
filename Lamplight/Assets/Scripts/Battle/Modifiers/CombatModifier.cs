@@ -15,4 +15,5 @@ public abstract class CombatModifier
     public virtual void playedCard(Player player, Card card) { }
     public virtual void playerTookDamage(Player player, int damage) { }
     public virtual void jekyllHydeTransformation(Player player) { }
+    public virtual void enemyBreakdown(Player player, Enemy enemy) { }
 }

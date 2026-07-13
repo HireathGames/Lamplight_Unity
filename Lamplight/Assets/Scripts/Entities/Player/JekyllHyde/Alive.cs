@@ -8,7 +8,6 @@ public class Alive : Card
     public override void play(int spentEnergy, Player player)
     {
         player.strength += 2;
-        player.healthBar.updateUI(player);
         player.playAnimation(3);
     }
 }

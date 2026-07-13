@@ -7,7 +7,6 @@ public class BloodPactArtifactMod : CombatModifier
         base.playerTurnStart(player);
         player.strength += 3;
         player.bleed += 3;
-        player.healthBar.updateUI(player);
         makeDone();
     }
 }

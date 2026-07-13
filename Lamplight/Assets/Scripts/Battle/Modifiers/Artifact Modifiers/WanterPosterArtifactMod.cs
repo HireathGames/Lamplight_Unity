@@ -7,7 +7,6 @@ public class WanterPosterArtifactMod : CombatModifier
         base.playerTurnStart(player);
         player.strength += 3;
         player.mark += 3;
-        player.healthBar.updateUI(player);
         makeDone();
     }
 }

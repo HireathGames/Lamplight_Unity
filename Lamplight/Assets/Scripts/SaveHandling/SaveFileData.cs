@@ -72,6 +72,7 @@ public class SaveFileData
         harkerRewards.Add(new Tracker());
         harkerRewards.Add(new ForbiddenHunger());
         harkerRewards.Add(new PaperTrail());
+        harkerRewards.Add(new Abjure());
         harkerLegendaryRewards.Add(new Stake());
         harkerLegendaryRewards.Add(new Hemorrhage());
         harkerLegendaryRewards.Add(new Judgment());
@@ -84,6 +85,7 @@ public class SaveFileData
         frankensteinRewards.Add(new Patchwork());
         frankensteinLegendaryRewards.Add(new Necromancy());
         frankensteinLegendaryRewards.Add(new Pyrophobia());
+        frankensteinLegendaryRewards.Add(new Melancholia());
         jekyllRewards.Add(new Shatter());
         jekyllRewards.Add(new Malice());
         jekyllRewards.Add(new Guilt());

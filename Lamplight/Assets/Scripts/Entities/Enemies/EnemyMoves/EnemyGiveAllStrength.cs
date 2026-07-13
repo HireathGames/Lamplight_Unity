@@ -26,7 +26,6 @@ public class EnemyGiveAllStrength : EnemyMove
             enemy.strength += strength;
             enemy.addArmor(block);
         }
-        self.healthBar.updateUI(self);
     }
     public override string getMoveText(Enemy self, Player player)
     {

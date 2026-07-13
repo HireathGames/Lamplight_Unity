@@ -540,6 +540,10 @@ public class BattleManager : MonoBehaviour
                 Destroy(UIcards[handPosition].gameObject);
                 UIcards.RemoveAt(handPosition);
                 updateCardsInHand();
+                if (player.focus != null)
+                {
+                    player.focus.updateMoveInfo(player);
+                }
             }
         }
     }

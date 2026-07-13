@@ -16,7 +16,6 @@ public class EnemyAddWeakness : EnemyMove
     public override void performMove(Enemy self, Player player)
     {
         player.weakness += weakness;
-        player.healthBar.updateUI(player);
     }
     public override string getMoveText(Enemy self, Player player)
     {

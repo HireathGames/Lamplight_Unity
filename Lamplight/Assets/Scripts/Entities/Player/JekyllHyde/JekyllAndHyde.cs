@@ -30,10 +30,6 @@ public class JekyllAndHyde : Player
         setArmorMod(1.5f);
         setDamageMod(1);
         viceBar.value = 0;
-        if (healthBar != null)
-        {
-            healthBar.updateUI(this);
-        }
     }
     public float getVice() { return vice; }
     public void changeVice(float change)
@@ -46,7 +42,6 @@ public class JekyllAndHyde : Player
                 setArmorMod(1f);
                 setDamageMod(2f);
                 strength += 5;
-                healthBar.updateUI(this);
                 transformed = true;
                 vice = 1;
                 foreach (CombatModifier modifier in getModifiers())
@@ -66,7 +61,6 @@ public class JekyllAndHyde : Player
                 setArmorMod(1.5f);
                 setDamageMod(1f);
                 strength -= 5;
-                healthBar.updateUI(this);
                 transformed = false;
                 vice = 0;
                 foreach (CombatModifier modifier in getModifiers())

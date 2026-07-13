@@ -22,7 +22,6 @@ public class EnemyAddStatusCard : EnemyMove
         {
             player.manager.getDiscard().Add(status);
         }
-        player.healthBar.updateUI(player);
     }
     public override string getMoveText(Enemy self, Player player)
     {

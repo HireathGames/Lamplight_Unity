@@ -12,6 +12,7 @@ public abstract class Enemy : Entity
     [SerializeField] private Image moveIcon;
     [SerializeField] private TMP_Text moveText;
     private BattleManager manager;
+    public Player playerChara;
     private int breakDowns;
     private void Start()
     {
@@ -20,7 +21,8 @@ public abstract class Enemy : Entity
         if (moveIcon != null && moveText != null)
         {
             moveIcon.sprite = nextMove.moveIcon;
-            moveText.text = nextMove.getMoveText(this, FindAnyObjectByType<Player>());
+            Player player = FindAnyObjectByType<Player>();
+            updateMoveInfo(player);
         }
     }
     public virtual EnemyMove generateNextMove()
@@ -32,7 +34,6 @@ public abstract class Enemy : Entity
         if (getArmor() > 0)
         {
             setArmor(getArmor() / 2);
-            healthBar.updateUI(this);
         }
         nextMove.performMove(this, player);
         playAnimation(nextMove.animationIndex);
@@ -46,11 +47,7 @@ public abstract class Enemy : Entity
             nextMove = new EnemyInsanitySkip();
             breakDowns++;
         }
-        if (moveIcon != null && moveText != null)
-        {
-            moveIcon.sprite = nextMove.moveIcon;
-            moveText.text = nextMove.getMoveText(this, player);
-        }
+        updateMoveInfo(player);
         if (bleed > 0)
         {
             setHealth(getHealth() - bleed);
@@ -59,6 +56,13 @@ public abstract class Enemy : Entity
         if (getHealth() <= 0)
         {
             die();
+        }
+    }
+    public void updateMoveInfo(Player player)
+    {
+        if (player != null)
+        {
+            moveText.text = nextMove.getMoveText(this, player);
         }
     }
     public void addMove(EnemyMove move)

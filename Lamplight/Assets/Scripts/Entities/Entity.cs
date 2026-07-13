@@ -19,12 +19,19 @@ public abstract class Entity : MonoBehaviour
     public int regeneration;
     public int broken;
     public int mania;
-    public EntityHealthBar healthBar;
+    [SerializeField] private EntityHealthBar healthBar;
     [SerializeField] private Animator animator;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+    private void FixedUpdate()
+    {
+        if (healthBar != null)
+        {
+            healthBar.updateUI(this);
+        }
     }
     public int getHealth() { return HP; }
     public Animator getAnimator() { return animator; }
@@ -58,9 +65,16 @@ public abstract class Entity : MonoBehaviour
     public int damageAgainst(Entity attacked, int inDamage)
     {
         int output;
-        float multi = 1f + (0.2f * strength) - (0.25f * Mathf.Pow(weakness, 0.33f));
-        output = (int)(inDamage * (multi + (0.5f * attacked.mark)));
-        return output;
+        if (attacked != null)
+        {
+            float multi = 1f + (0.2f * strength) - (0.25f * Mathf.Pow(weakness, 0.33f));
+            output = (int)(inDamage * (multi + (0.5f * attacked.mark)));
+            return output;
+        }
+        else
+        {
+            return 0;
+        }
     }
     public void setArmorMod(float mod)
     {

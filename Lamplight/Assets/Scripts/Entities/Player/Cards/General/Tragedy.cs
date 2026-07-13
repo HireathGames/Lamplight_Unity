@@ -8,7 +8,6 @@ public class Tragedy : Card
     public override void play(int spentEnergy, Player player)
     {
         player.focus.weakness += 3;
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(3);
     }
 }

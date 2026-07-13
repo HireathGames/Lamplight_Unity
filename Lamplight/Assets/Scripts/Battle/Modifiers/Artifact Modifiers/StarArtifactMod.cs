@@ -9,7 +9,6 @@ public class StarArtifactMod : CombatModifier
         this.player = player;
         base.playerTurnStart(player);
         player.regeneration += 3;
-        player.healthBar.updateUI(player);
         makeDone();
     }
 }

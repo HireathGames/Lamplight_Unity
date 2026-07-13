@@ -4,12 +4,5 @@ using UnityEngine;
 
 public class Harker : Player
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (healthBar != null)
-        {
-            healthBar.updateUI(this);
-        }
-    }
+
 }

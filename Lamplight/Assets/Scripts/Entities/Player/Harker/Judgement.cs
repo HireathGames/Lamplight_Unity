@@ -8,7 +8,6 @@ public class Judgment : Card
     public override void play(int spentEnergy, Player player)
     {
         player.focus.mark *= 2;
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(3);
     }
 }

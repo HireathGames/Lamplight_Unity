@@ -10,7 +10,6 @@ public class Performance : Card
         player.addArmor(8);
         player.mania++;
         player.addModifier(new TempManiaMod(1));
-        player.healthBar.updateUI(player);
         player.playAnimation(3);
     }
     public override void updateDiscription(Entity entity)

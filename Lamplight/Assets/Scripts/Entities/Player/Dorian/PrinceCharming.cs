@@ -39,10 +39,8 @@ public class PrinceCharming : Card
             {
                 player.mania++;
                 player.addModifier(new TempManiaMod(1));
-                player.healthBar.updateUI(player);
             }
         }
-        player.healthBar.updateUI(player);
         player.playAnimation(3);
     }
 }

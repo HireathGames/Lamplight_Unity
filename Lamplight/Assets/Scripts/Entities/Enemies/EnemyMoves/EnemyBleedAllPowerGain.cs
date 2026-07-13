@@ -26,7 +26,6 @@ public class EnemyBleedAllPowerGain : EnemyMove
             enemy.bleed += bleed;
             self.strength += power;
         }
-        self.healthBar.updateUI(self);
     }
     public override string getMoveText(Enemy self, Player player)
     {

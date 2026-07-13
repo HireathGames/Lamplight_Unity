@@ -9,7 +9,6 @@ public class Comedy : Card
     {
         player.strength += 3;
         player.addModifier(new TempStrengthMod(3));
-        player.healthBar.updateUI(player);
         player.playAnimation(3);
     }
 }

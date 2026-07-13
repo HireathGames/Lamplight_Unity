@@ -12,7 +12,6 @@ public class Faustian : Card
         {
             player.manager.getDiscard().Insert(0, new Delirium());
         }
-        player.healthBar.updateUI(player);
         player.addModifier(new FaustianMod());
         player.playAnimation(4);
     }

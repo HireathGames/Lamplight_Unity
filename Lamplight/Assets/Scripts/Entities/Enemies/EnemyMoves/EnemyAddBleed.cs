@@ -16,7 +16,6 @@ public class EnemyAddBleed : EnemyMove
     public override void performMove(Enemy self, Player player)
     {
         player.bleed += bleed;
-        player.healthBar.updateUI(player);
     }
     public override string getMoveText(Enemy self, Player player)
     {

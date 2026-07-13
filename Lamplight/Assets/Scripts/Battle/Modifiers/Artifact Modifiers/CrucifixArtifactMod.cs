@@ -8,6 +8,5 @@ public class CrucifixArtifactMod : CombatModifier
     {
         int ran = Random.Range(0, player.manager.getEnemies().Count);
         player.manager.getEnemies()[ran].mark++;
-        player.manager.getEnemies()[ran].healthBar.updateUI(player.manager.getEnemies()[ran]);
     }
 }

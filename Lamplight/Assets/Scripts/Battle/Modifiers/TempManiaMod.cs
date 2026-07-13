@@ -15,7 +15,6 @@ public class TempManiaMod : CombatModifier
         if (!isDone())
         {
             player.mania -= mania;
-            player.healthBar.updateUI(player);
             makeDone();
         }
 

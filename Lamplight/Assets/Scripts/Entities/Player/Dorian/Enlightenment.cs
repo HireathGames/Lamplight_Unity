@@ -12,7 +12,6 @@ public class Enlightenment : Card
         player.manager.getDeck().Insert(ran, new Delirium());
         ran = Random.Range(0, player.manager.getDeck().Count);
         player.manager.getDeck().Insert(ran, new Delirium());
-        player.healthBar.updateUI(player);
         player.playAnimation(-3);
     }
 }

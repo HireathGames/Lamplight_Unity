@@ -17,7 +17,6 @@ public class DeterminationMod : CombatModifier
         if (!isDone())
         {
             player.setHealth(player.getHealth() + health);
-            player.healthBar.updateUI(player);
             makeDone();
         }
     }

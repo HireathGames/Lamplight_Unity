@@ -6,7 +6,6 @@ public class SunArtifactMod : CombatModifier
     {
         base.playerTurnStart(player);
         player.strength += 1;
-        player.healthBar.updateUI(player);
         makeDone();
     }
 }

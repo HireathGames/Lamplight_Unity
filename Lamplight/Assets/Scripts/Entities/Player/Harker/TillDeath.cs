@@ -9,8 +9,6 @@ public class TillDeath : Card
     {
         player.focus.mark += 4;
         player.mark += 2;
-        player.healthBar.updateUI(player);
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(3);
     }
 }

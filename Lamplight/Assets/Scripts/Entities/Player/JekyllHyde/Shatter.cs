@@ -9,7 +9,6 @@ public class Shatter : Card
     {
         player.attackEntity(player.focus, 8, 0, getType());
         player.focus.broken += 5;
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
     public override void updateDiscription(Entity entity)

@@ -11,10 +11,6 @@ public class GraveRobber : Card
         if (player.focus.getHealth() <= 0)
         {
             player.regeneration += 3;
-            if (player.healthBar != null)
-            {
-                player.healthBar.updateUI(player);
-            }
         }
         player.playAnimation(1);
     }

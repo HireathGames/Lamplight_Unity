@@ -15,10 +15,7 @@ public class Renfield : Enemy
     }
     private void Update()
     {
-        if (healthBar != null)
-        {
-            healthBar.updateUI(this);
-        }
+
     }
     public override EnemyMove generateNextMove()
     {

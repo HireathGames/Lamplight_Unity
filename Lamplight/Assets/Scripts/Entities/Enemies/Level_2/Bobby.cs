@@ -6,10 +6,7 @@ public class Bobby : Enemy
 {
     private void Update()
     {
-        if (healthBar != null)
-        {
-            healthBar.updateUI(this);
-        }
+
     }
     private void Awake()
     {

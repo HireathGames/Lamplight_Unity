@@ -8,10 +8,6 @@ public class Necromancy : Card
     public override void play(int spentEnergy, Player player)
     {
         player.regeneration += 6;
-        if (player.healthBar != null)
-        {
-            player.healthBar.updateUI(player);
-        }
         player.playAnimation(3);
     }
 }

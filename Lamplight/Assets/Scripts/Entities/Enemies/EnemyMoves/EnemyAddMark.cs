@@ -16,7 +16,6 @@ public class EnemyAddMark : EnemyMove
     public override void performMove(Enemy self, Player player)
     {
         player.mark += marked;
-        player.healthBar.updateUI(player);
     }
     public override string getMoveText(Enemy self, Player player)
     {

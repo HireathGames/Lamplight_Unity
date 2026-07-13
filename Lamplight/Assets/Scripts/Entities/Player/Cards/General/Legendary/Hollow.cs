@@ -11,7 +11,6 @@ public class Hollow : Card
         player.bleed = 0;
         player.broken = 0;
         player.weakness = 0;
-        player.healthBar.updateUI(player);
         player.playAnimation(3);
     }
 }

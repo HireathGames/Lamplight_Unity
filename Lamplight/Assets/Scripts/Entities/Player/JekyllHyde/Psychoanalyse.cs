@@ -8,7 +8,6 @@ public class Psychoanalyse : Card
     public override void play(int spentEnergy, Player player)
     {
         player.attackEntity(player.focus, 0, 5 + (player.focus.broken * 2.0f), getType());
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(3);
     }
 }

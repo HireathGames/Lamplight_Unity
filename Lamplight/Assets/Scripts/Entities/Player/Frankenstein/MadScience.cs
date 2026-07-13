@@ -29,11 +29,6 @@ public class MadScience : Card
         {
             player.takeDamage(0, 10, 't');
         }
-
-        if (player.healthBar != null)
-        {
-            player.healthBar.updateUI(player);
-        }
         player.playAnimation(3);
     }
 }

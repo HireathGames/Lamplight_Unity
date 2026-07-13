@@ -8,7 +8,6 @@ public class MoonArtifactMod : CombatModifier
         foreach (Enemy e in player.manager.getEnemies())
         {
             e.weakness++;
-            e.healthBar.updateUI(e);
         }
         makeDone();
     }

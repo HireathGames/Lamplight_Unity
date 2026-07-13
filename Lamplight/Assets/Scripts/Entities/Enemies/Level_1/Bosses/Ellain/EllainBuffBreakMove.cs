@@ -8,7 +8,6 @@ public class EllainBuffBreakMove : EnemyMove
     public override void performMove(Enemy self, Player player)
     {
         player.broken += 3;
-        player.healthBar.updateUI(player);
         List<Enemy> enemies = self.GetComponent<Ellain>().getSummons();
         foreach (Enemy e in enemies)
         {

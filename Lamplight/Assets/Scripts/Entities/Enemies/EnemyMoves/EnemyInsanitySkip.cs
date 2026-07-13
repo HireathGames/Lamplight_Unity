@@ -10,7 +10,7 @@ public class EnemyInsanitySkip : EnemyMove
     }
     public override void performMove(Enemy self, Player player)
     {
-        
+        player.breakdownUpdate(self);
     }
     public override string getMoveText(Enemy self, Player player)
     {

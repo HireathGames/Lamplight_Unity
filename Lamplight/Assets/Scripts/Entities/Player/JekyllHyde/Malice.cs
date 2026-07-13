@@ -9,7 +9,6 @@ public class Malice : Card
     {
         player.strength += 2;
         player.addModifier(new TempStrengthMod(2));
-        player.healthBar.updateUI(player);
         if (player is JekyllAndHyde jh)
         {
             jh.changeVice(jh.getVice());

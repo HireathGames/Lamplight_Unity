@@ -8,10 +8,6 @@ public class ExpermentalSerum : Card
     public override void play(int spentEnergy, Player player)
     {
         player.strength += player.regeneration;
-        if (player.healthBar != null)
-        {
-            player.healthBar.updateUI(player);
-        }
         player.playAnimation(3);
     }
 }

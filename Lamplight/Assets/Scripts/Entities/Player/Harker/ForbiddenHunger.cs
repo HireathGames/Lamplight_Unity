@@ -12,7 +12,6 @@ public class ForbiddenHunger: Card
         {
             player.setHealth(player.getMaxHealth());
         }
-        player.healthBar.updateUI(player);
         player.playAnimation(3);
     }
 }

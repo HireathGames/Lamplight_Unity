@@ -12,7 +12,6 @@ public class Hemorrhage : Card
         foreach (Enemy e in player.manager.getEnemies())
         {
             e.bleed += amount;
-            e.healthBar.updateUI(e);
         }
         amount *= 2;
         player.playAnimation(3);

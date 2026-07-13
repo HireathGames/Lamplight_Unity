@@ -8,7 +8,6 @@ public class Stake : Card
     public override void play(int spentEnergy, Player player)
     {
         player.attackEntity(player.focus, 25, 0, getType());
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
     public override void updateDiscription(Entity entity)

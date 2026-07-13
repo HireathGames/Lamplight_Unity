@@ -9,7 +9,6 @@ public class Sacrement : Card
     {
         player.attackEntity(player.focus, 7, 0, getType());
         player.focus.bleed += 4;
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
     public override void updateDiscription(Entity entity)

@@ -14,7 +14,6 @@ public class TempStrengthMod : CombatModifier
         if (!isDone())
         {
             player.strength -= strength;
-            player.healthBar.updateUI(player);
             makeDone();
         }
     }

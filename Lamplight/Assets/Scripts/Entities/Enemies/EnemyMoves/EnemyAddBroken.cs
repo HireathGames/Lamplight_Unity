@@ -16,7 +16,6 @@ public class EnemyAddBroken : EnemyMove
     public override void performMove(Enemy self, Player player)
     {
         player.broken += broken;
-        player.healthBar.updateUI(player);
     }
     public override string getMoveText(Enemy self, Player player)
     {

@@ -11,7 +11,6 @@ public class Tracker : Card
         oriMark = player.focus.mark;
         player.attackEntity(player.focus, 3, 0, getType());
         player.focus.mark = oriMark;
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(1);
     }
     public override void updateDiscription(Entity entity)

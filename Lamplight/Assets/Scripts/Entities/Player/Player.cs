@@ -62,12 +62,19 @@ public abstract class Player : Entity
         base.takeDamage(healthDamage, sanityDamage, element);
         modifiers.RemoveAll(item => item.isDone());
     }
+    public void breakdownUpdate(Enemy enemy)
+    {
+        foreach (CombatModifier mod in modifiers)
+        {
+            mod.enemyBreakdown(this, enemy);
+        }
+        modifiers.RemoveAll(item => item.isDone());
+    }
     public void turnModUpdate()
     {
         if (getArmor() > 0)
         {
             setArmor(getArmor() / 2);
-            healthBar.updateUI(this);
         }
         if (regeneration > 0)
         {
@@ -77,13 +84,11 @@ public abstract class Player : Entity
             {
                 setHealth(getMaxHealth());
             }
-            healthBar.updateUI(this);
         }
         if (bleed > 0)
         {
             setHealth(getHealth() - bleed);
             bleed--;
-            healthBar.updateUI(this);
         }
         foreach (CombatModifier mod in modifiers)
         {

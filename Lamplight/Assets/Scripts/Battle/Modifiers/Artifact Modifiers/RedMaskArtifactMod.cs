@@ -10,7 +10,6 @@ public class RedMaskArtifactMod : CombatModifier
             foreach (Enemy e in player.manager.getEnemies())
             {
                 e.bleed += 3;
-                e.healthBar.updateUI(e);
             }
         }
     }

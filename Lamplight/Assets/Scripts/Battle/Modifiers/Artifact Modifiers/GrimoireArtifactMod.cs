@@ -10,7 +10,6 @@ public class GrimoireArtifactMod : CombatModifier
         {
             player.setSanity(100f);
         }
-        player.healthBar.updateUI(player);
         makeDone();
     }
 }

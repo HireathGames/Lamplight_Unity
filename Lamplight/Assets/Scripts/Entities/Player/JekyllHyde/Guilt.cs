@@ -9,7 +9,6 @@ public class Guilt : Card
     {
         player.focus.weakness += 1;
         player.focus.broken += 8;
-        player.focus.healthBar.updateUI(player.focus);
         player.playAnimation(3);
     }
 }
