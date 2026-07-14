@@ -12,18 +12,13 @@ public abstract class Enemy : Entity
     [SerializeField] private Image moveIcon;
     [SerializeField] private TMP_Text moveText;
     private BattleManager manager;
-    public Player playerChara;
     private int breakDowns;
     private void Start()
     {
         nextMove = generateNextMove();
         manager = FindAnyObjectByType<BattleManager>();
-        if (moveIcon != null && moveText != null)
-        {
-            moveIcon.sprite = nextMove.moveIcon;
-            Player player = FindAnyObjectByType<Player>();
-            updateMoveInfo(player);
-        }
+        Player player = FindAnyObjectByType<Player>();
+        updateMoveInfo(player);
     }
     public virtual EnemyMove generateNextMove()
     {
@@ -60,8 +55,9 @@ public abstract class Enemy : Entity
     }
     public void updateMoveInfo(Player player)
     {
-        if (player != null)
+        if ((player != null) && (moveIcon != null && moveText != null)) 
         {
+            moveIcon.sprite = nextMove.moveIcon;
             moveText.text = nextMove.getMoveText(this, player);
         }
     }

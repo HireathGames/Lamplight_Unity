@@ -71,6 +71,10 @@ public class ShopManager : MonoBehaviour
         updateCardPositions();
         textBox.SetActive(false);
         Invoke("showTextBox", 2);
+        foreach (Artifact artifact in run.shopArtifacts)
+        {
+            Debug.Log(artifact);
+        }
     }
     public void updateCardPositions()
     {

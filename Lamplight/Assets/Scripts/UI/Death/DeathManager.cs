@@ -44,6 +44,35 @@ public class DeathManager : MonoBehaviour
     }
     public void unlockChecks ()
     {
+        if (run.progessionLevel == 2)
+        {
+            if (!saveFile.shopArtifacts.Contains(new AbsintheArtifact()))
+            {
+                saveFile.shopArtifacts.Add(new AbsintheArtifact());
+            }
+            if (run.character.Equals("JH"))
+            {
+                if (!saveFile.shopArtifacts.Contains(new CrucifixArtifact()))
+                {
+                    saveFile.shopArtifacts.Add(new CrucifixArtifact());
+                }
+            }
+            else if (run.character.Equals("VF"))
+            {
+
+            }
+            else if (run.character.Equals("HJ&EH"))
+            {
+                if (!saveFile.shopArtifacts.Contains(new ChemicalSaltArtifact()))
+                {
+                    saveFile.shopArtifacts.Add(new ChemicalSaltArtifact());
+                }
+            }
+            else if (run.character.Equals("DG"))
+            {
+
+            }
+        }
 
     }
     public void exit()

@@ -13,10 +13,6 @@ public class Renfield : Enemy
         setHealth(startHealth);
         setMaxHealth(startHealth);
     }
-    private void Update()
-    {
-
-    }
     public override EnemyMove generateNextMove()
     {
         List<EnemyMove> withoutLast = new(GetMoves());

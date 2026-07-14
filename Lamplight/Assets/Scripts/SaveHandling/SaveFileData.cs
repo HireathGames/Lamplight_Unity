@@ -6,6 +6,9 @@ using UnityEngine;
 public class SaveFileData
 {
     public bool[] characterUnlocks = new bool[4];
+    public float masterVolume;
+    public float musicVolume;
+    public int selectedResolution;
     [SerializeReference] public List<Artifact> shopArtifacts;
     [SerializeReference] public List<Event> level_1_Events;
     [SerializeReference] public List<Event> level_2_Events;
@@ -26,6 +29,8 @@ public class SaveFileData
         characterUnlocks[1] = false;
         characterUnlocks[2] = false;
         characterUnlocks[3] = false;
+        masterVolume = 0.5f;
+        musicVolume = 0.5f;
         level_1_Events = new List<Event>();
         level_2_Events = new List<Event>();
         level_3_Events = new List<Event>();
@@ -48,7 +53,6 @@ public class SaveFileData
         shopArtifacts.Add(new SunArtifact());
         shopArtifacts.Add(new MoonArtifact());
         shopArtifacts.Add(new BloodPactArtifact());
-        shopArtifacts.Add(new AbsintheArtifact());
         basicRewards.Add(new Sadist());
         basicRewards.Add(new Panic());
         basicRewards.Add(new LuckyCoin());
@@ -73,6 +77,7 @@ public class SaveFileData
         harkerRewards.Add(new ForbiddenHunger());
         harkerRewards.Add(new PaperTrail());
         harkerRewards.Add(new Abjure());
+        harkerRewards.Add(new Anemia());
         harkerLegendaryRewards.Add(new Stake());
         harkerLegendaryRewards.Add(new Hemorrhage());
         harkerLegendaryRewards.Add(new Judgment());

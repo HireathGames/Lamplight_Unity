@@ -28,6 +28,10 @@ public abstract class Entity : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        updateHealthBar();
+    }
+    public void updateHealthBar()
+    {
         if (healthBar != null)
         {
             healthBar.updateUI(this);

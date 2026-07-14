@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     private PersistentDataManager dataManager;
-    private RunData run;
-    private SaveFileData fileData;
+    public RunData run;
+    public SaveFileData fileData;
     [SerializeField] private string[] characterNames;
     [SerializeField] private string[] characterDiscription;
     private int characterIndex;
@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject continueButton;
     public GameObject title;
     public GameObject select;
+    public GameObject settings;
     public Transform rotator;
     public Camera titleCam;
     public Camera selectCam;
@@ -75,23 +76,34 @@ public class MainMenuManager : MonoBehaviour
         titleCam.enabled = true;
         title.SetActive(true);
         select.SetActive(false);
+        settings.SetActive(false);
+    }
+    public void openSettings()
+    {
+        title.SetActive(false);
+        select.SetActive(false);
+        settings.SetActive(true);
     }
     public void selectedCharacter()
     {
         if (characterIndex == 0)
         {
+            dataManager.saveFile(fileData);
             runStartManager.startHarkerRun();
         }
         else if (characterIndex == 1)
         {
+            dataManager.saveFile(fileData);
             runStartManager.startFrankensteinRun();
         }
         else if (characterIndex == 2)
         {
+            dataManager.saveFile(fileData);
             runStartManager.startJekyllRun();
         }
         else if (characterIndex == 3)
         {
+            dataManager.saveFile(fileData);
             runStartManager.startDorianRun();
         }
     }
@@ -112,6 +124,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void quit()
     {
+        dataManager.saveFile(fileData);
         Application.Quit();
     }
 }

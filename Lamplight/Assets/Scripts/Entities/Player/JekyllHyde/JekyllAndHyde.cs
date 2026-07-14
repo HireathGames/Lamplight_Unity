@@ -20,6 +20,7 @@ public class JekyllAndHyde : Player
             Invoke("playEffect", 1.15f);
             setDelay(1.5f);
         }
+        updateHealthBar();
     }
     public void playEffect()
     {

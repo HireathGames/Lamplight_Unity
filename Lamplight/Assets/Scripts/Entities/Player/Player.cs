@@ -85,11 +85,6 @@ public abstract class Player : Entity
                 setHealth(getMaxHealth());
             }
         }
-        if (bleed > 0)
-        {
-            setHealth(getHealth() - bleed);
-            bleed--;
-        }
         foreach (CombatModifier mod in modifiers)
         {
             mod.playerTurnStart(this);
@@ -113,6 +108,15 @@ public abstract class Player : Entity
             modifiers[i].playerTurnEnd(this);
         }
         modifiers.RemoveAll(item => item.isDone());
+        if (bleed > 0)
+        {
+            setHealth(getHealth() - bleed);
+            bleed--;
+            if (getHealth() <= 0)
+            {
+                die();
+            }
+        }
         cardsPlayed = 0;
     }
     public virtual void endCombatModUpdate()
