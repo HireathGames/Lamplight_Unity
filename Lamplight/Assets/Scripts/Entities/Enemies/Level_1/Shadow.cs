@@ -22,6 +22,7 @@ public class Shadow : Enemy
         if (element == 'm')
         {
             broken++;
+            critEffects(element);
         }
     }
 }

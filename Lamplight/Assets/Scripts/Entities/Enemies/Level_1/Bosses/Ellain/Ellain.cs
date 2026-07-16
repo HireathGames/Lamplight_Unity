@@ -53,6 +53,7 @@ public class Ellain : Enemy
             {
                 e.weakness++;
             }
+            critEffects(element);
         }
     }
     public List<Enemy> getSummons() { return summons; }

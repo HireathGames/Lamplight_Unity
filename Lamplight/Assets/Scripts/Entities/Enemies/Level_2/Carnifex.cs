@@ -61,6 +61,7 @@ public class Carnifex : Enemy
         if (element == 't')
         {
             bleed += 2;
+            critEffects(element);
         }
     }
 }

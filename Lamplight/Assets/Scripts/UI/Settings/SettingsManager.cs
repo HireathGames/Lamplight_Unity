@@ -19,6 +19,7 @@ public class SettingsManager : MonoBehaviour
     {
         audioController.SetFloat("MasterVolume", Mathf.Log10(manager.fileData.masterVolume) * 20);
         audioController.SetFloat("MusicVolume", Mathf.Log10(manager.fileData.musicVolume) * 20);
+        audioController.SetFloat("soundEffectsVolume", Mathf.Log10(manager.fileData.soundEffectVolume) * 20);
         masterVolumeSlider.value = manager.fileData.masterVolume;
         musicVolumeSlider.value = manager.fileData.musicVolume;
         fullScreen.isOn = Screen.fullScreen;
@@ -34,6 +35,11 @@ public class SettingsManager : MonoBehaviour
     {
         manager.fileData.musicVolume = value;
         audioController.SetFloat("MusicVolume", Mathf.Log10(value) * 20);
+    }
+    public void setEffectsVolume(float value)
+    {
+        manager.fileData.soundEffectVolume = value;
+        audioController.SetFloat("soundEffectsVolume", Mathf.Log10(value) * 20);
     }
     public void updateResolutionText()
     {

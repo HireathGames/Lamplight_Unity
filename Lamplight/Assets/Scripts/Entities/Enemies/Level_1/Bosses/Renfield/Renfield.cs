@@ -33,6 +33,7 @@ public class Renfield : Enemy
         if (element == 'b')
         {
             bleed++;
+            critEffects(element);
         }
     }
 }

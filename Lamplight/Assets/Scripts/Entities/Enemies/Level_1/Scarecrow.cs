@@ -24,6 +24,7 @@ public class Scarecrow : Enemy
         if (element == 't' && healthDamage > 0)
         {
             setArmor(getArmor() - 5);
+            critEffects(element);
             if (getArmor() < 0)
             {
                 setArmor(0);

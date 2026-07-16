@@ -11,6 +11,8 @@ public abstract class Enemy : Entity
     [SerializeField] private EnemyMove nextMove;
     [SerializeField] private Image moveIcon;
     [SerializeField] private TMP_Text moveText;
+    [SerializeField] private AudioSource critSound;
+    [SerializeField] private ParticleSystem critEffect;
     private BattleManager manager;
     private int breakDowns;
     private void Start()
@@ -55,10 +57,15 @@ public abstract class Enemy : Entity
     }
     public void updateMoveInfo(Player player)
     {
-        if ((player != null) && (moveIcon != null && moveText != null)) 
+        if ((player != null) ) 
         {
             moveIcon.sprite = nextMove.moveIcon;
             moveText.text = nextMove.getMoveText(this, player);
+        }
+        else if (moveIcon != null && moveText != null)
+        {
+            moveIcon.sprite = nextMove.moveIcon;
+            moveText.text = "???";
         }
     }
     public void addMove(EnemyMove move)
@@ -97,5 +104,30 @@ public abstract class Enemy : Entity
     private void invoDestroy()
     {
         Destroy(gameObject);
+    }
+    public void critEffects(char element)
+    {
+        if ((critEffect != null) && (critSound != null))
+        {
+            critSound.pitch = Random.Range(2.9f, 3.1f);
+            critSound.Play();
+            if (element == 't')
+            {
+                critEffect.startColor = new Color(255, 255, 255);
+            }
+            else if (element == 'w')
+            {
+                critEffect.startColor = new Color(255, 0, 0);
+            }
+            else if (element == 'm')
+            {
+                critEffect.startColor = new Color(0, 0, 255);
+            }
+            else if (element == 'b')
+            {
+                critEffect.startColor = new Color(255, 255, 0);
+            }
+            critEffect.Play();
+        }
     }
 }

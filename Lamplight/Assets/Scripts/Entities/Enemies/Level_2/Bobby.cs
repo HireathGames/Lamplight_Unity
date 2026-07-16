@@ -23,6 +23,7 @@ public class Bobby : Enemy
         if (element == 't')
         {
             bleed++;
+            critEffects(element);
         }
     }
 }

@@ -24,6 +24,7 @@ public class Infected : Enemy
         if (element == 'w')
         {
             mark++;
+            critEffects(element);
         }
     }
 }

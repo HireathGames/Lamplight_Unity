@@ -24,6 +24,7 @@ public class Hostess : Enemy
         if (element == 'w')
         {
             mark++;
+            critEffects(element);
         }
     }
 }

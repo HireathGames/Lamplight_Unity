@@ -24,6 +24,7 @@ public class CrookedMan : Enemy
         if (element == 't')
         {
             broken += 3;
+            critEffects(element);
         }
     }
 }

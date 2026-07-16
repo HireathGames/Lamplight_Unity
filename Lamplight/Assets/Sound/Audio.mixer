@@ -34,10 +34,13 @@ AudioMixerController:
     name: MasterVolume
   - guid: fdd95e93b752e4d44868d7d020ae70bc
     name: MusicVolume
+  - guid: b320abcbf88349c45937f8b35b3c5e56
+    name: soundEffectsVolume
   m_AudioMixerGroupViews:
   - guids:
     - bb255271633a3ff41a1d3a3dd859ad95
     - 995463157d2d6664da4c53dd7a7cac31
+    - 36f94ddf03870554cb77fb0a958a9969
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -52,6 +55,7 @@ AudioMixerGroupController:
   m_GroupID: bb255271633a3ff41a1d3a3dd859ad95
   m_Children:
   - {fileID: 4290718492477025924}
+  - {fileID: 2946460075895985968}
   m_Volume: 69a9cbf497063d148ae172e591e4b43f
   m_Pitch: 4e472fffc96225f48bf2c05d48344f75
   m_Send: 00000000000000000000000000000000
@@ -87,7 +91,41 @@ AudioMixerSnapshotController:
   m_FloatValues:
     fdd95e93b752e4d44868d7d020ae70bc: -7
     69a9cbf497063d148ae172e591e4b43f: -7
+    b320abcbf88349c45937f8b35b3c5e56: -7.436929
   m_TransitionOverrides: {}
+--- !u!244 &16723750773592230
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 609b2c6a59eb591429455b521b680e94
+  m_EffectName: Attenuation
+  m_MixLevel: ffee91e5fb60dd745a06c76e69df9fec
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &2946460075895985968
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sound Effects
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 36f94ddf03870554cb77fb0a958a9969
+  m_Children: []
+  m_Volume: b320abcbf88349c45937f8b35b3c5e56
+  m_Pitch: 39b1c6fa6763cf040b05ffd6bb891c64
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 16723750773592230}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &4290718492477025924
 AudioMixerGroupController:
   m_ObjectHideFlags: 0

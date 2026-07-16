@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_2/Level_2_Elite.unity
     guid: 78a8bdf45d9345b488dd6d8690a357a9
+  - enabled: 1
+    path: Assets/Scenes/Level_2/Level_2_Boss_BellRinger.unity
+    guid: 505e2b507e8fcb34bb5643815d89df91
   m_configObjects: {}

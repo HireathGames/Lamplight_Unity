@@ -25,6 +25,7 @@ public class Glutton : Enemy
         {
             bleed += 3;
             strength++;
+            critEffects(element);
         }
     }
 }

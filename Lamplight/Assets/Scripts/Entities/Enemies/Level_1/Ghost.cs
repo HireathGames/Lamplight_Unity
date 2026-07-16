@@ -22,6 +22,7 @@ public class Ghost : Enemy
         if (element == 't')
         {
             takeDamage(0, 5, 'n');
+            critEffects(element);
         }
     }
 }

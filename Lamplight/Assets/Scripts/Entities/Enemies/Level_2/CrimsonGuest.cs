@@ -16,6 +16,7 @@ public class CrimsonGuest : Enemy
     private void Start()
     {
         setNextMove(new EnemyAddCombatMod(new CrimsonGuestMod(this), "Buff"));
+        updateMoveInfo(null);
     }
 
     public override void takeDamage(int healthDamage, float sanityDamage, char element)
@@ -24,6 +25,7 @@ public class CrimsonGuest : Enemy
         if (element == 'w')
         {
             mark += 2;
+            critEffects(element);
         }
     }
 }

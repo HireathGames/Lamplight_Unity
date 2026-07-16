@@ -35,6 +35,7 @@ public class Blueblood : Enemy
         {
             getManager().getRun().sorrows += 10;
             getManager().updateTextUI();
+            critEffects(element);
         }
     }
 }

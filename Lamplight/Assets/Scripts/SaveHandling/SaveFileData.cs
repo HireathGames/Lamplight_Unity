@@ -8,6 +8,7 @@ public class SaveFileData
     public bool[] characterUnlocks = new bool[4];
     public float masterVolume;
     public float musicVolume;
+    public float soundEffectVolume;
     public int selectedResolution;
     [SerializeReference] public List<Artifact> shopArtifacts;
     [SerializeReference] public List<Event> level_1_Events;
