@@ -9,7 +9,7 @@ public class PitAndPendulumEvent : Event
         getOptions()[2] = "Murder!";
         getOutcomes()[0] = "You decide to pay the blood price, giving a few liters to the bobby. The shackles unlatch and he runs over you thanking you and giving you a pouch of a strange currency. You gained 200 sorrows.";
         getOutcomes()[1] = "You refuse, leaving the man to his morbid fate. You try not to look back when the screams grow louder and louder. You try not to cry when they stop completely, you keep telling yourself it’s not your fault. But you know you're lying, don’t you? You gained the Complicit regret. ";
-        getOutcomes()[2] = "This horrific scene invokes a primal wrath in Hyde, he takes the cane and bludgeons the pig to death. He almost forgets to save the man because of the joy stomping in the pigs head. He gets him free, but at this point he is more terrified of Hyde than his macabre fate. He shoves a strange currency and fleas. Jekyll knows that this may be more trouble than its worth. You gained 200 sorrows and the Wanted Poster artifact.";
+        getOutcomes()[2] = "This horrific scene invokes a primal wrath in Hyde, he takes the cane and bludgeons the pig to death. He almost forgets to save the man because of the joy stomping in the pigs head. He gets him free, but at this point he is more terrified of Hyde than his macabre fate. He shoves a strange currency into your hands and fleas. Jekyll knows that this may be more trouble than its worth. You gained 200 sorrows and the Wanted Poster artifact.";
     }
     public override void optionOne(RunData run)
     {

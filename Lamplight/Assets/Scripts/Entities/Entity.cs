@@ -66,6 +66,7 @@ public abstract class Entity : MonoBehaviour
             damageMod = 0;
         }
     }
+    public float getDamageMod() { return damageMod; }
     public int damageAgainst(Entity attacked, int inDamage)
     {
         int output;
@@ -73,6 +74,7 @@ public abstract class Entity : MonoBehaviour
         {
             float multi = 1f + (0.2f * strength) - (0.25f * Mathf.Pow(weakness, 0.33f));
             output = (int)(inDamage * (multi + (0.5f * attacked.mark)));
+            output = (int) (output * attacked.getDamageMod());
             return output;
         }
         else

@@ -9,7 +9,7 @@ public class RedDeathParadeEvent : Event
         getOptions()[2] = "Speak";
         getOutcomes()[0] = "She looks at you, softly, lovingly and says, “A brother to the flock, you shall cast who you were away. Go forth, make them feel your rage and truth.” She hands you a mask that's… bleeding. You put it on, you gained the Crimson Mask artifact.";
         getOutcomes()[1] = "She looks at you with disgust and disdain, she then nods to her congregation. They then pounce upon you, tearing at your flesh. You end up passing out, you wake up in the arms of Faust under the light of the Midnight Lantern. You were greatly injured but your life was saved by them.";
-        getOutcomes()[2] = "You launch into an inane rant the nature of humanity and the ephemeral nature of superiority. You tell about your economic theories and your ideas about the vestiges of feudalistic practices in a modern society. She genuinely looks puzzled by this turn of event and doesn’t know how to react, as she can’t tell if you side with them or not. After exactly 34 minutes an 29 seconds of your speech you finish, they just leave instead of interacting further. That was nice.";
+        getOutcomes()[2] = "You launch into an inane rant the nature of humanity and the ephemeral nature of superiority. You tell them about your economic theories and your ideas about the vestiges of feudalistic practices in a modern society. She genuinely looks puzzled by this turn of events and doesn’t know how to react, as she can’t tell if you side with them or not. After exactly 34 minutes an 29 seconds of your speech you finish, they just leave instead of interacting further. That was nice.";
     }
     public override void optionOne(RunData run)
     {

@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 473732104748769680}
   - component: {fileID: 5166702976036526941}
   m_Layer: 0
-  m_Name: Bell Ringer
+  m_Name: Bell RingerEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

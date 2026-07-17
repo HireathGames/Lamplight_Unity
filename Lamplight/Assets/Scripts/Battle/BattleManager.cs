@@ -274,8 +274,8 @@ public class BattleManager : MonoBehaviour
                     {
                         if (encounters[ran].enemies[i] != null)
                         {
-                            Enemy e = Instantiate(encounters[ran].enemies[i], enemySpawnPoints[i]);
-                            enemies.Add(e);
+                            Enemy enemy = Instantiate(encounters[ran].enemies[i], enemySpawnPoints[i]);
+                            enemies.Add(enemy);
                         }
                     }
                 }
@@ -284,7 +284,6 @@ public class BattleManager : MonoBehaviour
             {
                 eliteEncounter = true;
                 enemies = new List<Enemy>(FindObjectsByType<Enemy>());
-
             }
             if (run.heldArtifacts != null && run.heldArtifacts.Count != 0)
             {
@@ -302,6 +301,14 @@ public class BattleManager : MonoBehaviour
     public void startCombat()
     {
         initializeCombat();
+        foreach (Enemy enemy in enemies)
+        {
+            if ((player != null) && (enemy != null))
+            {
+                enemy.setNextMove(enemy.generateNextMove());
+                enemy.updateMoveInfo(player);
+            }
+        }
         if (sorrows != null)
         {
             sorrows.text = "$" + run.sorrows;

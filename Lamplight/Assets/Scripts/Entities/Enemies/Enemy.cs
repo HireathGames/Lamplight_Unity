@@ -17,14 +17,18 @@ public abstract class Enemy : Entity
     private int breakDowns;
     private void Start()
     {
-        nextMove = generateNextMove();
         manager = FindAnyObjectByType<BattleManager>();
-        Player player = FindAnyObjectByType<Player>();
-        updateMoveInfo(player);
     }
     public virtual EnemyMove generateNextMove()
     {
-        return moves[Random.Range(0, moves.Count)];
+        if (moves != null && moves.Count > 0)
+        {
+            return moves[Random.Range(0, moves.Count)];
+        }
+        else
+        {
+            return new EnemyAttack(1);
+        }
     }
     public virtual void takeTurn(Player player)
     {
@@ -57,15 +61,23 @@ public abstract class Enemy : Entity
     }
     public void updateMoveInfo(Player player)
     {
-        if ((player != null) ) 
+        if (nextMove != null)
         {
-            moveIcon.sprite = nextMove.moveIcon;
-            moveText.text = nextMove.getMoveText(this, player);
+            if ((player != null) && (moveIcon != null && moveText != null))
+            {
+                moveIcon.sprite = nextMove.moveIcon;
+                moveText.text = nextMove.getMoveText(this, player);
+            }
+            else if (moveIcon != null && moveText != null)
+            {
+                moveIcon.sprite = nextMove.moveIcon;
+                moveText.text = "???";
+            }
         }
-        else if (moveIcon != null && moveText != null)
+        else
         {
-            moveIcon.sprite = nextMove.moveIcon;
-            moveText.text = "???";
+            nextMove = generateNextMove();
+            updateMoveInfo(player);
         }
     }
     public void addMove(EnemyMove move)
