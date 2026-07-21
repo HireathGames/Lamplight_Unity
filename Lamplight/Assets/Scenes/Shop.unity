@@ -508,14 +508,33 @@ MonoBehaviour:
   harkerLines:
   - 'Ah! Young Jonathan, so nice to see you again. Please take what you need, it''s
     my honor to serve such a pure soul as yourself. '
+  - "I still don\u2019t understand how you hold those artifacts to your God like
+    that. I can hear your flesh burn from here."
+  - "No matter what you do, don\u2019t lose faith. Your God has not abandoned you,
+    let him protect your weary heart. Take what you need, and go with God my friend."
+  - Take heed my friend, do not let hatred consume you. You are doing this for love,
+    remember that.
   frankensteinLines:
   - Victor, we are allies but your convictions are...  Just don't make the same mistakes
     I did, alright?
+  - "You are on a dark path Victor, you have already suffered so much. Why seek more
+    misery for yourself and others? After this is over, please don\u2019t go chasing
+    ghosts of those who have forgotten you."
+  - Your experiments are incredibly fascinating work. You could still make something
+    good of it, if you tried.
+  - Your eyes are truly horrific, imbued with the very essence of terror. Were your
+    experiments eyes the same? It would explain the depth and breadth of his rejection
+    from our kind.
   jekyllLines:
   - Salutations Dr. Jekyll! I hope you have been keeping well. How is the old ball
     and chain? Apologies, apologies, I didn't mean to demean Hyde.
   - Welcome Mr. Hyde, it is always nice to have such famous customers. You make that
     Ripper fellow seem like a school boy.
+  - You have much potential, Dr. Jekyll. You understand the need for balance between
+    the light and the dark, better then perhaps even myself. After this grim business
+    is concluded, I will come find you, I could teach you so much.
+  - "Vengeance wafts off of you Hyde, as if you are soaked in it. When this work
+    is concluded, I have a certain lord I would like you to take care of for me\u2026"
   dorianLines:
   - Greetings, my detested apprentice. You know, out of all my life you are my greatest
     regret. Just buy something.

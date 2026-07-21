@@ -23,4 +23,8 @@ public abstract class EnemyMove
     {
         return "";
     }
+    public void setAnimationIndex(int anim)
+    {
+        animationIndex = anim;
+    }
 }

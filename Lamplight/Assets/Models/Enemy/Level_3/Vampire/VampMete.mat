@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CastleWindow
+  m_Name: VampMete
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,11 +41,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: f57c23d812708734784a9140894ec988, type: 3}
+        m_Texture: {fileID: 2800000, guid: ec9105a51973a534fa907b5c36d0a3b5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f8f7f086958964e488dc9a88226a569f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 39bc0eb571b85ad408ff06f7c7e4077d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -80,6 +80,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1.304119, g: 1.304119, b: 1.304119, a: 1}
+    - _EmissionColor: {r: 4.6490135, g: 4.5832257, b: 4.5832257, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

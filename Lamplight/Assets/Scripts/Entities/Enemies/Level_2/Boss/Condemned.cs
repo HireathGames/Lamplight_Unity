@@ -8,6 +8,7 @@ public class Condemned : Enemy
     private Player pla;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private string[] names;
+    private int previous;
     private float nameDelay;
     private void Update()
     {
@@ -67,7 +68,15 @@ public class Condemned : Enemy
     private void changeName()
     {
         int ran = Random.Range(0, names.Length);
-        nameText.text = names[ran] + ", the condemned";
-        nameDelay = 0.33f;
+        if (ran != previous)
+        {
+            nameText.text = names[ran] + ", the condemned";
+            nameDelay = 0.1f;
+            previous = ran;
+        }
+        else
+        {
+            changeName();
+        }
     }
 }
