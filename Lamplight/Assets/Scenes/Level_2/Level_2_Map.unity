@@ -21680,7 +21680,7 @@ MonoBehaviour:
   - {fileID: 7857955959865219235, guid: eace42d0f3d94d34da115443057c590a, type: 3}
   - {fileID: 7857955959865219235, guid: eace42d0f3d94d34da115443057c590a, type: 3}
   - {fileID: 2101768965761516843, guid: 0152fa1946172364bbc5fd1d067818e2, type: 3}
-  bossPiece: {fileID: 2101768965761516843, guid: 24d6780c46253db44b19e22335a06291, type: 3}
+  bossPiece: {fileID: 2101768965761516843, guid: eb649d6ac4c96944d83f3902dd249f92, type: 3}
   futureLight: {fileID: 1131696836}
   choicesSpawnPositions:
   - {fileID: 716584605}

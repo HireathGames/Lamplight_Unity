@@ -10,6 +10,7 @@ public class SaveFileData
     public float musicVolume;
     public float soundEffectVolume;
     public int selectedResolution;
+    [SerializeReference] public List<Unlock> unlocks;
     [SerializeReference] public List<Artifact> shopArtifacts;
     [SerializeReference] public List<Event> level_1_Events;
     [SerializeReference] public List<Event> level_2_Events;
@@ -69,7 +70,6 @@ public class SaveFileData
         dorianLegendaryRewards = new List<Card>();
         basicLegendaryRewards.Add(new Hollow());
         basicLegendaryRewards.Add(new Reclamation());
-        basicLegendaryRewards.Add(new Determination());
         harkerRewards.Add(new Hunter());
         harkerRewards.Add(new Sacrement());
         harkerRewards.Add(new TillDeath());
@@ -81,7 +81,6 @@ public class SaveFileData
         harkerRewards.Add(new Anemia());
         harkerLegendaryRewards.Add(new Stake());
         harkerLegendaryRewards.Add(new Hemorrhage());
-        harkerLegendaryRewards.Add(new Judgment());
         frankensteinRewards.Add(new GraveRobber());
         frankensteinRewards.Add(new Electrify());
         frankensteinRewards.Add(new MadScience());
@@ -91,7 +90,6 @@ public class SaveFileData
         frankensteinRewards.Add(new Patchwork());
         frankensteinLegendaryRewards.Add(new Necromancy());
         frankensteinLegendaryRewards.Add(new Pyrophobia());
-        frankensteinLegendaryRewards.Add(new Melancholia());
         jekyllRewards.Add(new Shatter());
         jekyllRewards.Add(new Malice());
         jekyllRewards.Add(new Guilt());
@@ -114,6 +112,5 @@ public class SaveFileData
         dorianRewards.Add(new Manifest());
         dorianLegendaryRewards.Add(new Faustian());
         dorianLegendaryRewards.Add(new Chronomancer());
-        dorianLegendaryRewards.Add(new PrinceCharming());
     }
 }

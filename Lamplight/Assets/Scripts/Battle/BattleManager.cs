@@ -463,8 +463,7 @@ public class BattleManager : MonoBehaviour
     {
         if (enemyCombatStep < enemies.Count)
         {
-            Debug.Log(enemies[enemyCombatStep] != null);
-            if (enemies[enemyCombatStep] != null)
+            if (enemies[enemyCombatStep] != null && player != null)
             {
                 enemies[enemyCombatStep].takeTurn(player);
             }

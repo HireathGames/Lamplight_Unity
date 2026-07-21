@@ -29,7 +29,7 @@ public abstract class Artifact
     public string getName() { return name; }
     public string getDiscription() { return discription; }
     public int getCost() { return cost; }
-
+    public string getArtName() { return spriteFile; }
     public void randomizeCost() { cost += Random.Range(-cost / 10, cost / 10); }
     public CombatModifier getEffect() { return effect; }
     public override string ToString()

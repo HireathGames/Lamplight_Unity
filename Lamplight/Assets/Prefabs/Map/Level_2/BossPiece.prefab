@@ -50,6 +50,7 @@ MonoBehaviour:
   future: []
   levels:
   - Level_2_Boss_BellRinger
+  - Level_2_Boss_
   forShow: 0
 --- !u!136 &4323527134164777874
 CapsuleCollider:

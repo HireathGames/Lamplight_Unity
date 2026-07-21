@@ -57,15 +57,17 @@ public class Ellain : Enemy
         }
     }
     public List<Enemy> getSummons() { return summons; }
-    public void summon()
+    public void summon(Player player)
     {
         for (int i = 0; i < points.Count; i++)
         {
             if ((i > summons.Count - 1) || summons[i] == null)
             {
                 Enemy enemy = Instantiate(summonPrefab, points[i]);
-                enemy.playAnimation(5);
                 getManager().getEnemies().Add(enemy);
+                enemy.setNextMove(enemy.generateNextMove());
+                enemy.playAnimation(5);
+                enemy.updateMoveInfo(player);
                 summons.Add(enemy);
             }
         }
