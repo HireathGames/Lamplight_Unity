@@ -53,4 +53,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_2/Level_2_Boss_Condemned.unity
     guid: 3f3130373513862459c6bfd7ada2d8ae
+  - enabled: 1
+    path: Assets/Scenes/Level_3/Level_3_RestSite.unity
+    guid: b1719eddc24a7d04c8d87e60eaa4663b
+  - enabled: 1
+    path: Assets/Scenes/Level_3/Level_3_Combat.unity
+    guid: e58a75724ae828242920706b23af9793
+  - enabled: 1
+    path: Assets/Scenes/Level_3/Level_3_Map.unity
+    guid: bb168e2e1b0280e4295418956ae23315
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 7019de808f4fdf34bb03aabc2a069133
   m_configObjects: {}

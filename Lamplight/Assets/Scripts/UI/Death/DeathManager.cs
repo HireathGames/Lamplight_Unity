@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
@@ -44,6 +46,7 @@ public class DeathManager : MonoBehaviour
     }
     public void unlockChecks ()
     {
+        saveFile.unlocks = new List<Unlock>();
         if (run.progessionLevel == 3)
         {
             if (!saveFile.shopArtifacts.Contains(new AbsintheArtifact()))
@@ -61,7 +64,11 @@ public class DeathManager : MonoBehaviour
             }
             else if (run.character.Equals("VF"))
             {
-
+                if (!saveFile.shopArtifacts.Contains(new BunsenBurnerArtifact()))
+                {
+                    saveFile.shopArtifacts.Add(new BunsenBurnerArtifact());
+                    saveFile.unlocks.Add(new Unlock(new BunsenBurnerArtifact()));
+                }
             }
             else if (run.character.Equals("HJ&EH"))
             {
@@ -73,7 +80,11 @@ public class DeathManager : MonoBehaviour
             }
             else if (run.character.Equals("DG"))
             {
-
+                if (!saveFile.shopArtifacts.Contains(new PaletteKnifeArtifact()))
+                {
+                    saveFile.shopArtifacts.Add(new PaletteKnifeArtifact());
+                    saveFile.unlocks.Add(new Unlock(new PaletteKnifeArtifact()));
+                }
             }
         }
         else if (run.progessionLevel == 2)

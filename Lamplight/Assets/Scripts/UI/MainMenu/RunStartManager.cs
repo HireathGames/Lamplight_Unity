@@ -29,9 +29,9 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
         deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
         deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
-        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
-        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
         deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
@@ -77,6 +77,7 @@ public class RunStartManager : MonoBehaviour
         deck.Add(new Malice());
         deck.Add(new Shatter());
         RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.jekyllRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.jekyllLegendaryRewards), "HJ&EH", fileData.shopArtifacts, fileData.level_1_Events);
+        run.events.Add(new GargoyleEvent());
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
     }
@@ -98,6 +99,23 @@ public class RunStartManager : MonoBehaviour
         RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.dorianRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.dorianLegendaryRewards), "DG", fileData.shopArtifacts, fileData.level_1_Events);
         manager.saveRun(run);
         SceneManager.LoadScene("Level_1_Map");
+    }
+    public void startTutorial()
+    {
+        List<Card> deck = new List<Card>();
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicAttack("Peirce", 'w', "Peirce"));
+        deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
+        deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
+        deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
+        deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
+        deck.Add(new BasicDefend("Parry", 'w', "Deflect"));
+        RunData run = new RunData(100, 100, 100, deck, combineSetsOfCards(fileData.basicRewards, fileData.dorianRewards), combineSetsOfCards(fileData.basicLegendaryRewards, fileData.dorianLegendaryRewards), "JH", fileData.shopArtifacts, fileData.level_1_Events);
+        manager.saveRun(run);
+        SceneManager.LoadScene("Tutorial");
     }
     public List<Card> combineSetsOfCards(List<Card> cardsA, List<Card> cardsB)
     {

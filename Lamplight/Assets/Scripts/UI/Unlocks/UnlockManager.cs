@@ -16,7 +16,7 @@ public class UnlockManager : MonoBehaviour
     }
     public void showUnlock()
     {
-        if (manager.fileData.unlocks != null && manager.fileData.unlocks.Count > 0)
+        if (manager.fileData.unlocks != null && (manager.fileData.unlocks.Count > 0 && (manager.fileData.unlocks[0].getArt() != null)))
         {
             unlockScreen.SetActive(true);
             if (manager.fileData.unlocks[0].cardCheck())
@@ -37,6 +37,7 @@ public class UnlockManager : MonoBehaviour
         else
         {
             unlockScreen.SetActive(false);
+            manager.fileData.unlocks = null;
         }
     }
 }

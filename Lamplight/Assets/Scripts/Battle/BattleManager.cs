@@ -589,4 +589,9 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
+    public void replaceDeck(List<Card> cards)
+    {
+        deck = cards;
+        updateCardsInHand();
+    }
 }

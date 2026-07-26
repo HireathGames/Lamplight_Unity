@@ -19,6 +19,7 @@ public abstract class Entity : MonoBehaviour
     public int regeneration;
     public int broken;
     public int mania;
+    private float brokenLossRatio = 1f;
     [SerializeField] private EntityHealthBar healthBar;
     [SerializeField] private Animator animator;
 
@@ -65,6 +66,10 @@ public abstract class Entity : MonoBehaviour
         {
             damageMod = 0;
         }
+    }
+    public void decreaseBrokenRatio(float div)
+    {
+        brokenLossRatio /= div;
     }
     public float getDamageMod() { return damageMod; }
     public int damageAgainst(Entity attacked, int inDamage)
@@ -116,7 +121,14 @@ public abstract class Entity : MonoBehaviour
         else
         {
             HP -= broken;
-            broken = 0;
+            if (broken > 1)
+            {
+                broken -= (int)(broken * brokenLossRatio);
+            }
+            else
+            {
+                broken = 0;
+            }
         }
         if (healthBar != null)
         {
