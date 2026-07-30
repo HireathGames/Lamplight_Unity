@@ -3021,7 +3021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
       propertyPath: exitScene
-      value: Level_2_Map
+      value: Level_3_Map
       objectReference: {fileID: 0}
     - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
       propertyPath: eliteEncounter

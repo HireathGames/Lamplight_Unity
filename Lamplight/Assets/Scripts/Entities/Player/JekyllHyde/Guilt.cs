@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Guilt : Card
 {
     public Guilt() : base("Guilt", "Apply 1 weakness and 8 broken.", 1, true, false, false, 'm', "Guilt") { }

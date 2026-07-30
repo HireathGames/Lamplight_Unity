@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class GraveRobber : Card
 {
     public GraveRobber() : base("Grave Robber", "Deal 12 damage to an enemy. If that enemy dies, gain 3 regeneration.", 2, true, false, false, 't', "Grave Robber") { }

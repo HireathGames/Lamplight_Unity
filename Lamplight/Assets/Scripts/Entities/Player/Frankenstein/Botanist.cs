@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Botanist : Card
 {
     public Botanist() : base("Botanist", "Deal 2 damage, this card deals 3 additional damage for each regeneration you have.", 0, true, false, false, 't', "Botanist") { }

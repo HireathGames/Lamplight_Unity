@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class WholeWorldsStageEvent : Event
 {
     public WholeWorldsStageEvent() : base("As you pass through a door you arrive in a theater, you turn to leave but the exit has vanished. Two masked figures stand upon the stage, one of comedy and one of tragedy. The comedic one speaks, “Come forth! Show yourself to be a true man of the arts!” The tragic one merely stands there shaking their head. Do you give them a show? ", new string[3], new string[3], "DG", "Theater", false)

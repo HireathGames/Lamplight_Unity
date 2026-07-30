@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Delirium : Card
 {
     public Delirium() : base("Delirium", "If this card is still in you hand at the end of your turn, lose 10 sanity.", 1, false, false, false, 'b', "Delirium") { }

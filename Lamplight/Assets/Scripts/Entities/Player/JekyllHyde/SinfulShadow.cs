@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class SinfulShadow : Card
 {
     public SinfulShadow() : base("Sinful Shadow", "Gain equal armor to the amount of broken an enemy has, then activate their broken.", 3, true, false, false, 'm', "Sinful Shadow", "Sinful ShadowAlt") { }

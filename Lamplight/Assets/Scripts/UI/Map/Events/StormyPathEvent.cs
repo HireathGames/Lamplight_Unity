@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class StormyPathEvent : Event
 {
     public StormyPathEvent() : base("On the path ahead of you is a mountain pass, a storm is raging above. Braving it would save you time but it might prove treacherous, you could rest here until it passes.", new string[3], new string[3], "VF", "Stormy Path")

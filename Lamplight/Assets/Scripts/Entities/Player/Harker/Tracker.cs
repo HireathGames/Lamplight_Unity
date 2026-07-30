@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Tracker : Card
 {
     public Tracker() : base("Tracker", "Deal 3 damage to an enemy, it doesn't loose mark when taking this damage.", 0, true, false, false, 't', "Tracker") { }

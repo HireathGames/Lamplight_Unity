@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class LuckyCoin : Card
 {
     public LuckyCoin() : base("Lucky Coin", "Deal 1-4 damage then draw a card.", 0, true, false, false, 'b', "Lucky Coin") { }

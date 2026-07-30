@@ -38,6 +38,7 @@ public class UnlockManager : MonoBehaviour
         {
             unlockScreen.SetActive(false);
             manager.fileData.unlocks = null;
+            new PersistentDataManager().saveFile(manager.fileData);
         }
     }
 }

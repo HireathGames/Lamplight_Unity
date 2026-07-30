@@ -204,9 +204,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4290718492477025924, guid: 1a610904bac5cb44e87f88e9750e653b, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 4c88240a3596bb249b3f570d464ab71e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 51a0e7c4083d9c14da80509a63b7ed9b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.711
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -975,6 +975,10 @@ PrefabInstance:
     - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
+      propertyPath: exitScene
+      value: Level_3_Map
       objectReference: {fileID: 0}
     - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
       propertyPath: playerSpawnPoint

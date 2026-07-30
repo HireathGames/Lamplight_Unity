@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class SacredBloodArtifactMod : CombatModifier
 {
     public override void playerCombatEnd(Player player)

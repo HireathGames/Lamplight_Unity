@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Alive : Card
 {
     public Alive() : base("Alive!", "Gain 2 strength.", 2, false, false, true, 'w', "Alive") { }

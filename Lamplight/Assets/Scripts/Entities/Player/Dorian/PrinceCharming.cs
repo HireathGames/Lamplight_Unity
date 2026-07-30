@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class PrinceCharming : Card
 {
     public PrinceCharming() : base("Prince Charming", "Regain 20 sanity for each copy of Delirum in play, if you are at full sanity gain 1 temporary mania instead.", 1, false, false, true, 'b', "PrinceCharming", "PrinceCharmingAlt") { }

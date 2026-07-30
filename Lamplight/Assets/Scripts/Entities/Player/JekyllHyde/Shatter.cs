@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Shatter : Card
 {
     public Shatter() : base("Shatter", "Deal 8 damage to an enemy, then apply 5 broken.", 2, true, false, false, 'm', "Shatter") { }

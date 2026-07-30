@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Downpour : Card
 {
     public Downpour() : base("Downpour", "Deal 5 damage to all enemies.", 1, false, false, false, 'm', "Downpour") { }

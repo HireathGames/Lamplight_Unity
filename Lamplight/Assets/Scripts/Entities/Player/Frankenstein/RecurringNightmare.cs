@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class RecurringNightmare : Card
 {
     public RecurringNightmare() : base("Recurring Nightmare", "An enemy loses 10 sanity, it loses an additional 25 for each times it has broken down.", 1, true, false, false, 't', "Recurring Nightmare") { }

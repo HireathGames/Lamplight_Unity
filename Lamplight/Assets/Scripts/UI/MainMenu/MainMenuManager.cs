@@ -23,6 +23,8 @@ public class MainMenuManager : MonoBehaviour
     public Transform rotator;
     public Camera titleCam;
     public Camera selectCam;
+    [SerializeField] private GameObject characterBlock;
+    [SerializeField] private GameObject runStartButton;
     private void Awake()
     {
         dataManager = new PersistentDataManager();
@@ -36,6 +38,7 @@ public class MainMenuManager : MonoBehaviour
             fileData = new SaveFileData();
             dataManager.saveFile(fileData);
         }
+        Debug.Log(PersistentDataManager.childExist<Card, Determination>(fileData.basicLegendaryRewards));
     }
     void Start()
     {
@@ -62,6 +65,8 @@ public class MainMenuManager : MonoBehaviour
     {
         selectCam.enabled = true;
         titleCam.enabled = false;
+        runStartButton.SetActive(true);
+        characterBlock.SetActive(false);
         title.SetActive(false);
         select.SetActive(true);
         characterIndex = 0;
@@ -119,8 +124,21 @@ public class MainMenuManager : MonoBehaviour
             characterIndex = 0;
         }
         rotator.Rotate(new Vector3(0, 90 * direction, 0));
-        nameText.text = characterNames[characterIndex];
-        discText.text = characterDiscription[characterIndex];
+        if (fileData.characterUnlocks[characterIndex])
+        {
+            nameText.text = characterNames[characterIndex];
+            discText.text = characterDiscription[characterIndex];
+            runStartButton.SetActive(true);
+            characterBlock.SetActive(false);
+        }
+        else
+        {
+            nameText.text = "???";
+            discText.text = "Many are lost in the gloom, you may find them in your travels.";
+            runStartButton.SetActive(false);
+            characterBlock.SetActive(true);
+        }
+
     }
     public void quit()
     {

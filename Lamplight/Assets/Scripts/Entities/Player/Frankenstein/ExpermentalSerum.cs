@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class ExpermentalSerum : Card
 {
     public ExpermentalSerum() : base("Expermental Serum", "Gain strength equal to your regeneration.", 1, false, false, true, 't', "Expermental Serum") { }

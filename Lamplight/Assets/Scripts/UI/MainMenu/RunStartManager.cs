@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class RunStartManager : MonoBehaviour
 {
     private PersistentDataManager manager;
+    [SerializeField] private MainMenuManager menu;
     private SaveFileData fileData;
 
     private void Start()
@@ -21,6 +22,7 @@ public class RunStartManager : MonoBehaviour
     public void newFile()
     {
         fileData = new SaveFileData();
+        menu.fileData = fileData;
         manager.saveFile(fileData);
     }
     public void startHarkerRun()

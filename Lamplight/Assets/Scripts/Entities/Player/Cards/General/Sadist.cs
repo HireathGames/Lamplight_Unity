@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Sadist : Card
 {
     public Sadist() : base("Sadist", "Every time you attack an enemy they gain 1 bleed.", 2, false, false, true, 'w', "Sadist") { }

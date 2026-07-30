@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class BloodChurchEvent : Event
 {
     public BloodChurchEvent() : base("You come across a lone church, foreboding and ominous. The door is sealed with pulsing red chains. You feel a deep familiar pull towards the gateway, as if your very soul is in the balance. The more you stay here, the more it pulls you in. If you don’t leave immediately you will break down the door.", new string[3], new string[3], "JH", "Blood Church")

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class HauntingGlare : Card
 {
     public HauntingGlare() : base("Haunting Glare", "An enemy gains 2 weakness and loses 15 sanity.", 1, true, false, false, 't', "Haunting Glare") { }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Reclamation : Card
 {
     public Reclamation() : base("Reclamation", "Add one random card into your hand, it costs 0.", 0, false, false, true, 'm', "Reclamation", "ReclamationAlt") { }

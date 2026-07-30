@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Grief : Card
 {
     public Grief() : base("Grief", "If this card is still in you hand at the end of your turn, gain 2 weakness.", 1, false, false, false, 'm', "Grief") { }

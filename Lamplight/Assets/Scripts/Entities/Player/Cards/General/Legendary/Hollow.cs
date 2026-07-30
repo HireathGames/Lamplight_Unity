@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Hollow : Card
 {
     public Hollow() : base("Hollow", "Remove all negative status effects.", 0, false, false, true, 't', "Hollow", "HollowAlt") { }

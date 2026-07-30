@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Electrify : Card
 {
     public Electrify() : base("Electrify", "Deal 3X damage to all enemies and reduce their sanity by 15X.", 0, false, true, false, 't', "Electrify") { }

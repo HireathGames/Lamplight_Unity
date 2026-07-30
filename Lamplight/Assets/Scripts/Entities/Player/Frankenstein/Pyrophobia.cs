@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Pyrophobia : Card
 {
     public Pyrophobia() : base("Pyrophobia", "At the start of each turn, all enemies lose 10 sanity. This increases by 10 every time an enemy breaksdown.", 1, false, false, true, 't', "Pyrophobia", "PyrophobiaAlt") { }

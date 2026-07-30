@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Hallucination : Card
 {
     public Hallucination() : base("Hallucination", "Draw two cards???", 0, false, false, false, 'n', "Hallucination") { }

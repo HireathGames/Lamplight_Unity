@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Masochist : Card
 {
     public Masochist() : base("Masochist", "Every time you take unblocked damage gain 1 strength.", 2, false, false, true, 'b', "Masochist") { }

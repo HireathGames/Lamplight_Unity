@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Panic : Card
 {
     public Panic() : base("Panic", "Targeted enemy loses 25 sanity.", 1, true, false, false, 't', "Panic") { }

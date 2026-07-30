@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class PaperTrail : Card
 {
     public PaperTrail() : base("Paper Trail", "The targeted enemy gains 1 mark at the start of every turn.", 1, true, false, true, 't', "PaperTrail") { }

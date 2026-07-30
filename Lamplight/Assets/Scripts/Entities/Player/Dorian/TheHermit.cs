@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class TheHermit : Card
 {
     public TheHermit() : base("IX The Hermit", "Play the top card of your deck 3 times.", 2, false, false, false, 't', "TheHermit") { }

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class GargoyleFragmentArtifactMod : CombatModifier
 {
     public override void playerTurnStart(Player player)

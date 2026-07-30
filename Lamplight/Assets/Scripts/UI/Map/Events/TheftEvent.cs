@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class TheftEvent : Event
 {
     public TheftEvent() : base("As you walk along the path you see another's campsite. They are singing a tone and not paying attention. You see a bag of some sort of trinket, it looks very valuable. You could strike up a chat with this person, it would be nice, or you could steal from them.", new string[3], new string[3], "JH", "Theft", false)

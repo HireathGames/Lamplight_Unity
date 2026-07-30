@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class ForbiddenHunger: Card
 {
     public ForbiddenHunger() : base("Forbidden Hunger", "Heal equal to an enemies current bleed.", 1, true, false, true, 'b', "Forbidden Hunger") { }

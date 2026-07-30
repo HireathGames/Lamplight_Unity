@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Malice : Card
 {
     public Malice() : base("Malice", "Gain 2 strength this turn then double vice.", 0, false, false, false, 'w', "Malice") { }

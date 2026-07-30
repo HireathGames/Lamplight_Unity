@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Stake : Card
 {
     public Stake() : base("Stake", "Deal 25 damage to an enemy.", 3, true, false, false, 't', "Stake", "StakeAlt") { }

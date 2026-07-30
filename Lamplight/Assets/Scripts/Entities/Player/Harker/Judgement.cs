@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Judgment : Card
 {
     public Judgment() : base("Just Desserts", "Double an enemies mark.", 1, true, false, true, 'w', "Judgment", "JudgmentAlt") { }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class TheMagician : Card
 {
     public TheMagician() : base("I The Magician", "Deal 6 damage for each card played this turn.", 1, true, false, false, 'b', "Magician") { }

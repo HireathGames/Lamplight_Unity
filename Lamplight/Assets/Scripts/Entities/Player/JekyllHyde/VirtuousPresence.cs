@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class VirtuousPresence : Card
 {
     public VirtuousPresence() : base("Virtuous Presence", "Gain 7 armor and apply 7 broken to an enemy, shuffle a Sin into you deck.", 0, true, false, false, 'm', "Virtue") { }

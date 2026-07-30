@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class BloodPactArtifactMod : CombatModifier
 {
     public override void playerTurnStart(Player player)

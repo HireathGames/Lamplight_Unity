@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class PowerTome : Card
 {
     public PowerTome() : base("Tome Of Power", "Gain 3 strength and add 1 Delirium to your deck.", 1, false, false, true, 'b', "PowerTome") { }

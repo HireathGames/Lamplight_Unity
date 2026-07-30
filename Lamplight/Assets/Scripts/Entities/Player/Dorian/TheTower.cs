@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class TheTower : Card
 {
     public TheTower() : base("XVI The Tower", "Deal 2-4X damage to an enemy X times.", 0, true, true, false, 'b', "The Tower") { }

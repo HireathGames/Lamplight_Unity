@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Necromancy : Card
 {
     public Necromancy() : base("Necromancy", "Gain 6 regeneration.", 1, false, false, true, 't', "Necromancy", "NecromancyAlt") { }

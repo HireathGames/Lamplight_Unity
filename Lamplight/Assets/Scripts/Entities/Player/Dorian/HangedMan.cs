@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class HangedMan : Card
 {
     public HangedMan() : base("XII The Hanged Man", "At the end of the next X turns, gain 3X armor.", 0, false, true, false, 'w', "HangedMan") { }

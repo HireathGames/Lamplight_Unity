@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Crooked : Card
 {
     public Crooked() : base("Crooked", "If this card is still in you hand at the end of your turn, gain 3 broken than take damage equal to your broken.", 2, false, false, true, 'n', "Crooked") { }

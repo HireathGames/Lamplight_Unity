@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Smite : Card
 {
     public Smite() : base("Smite", "Gain 1 strength this turn then deal 6 damage.", 1, true, false, false, 'b', "Smite") { }

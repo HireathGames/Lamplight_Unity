@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Hunter : Card
 {
     public Hunter() : base("Hunter", "Give an enemy 2 mark.", 1, true, false, false, 'w', "Hunter") { }

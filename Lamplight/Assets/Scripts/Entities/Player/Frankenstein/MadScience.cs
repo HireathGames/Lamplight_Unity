@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class MadScience : Card
 {
     public MadScience() : base("Mad Science", "Gain 2 regeneration and a randomized negative effect.", 1, false, false, false, 'b', "Mad Science") { }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class DisapearingAct: Card
 {
     public DisapearingAct() : base("Disapearing Act", "Whenever you switch between Jekyll and Hyde, gain 10 armor.", 1, false, false, true, 'w', "Disapearing Act") { }

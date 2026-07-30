@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Melancholia : Card
 {
     public Melancholia() : base("Melancholia", "Every time an entity has a breakdown, they gain 2 weakness and you gain 20 armors.", 1, false, false, true, 'm', "Melancholia", "MelancholiaAlt") { }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Determination : Card
 {
     public Determination() : base("Determination", "Heal all damage taken this turn at the start of next turn.", 3, false, false, false, 'w', "Determination", "DeterminationAlt") { }

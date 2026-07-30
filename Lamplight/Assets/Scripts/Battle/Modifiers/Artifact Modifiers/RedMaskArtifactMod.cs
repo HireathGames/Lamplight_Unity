@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class RedMaskArtifactMod : CombatModifier
 {
     public override void playedCard(Player player, Card card)

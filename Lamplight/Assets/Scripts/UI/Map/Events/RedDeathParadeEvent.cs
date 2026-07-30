@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class RedDeathParadeEvent : Event
 {
     public RedDeathParadeEvent() : base("You come upon a strange sight, a parade of infected following a robed woman in a mask. They seem to have almost religious reverence for her, even as their bodies decay and fall to pieces. They spot you and immediately start to get ready to attack you, but the cloaked woman stops them. She asks you, “Stranger, do you understand the slander of the blood of those born high commit? Do you understand that blood is not what separates the poor and the noble but what units them? Do you feel the deep wrath of a thousand brothers and sisters left to die by their equals?” She looks at you expectantly.", new string[3], new string[3], "VF", "RedDeathParade", true)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Patchwork : Card
 {
     public Patchwork() : base("Patchwork", "Every time you take unblocked damage gain 1 regeneration.", 1, false, false, true, 't', "Patchwork") { }

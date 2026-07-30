@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class TillDeath : Card
 {
     public TillDeath() : base("Till Death", "Give an enemy 4 mark, then give yourself 2 mark.", 1, true, false, false, 'm', "Till Death") { }

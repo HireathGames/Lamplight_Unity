@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class PitAndPendulumEvent : Event
 {
     public PitAndPendulumEvent() : base("You hear a cry from a nearby house, you rush in, finding a man tied to a table with a swing pendulum above him. Every swing it gets closer and closer, its razor sharp edge ever inching closer to the end of the man's life. The man shouts, that he is very wealthy and can pay you for saving him. Nearby an uncharacteristically peaceful bobby stands, he says that the price for the man’s freedom is blood. What do you do? ", new string[3], new string[3], "HJ&EH", "PitAndPendulum", true)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Manifest : Card
 {
     public Manifest() : base("Manifest", "Deal 3 damage and gain 3 armor, then draw a card.", 1, true, false, false, 'b', "Manifest") { }

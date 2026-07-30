@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Enlightenment : Card
 {
     public Enlightenment() : base("Enlightenment", "Gain 1 mania and add 2 Delirium to your deck.", 1, false, false, true, 'b', "Enlightenment") { }

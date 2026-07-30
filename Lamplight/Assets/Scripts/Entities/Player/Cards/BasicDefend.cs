@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 public class BasicDefend : Card
 {
     //overrides the constructor but still calls original constructor.

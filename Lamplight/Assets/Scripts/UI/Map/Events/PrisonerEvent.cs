@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class PrisonerEvent : Event
 {
     public PrisonerEvent() : base("As you pace the castle halls, you hear pained moans coming from a cell at the end of the hall. Looking inside you see a starved man locked behind bars begging and pleading to be set free. He seems to be so out of it that he doesn’t even notice your presence, the key is just on a table close by. This could be a trap, are you really willing to risk it for a stranger?", new string[3], new string[3], "JH", "Prisoner", false)
@@ -14,23 +14,24 @@ public class PrisonerEvent : Event
     public override void optionOne(RunData run)
     {
         PersistentDataManager manager = new PersistentDataManager();
-        run.deck.Add(new Hallucination());
-        run.sanity -= 40f;
+        run.sanity -= 75f;
         if (run.sanity < 0)
         {
             run.sanity = 0;
         }
+        run.heldArtifacts.Add(new DamnedShacklesArtifact());
         manager.saveRun(run);
     }
     public override void optionTwo(RunData run)
     {
         PersistentDataManager manager = new PersistentDataManager();
+        run.deck.Add(new Injustice());
         manager.saveRun(run);
     }
     public override void optionThree(RunData run)
     {
         PersistentDataManager manager = new PersistentDataManager();
-        run.deck.Add(new RecurringNightmare());
+        run.heldArtifacts.Add(new HarkersJournalArtifact());
         manager.saveRun(run);
     }
 }

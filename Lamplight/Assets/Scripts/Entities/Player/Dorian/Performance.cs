@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Performance : Card
 {
     public Performance() : base("Performance", "Gain 8 armor and 1 temporary mania.", 2, false, false, false, 'b', "Performance") { }

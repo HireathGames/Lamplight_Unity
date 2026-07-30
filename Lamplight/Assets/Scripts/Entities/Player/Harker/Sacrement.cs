@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Sacrement : Card
 {
     public Sacrement() : base("Sacrement", "Deal 7 damage to an enemy, then apply 4 bleed.", 2, true, false, false, 'w', "Sacrement") { }

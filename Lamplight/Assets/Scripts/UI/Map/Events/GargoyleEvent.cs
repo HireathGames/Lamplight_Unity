@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class GargoyleEvent : Event
 {
     public GargoyleEvent() : base("While wandering the castle, you enter into a garden of sorts. It has beautiful flowers, elegant fountains and wonderful sculptures. Something from the edge of your vision catches your eye, a very valuable looking artifact on the ground. You go to collect it but you notice a large, imposing gargoyle looking directly at it. You feel like whatever it is, it belongs to the statue. ", new string[3], new string[3], "HJ&EH", "Gargoyle", false)

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class ShiftingShardsArtifactMod : CombatModifier
 {
     private bool[] types;

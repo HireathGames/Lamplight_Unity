@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Comedy : Card
 {
     public Comedy() : base("Comedy", "Gain 3 strength this turn.", 0, false, false, false, 'b', "Comedy") { }

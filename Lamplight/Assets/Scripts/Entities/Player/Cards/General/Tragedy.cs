@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Tragedy : Card
 {
     public Tragedy() : base("Tragedy", "Give an enemy 3 weakness.", 1, true, false, false, 'm', "Tragedy") { }

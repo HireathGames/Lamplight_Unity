@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveFileData
 {
-    public bool[] characterUnlocks = new bool[4];
+    public bool[] characterUnlocks;
     public float masterVolume;
     public float musicVolume;
     public float soundEffectVolume;
@@ -27,6 +27,7 @@ public class SaveFileData
     [SerializeReference] public List<Card> dorianLegendaryRewards;
     public SaveFileData()
     {
+        characterUnlocks = new bool[4];
         characterUnlocks[0] = true;
         characterUnlocks[1] = false;
         characterUnlocks[2] = false;
@@ -45,6 +46,8 @@ public class SaveFileData
         level_2_Events.Add(new WholeWorldsStageEvent());
         level_2_Events.Add(new PitAndPendulumEvent());
         level_2_Events.Add(new RedDeathParadeEvent());
+        level_3_Events.Add(new GargoyleEvent());
+        level_3_Events.Add(new PrisonerEvent());
         shopArtifacts = new List<Artifact>();
         basicRewards = new List<Card>();
         harkerRewards = new List<Card>();

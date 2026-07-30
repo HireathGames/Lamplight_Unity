@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Abjure : Card
 {
     public Abjure() : base("Abjure", "Gain 7 armor and give an enemy 1 mark.", 1, true, false, false, 't', "Abjure") { }

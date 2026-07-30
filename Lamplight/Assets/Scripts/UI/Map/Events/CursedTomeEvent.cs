@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 public class CursedTomeEvent : Event
 {
     public CursedTomeEvent() : base("While traveling you see a faint flicker in the distance, you go closer and see a floating tome. It is surrounded by petrified people in poses of abject agony. This accursed text floats there, calling. You could destroy it, relieving this world from its malevolence, but you can’t shake the feeling that you are destined to read it.", new string[3], new string[3], "DG", "Cursed Tome")
