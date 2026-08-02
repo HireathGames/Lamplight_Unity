@@ -9,6 +9,8 @@ public class EndingManager : MonoBehaviour
     private PersistentDataManager manager;
     private RunData run;
     private SaveFileData fileData;
+    private string achievement;
+    [SerializeField] private SteamIntegration steam;
     [SerializeField] private Animator animator;
     [SerializeField] private float[] times;
 
@@ -31,24 +33,28 @@ public class EndingManager : MonoBehaviour
         {
             animator.SetInteger("Ending", 0);
             playHarker();
+            achievement = "HARKER_WIN";
             Invoke("exit", times[0]);
         }
         else if (run.character.Equals("VF"))
         {
             animator.SetInteger("Ending", 1);
             playVictor();
+            achievement = "FRANKENSTEIN_WIN";
             Invoke("exit", times[1]);
         }
         else if (run.character.Equals("HJ&EH"))
         {
             animator.SetInteger("Ending", 2);
             playJekyll();
+            achievement = "HARKER_JEKYLL";
             Invoke("exit", times[2]);
         }
         else if (run.character.Equals("DG"))
         {
             animator.SetInteger("Ending", 3);
             playDorian();
+            achievement = "DORIAN_WIN";
             Invoke("exit", times[3]);
         }
     }
@@ -56,6 +62,7 @@ public class EndingManager : MonoBehaviour
     {
         manager.saveRun(null);
         manager.saveFile(fileData);
+        steam.unlockAchievement(achievement);
         SceneManager.LoadScene("MainMenu");
     }
     private void playHarker()

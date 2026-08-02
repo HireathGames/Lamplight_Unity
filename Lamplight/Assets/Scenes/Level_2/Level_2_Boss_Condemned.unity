@@ -3028,6 +3028,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
+      propertyPath: bossAchievement
+      value: CONDEMNED_DEFEAT
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
       propertyPath: playerSpawnPoint
       value: 
       objectReference: {fileID: 1986389259}

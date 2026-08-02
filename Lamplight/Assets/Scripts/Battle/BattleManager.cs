@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
+    [SerializeField] private SteamIntegration steam;
     private Player player;
     [SerializeField] private bool eliteEncounter;
     [SerializeField] private bool boss;
@@ -45,6 +46,7 @@ public class BattleManager : MonoBehaviour
     private float alpha;
     public bool fading;
     public string exitScene = "Level_1_Map";
+    public string bossAchievement;
     private void Awake()
     {
         //Initializes key conponents
@@ -413,6 +415,10 @@ public class BattleManager : MonoBehaviour
                 }
                 run.HP = run.maxHP;
                 run.sanity = 100;
+                if (steam != null && bossAchievement.Length > 0)
+                {
+                    steam.unlockAchievement(bossAchievement);
+                }
             }
             dataManager.saveRun(run);
         }

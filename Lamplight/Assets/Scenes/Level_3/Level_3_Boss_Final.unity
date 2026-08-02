@@ -1315,6 +1315,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5854173739459880044, guid: 467f822e7d04ca442a8e47445af6b330, type: 3}
+      propertyPath: steam
+      value: 
+      objectReference: {fileID: 8781605661580737623}
     - target: {fileID: 7296122958316163333, guid: 467f822e7d04ca442a8e47445af6b330, type: 3}
       propertyPath: m_Name
       value: DraculaEnemy
@@ -2197,6 +2201,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
+      propertyPath: bossAchievement
+      value: DRACULA_DEFEAT
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026398587990164590, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
       propertyPath: playerSpawnPoint
       value: 
       objectReference: {fileID: 1986389259}
@@ -2469,6 +2477,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
+--- !u!114 &8781605661580737623 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2256634520801914592, guid: f064aeb8d91f26747857ede8bc9ccb0b, type: 3}
+  m_PrefabInstance: {fileID: 8781605661580737622}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9be0c90aaf7994bb2088b39b48878e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SteamIntegration
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -38,6 +38,7 @@ RectTransform:
   - {fileID: 3758703172006228893}
   - {fileID: 466533020181960912}
   - {fileID: 5934760575637010779}
+  - {fileID: 5601027864684359745}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2588,6 +2589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 5876430124611859352}
+  steam: {fileID: 2256634520801914592}
   eliteEncounter: 0
   boss: 0
   enemies: []
@@ -2615,6 +2617,51 @@ MonoBehaviour:
   fadeOut: {fileID: 3076661848699329336}
   fading: 0
   exitScene: Level_1_Map
+  bossAchievement: 
+--- !u!1 &8075688010837481510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5601027864684359745}
+  - component: {fileID: 2256634520801914592}
+  m_Layer: 0
+  m_Name: SteamManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5601027864684359745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8075688010837481510}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -441.1755, y: -308.2524, z: 667.4644}
+  m_LocalScale: {x: 0.9708738, y: 0.9708738, z: 0.9708738}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7656858523079661520}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2256634520801914592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8075688010837481510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9be0c90aaf7994bb2088b39b48878e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SteamIntegration
 --- !u!1 &8700177694318429749
 GameObject:
   m_ObjectHideFlags: 0

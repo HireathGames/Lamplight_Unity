@@ -16,6 +16,7 @@ public class DeathManager : MonoBehaviour
     private PersistentDataManager manager;
     private RunData run;
     private SaveFileData saveFile;
+    [SerializeField] private SteamIntegration steam;
     // Update is called once per frame
     void Update()
     {
@@ -41,6 +42,7 @@ public class DeathManager : MonoBehaviour
         {
             reversing = true;
             PersistentDataManager.unlockChecks(saveFile, run);
+            steam.unlockAchievement("GAME_LOSE");
             Invoke("exit", 1.25f);
         }
     }

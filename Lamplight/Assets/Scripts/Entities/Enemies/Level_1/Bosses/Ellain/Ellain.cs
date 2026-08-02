@@ -29,7 +29,7 @@ public class Ellain : Enemy
     private void Awake()
     {
         addMove(new EllainBuffDefendMove());
-        addMove(new EllainBuffBreakMove());
+        addMove(new EllainBuffDebuffCardMove());
         addMove(new EllainBuffDrainMove());
         int startHealth = Random.Range(110, 130);
         summons = new List<Enemy>();

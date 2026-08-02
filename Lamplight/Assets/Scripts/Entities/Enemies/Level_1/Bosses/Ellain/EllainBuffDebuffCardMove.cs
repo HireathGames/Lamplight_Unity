@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class EllainBuffBreakMove : EnemyMove
+public class EllainBuffDebuffCardMove : EnemyMove
 {
-    public EllainBuffBreakMove() : base("Debuff", 2) { }
+    public EllainBuffDebuffCardMove() : base("StatusCard", 2) { }
     public override void performMove(Enemy self, Player player)
     {
-        player.broken += 3;
+        player.manager.getDiscard().Add(new Grief());
         List<Enemy> enemies = self.GetComponent<Ellain>().getSummons();
         foreach (Enemy e in enemies)
         {
@@ -16,6 +16,6 @@ public class EllainBuffBreakMove : EnemyMove
     }
     public override string getMoveText(Enemy self, Player player)
     {
-        return "3";
+        return "1";
     }
 }

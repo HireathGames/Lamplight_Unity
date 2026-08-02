@@ -439,6 +439,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -5797466877858072714, guid: a4091028bd63c4b4ab8c5e7318d9481e, type: 3}
   m_PrefabInstance: {fileID: 295253130}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &458725648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458725650}
+  - component: {fileID: 458725649}
+  m_Layer: 0
+  m_Name: SteamManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &458725649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458725648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9be0c90aaf7994bb2088b39b48878e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SteamIntegration
+--- !u!4 &458725650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458725648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.46197, y: 5.72391, z: -2.70986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &542405824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,6 +1766,7 @@ MonoBehaviour:
   minuteHand: {fileID: 295253131}
   fadeOut: {fileID: 1469979896}
   music: {fileID: 1753036338}
+  steam: {fileID: 458725649}
 --- !u!4 &1639764077
 Transform:
   m_ObjectHideFlags: 0
@@ -1879,3 +1924,4 @@ SceneRoots:
   - {fileID: 1753036339}
   - {fileID: 1065451235}
   - {fileID: 295253130}
+  - {fileID: 458725650}

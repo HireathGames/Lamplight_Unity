@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Dracula : Enemy
 {
-
+    public SteamIntegration steam;
     private void Update()
     {
 
@@ -61,6 +61,10 @@ public class Dracula : Enemy
         PersistentDataManager dataManager = new PersistentDataManager();
         RunData run = getManager().getRun();
         dataManager.saveRun(run);
+        if (steam != null)
+        {
+            steam.unlockAchievement("DRACULA_DEFEAT");
+        }
         SceneManager.LoadScene("Ending_Cutscene");
     }
 }
