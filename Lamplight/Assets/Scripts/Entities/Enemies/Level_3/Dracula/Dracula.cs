@@ -26,12 +26,12 @@ public class Dracula : Enemy
     }
     private void Awake()
     {
-        addMove(new EnemyAttack(10));
-        addMove(new EnemyAttack(8, 5, "AttackDebuff", 1));
-        addMove(new EnemyGiveAllSArmor(9));
+        addMove(new EnemyAttack(12));
+        addMove(new EnemyAttack(10, 5, "AttackDebuff", 1));
+        addMove(new EnemyGiveAllSArmor(10));
         addMove(new EnemyAddStatusCard(new Gloom(), 1));
         addMove(new EnemyVampireDrink(5, 7, 2));
-        int startHealth = 444;
+        int startHealth = 666;
         setHealth(startHealth);
         setMaxHealth(startHealth);
     }

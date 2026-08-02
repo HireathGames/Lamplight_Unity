@@ -19,11 +19,17 @@ public class BellRinger : Enemy
         setHealth(startHealth);
         setMaxHealth(startHealth);
     }
-    private void Start()
+    public override EnemyMove generateNextMove()
     {
-        modifier = new BellRingerMod(FindAnyObjectByType<Player>(), hand, ring);
-        setNextMove(new EnemyAddCombatMod(modifier, "Debuff"));
-        updateMoveInfo(null);
+        if (getNextMove() == null || modifier == null)
+        {
+            modifier = new BellRingerMod(FindAnyObjectByType<Player>(), hand, ring);
+            return (new EnemyAddCombatMod(modifier, "Debuff"));
+        }
+        else
+        {
+            return base.generateNextMove();
+        }
     }
     public override void takeTurn(Player player)
     {

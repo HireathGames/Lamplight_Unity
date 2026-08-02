@@ -74,4 +74,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_3/Level_3_Boss_Final.unity
     guid: 0def9d4ecfd03fc449af40b2860c421f
+  - enabled: 1
+    path: Assets/Scenes/Trailer.unity
+    guid: eb25f6328ee6fcf4b86f20b7905414ad
   m_configObjects: {}

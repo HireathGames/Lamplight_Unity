@@ -145,4 +145,8 @@ public class MainMenuManager : MonoBehaviour
         dataManager.saveFile(fileData);
         Application.Quit();
     }
+    public void openLevel(string level)
+    {
+        SceneManager.LoadScene(level);
+    }
 }

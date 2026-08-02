@@ -117,6 +117,38 @@ public class PersistentDataManager
                         saveFile.characterUnlocks[3] = true;
                         saveFile.unlocks.Add(new Unlock("Dorian Gray", Resources.Load<Sprite>("Sprites/Characters/Dorian")));
                     }
+                    if (run.character.Equals("JH"))
+                    {
+                        if (!childExist<Artifact, GarlicArtifact>(saveFile.shopArtifacts))
+                        {
+                            saveFile.shopArtifacts.Add(new GarlicArtifact());
+                            saveFile.unlocks.Add(new Unlock(new GarlicArtifact()));
+                        }
+                    }
+                    else if (run.character.Equals("VF"))
+                    {
+                        if (!childExist<Artifact, CopperArtifact>(saveFile.shopArtifacts))
+                        {
+                            saveFile.shopArtifacts.Add(new CopperArtifact());
+                            saveFile.unlocks.Add(new Unlock(new CopperArtifact()));
+                        }
+                    }
+                    else if (run.character.Equals("HJ&EH"))
+                    {
+                        if (!childExist<Artifact, MagnifyingGlassArtifact>(saveFile.shopArtifacts))
+                        {
+                            saveFile.shopArtifacts.Add(new MagnifyingGlassArtifact());
+                            saveFile.unlocks.Add(new Unlock(new MagnifyingGlassArtifact()));
+                        }
+                    }
+                    else if (run.character.Equals("DG"))
+                    {
+                        if (!childExist<Artifact, FinalActArtifact>(saveFile.shopArtifacts))
+                        {
+                            saveFile.shopArtifacts.Add(new FinalActArtifact());
+                            saveFile.unlocks.Add(new Unlock(new FinalActArtifact()));
+                        }
+                    }
                 }
             }
         }

@@ -33,6 +33,10 @@ public class GameMenuManager : MonoBehaviour
         helpScreen.SetActive(true);
         transform.SetAsLastSibling();
     }
+    public void activeSwitch(GameObject element)
+    {
+        element.SetActive(!element.activeSelf);
+    }
     public void closeMenu()
     {
         menuScreen.SetActive(false);
